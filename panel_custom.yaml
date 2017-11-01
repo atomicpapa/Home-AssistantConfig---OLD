@@ -1,0 +1,11 @@
+  - name: floorplan
+    sidebar_title: Floorplan
+    sidebar_icon: mdi:floor-plan
+    url_path: floorplan
+    config: !include floorplan.yaml
+
+  # - name: lcars
+    # sidebar_title: LCARS
+    # sidebar_icon: mdi:floor-plan
+    # url_path: lcars
+    # config: !include lcars-floorplan.yaml

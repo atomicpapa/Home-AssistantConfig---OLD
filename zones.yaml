@@ -1,0 +1,68 @@
+- name: Home
+  latitude: !secret latitude
+  longitude: !secret longitude
+  icon: mdi:home
+  radius: 50
+
+- name: Garner
+  latitude: !secret garlat
+  longitude: !secret garlon
+  icon: mdi:school
+
+- name: KSAT
+  latitude: !secret ksatlat
+  longitude: !secret ksatlon
+  icon: mdi:school
+  radius: 150
+
+- name: SST
+  latitude: !secret sstlat
+  longitude: !secret sstlon
+  icon: mdi:school
+  radius: 125
+
+- name: Allys
+  latitude: !secret allylat
+  longitude: !secret allylon
+  icon: mdi:home-variant
+  radius: 50
+
+- name: GGs
+  icon: mdi:home-variant
+  latitude: !secret gglat
+  longitude: !secret gglon
+  radius: 50
+
+- name: DMC430
+  icon: mdi:work
+  latitude: !secret 430lat
+  longitude: !secret 430lon
+
+- name: DMC510
+  icon: mdi:work
+  latitude: !secret 510lat
+  longitude: !secret 510lon
+  radius: 50
+
+- name: Walmart
+  icon: mdi:store-24-hour
+  latitude: !secret wallat
+  longitude: !secret wallon
+
+- name: Meyers
+  icon: mdi:home-variant
+  latitude: !secret mgmlat
+  longitude: !secret mgmlon
+  radius: 50
+
+- name: ThinAir
+  icon: mdi:store-24-hour
+  latitude: !secret talat
+  longitude: !secret talon
+  radius: 50
+  
+- name: Miras
+  icon: mdi:home-variant
+  latitude: !secret miralat
+  longitude: !secret miralon
+  radius: 50

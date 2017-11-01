@@ -1,0 +1,143 @@
+homeassistant:
+  name: Home
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: !secret elevation
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/Chicago
+  customize: !include customize.yaml
+  packages: !include_dir_named packages
+
+# introduction:
+
+# Enables the frontend
+frontend:
+  themes: !include themes.yaml
+
+# Enables configuration UI
+config:
+
+http:
+  api_password: !secret apipass
+  ssl_certificate: !secret sslcert
+  ssl_key: !secret sslkey
+  base_url: !secret baseurl
+  ip_ban_enabled: True
+  login_attempts_threshold: 3
+  trusted_networks:
+    - 192.168.0.0/24
+    - 127.0.0.1
+
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  include_used_components: true
+
+# Discover some devices automatically
+discovery:
+  ignore: 
+    # - google_cast
+    - philips_hue
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+  exclude:
+    domains:
+      - camera
+      - group
+      - sensor
+      - sun
+      - updater
+      - zone
+      
+recorder:
+  purge_interval: 2
+  purge_keep_days: 14
+  exclude:
+    domains:
+      - camera
+      - group
+      - sensor
+      - sun
+      - updater
+      - zone
+      
+# View all events in a logbook
+logbook:
+  exclude:
+    domains:
+      - camera
+      - group
+      - sensor
+      - sun
+      - updater
+      - zone
+
+logger:
+  default: error
+  logs:
+    requests.packages.urllib3: critical
+    homeassistant.components.camera: fatal
+    pychromecast.socket_client: critical
+    homeassistant.helpers.entity: critical
+    homeassistant.components.sensor.nzbget: critical
+    homeassistant.components.light.hue: critical
+
+# Track the sun
+sun:
+
+map:
+
+google_assistant:
+  project_id: hass-cbc79
+  client_id: wrOwDPkAQslAllvECDUJhGOi7tPp3dp2z5uu2f84gxDXpVRYkIkGjcnbqDOFCcrK4cBEM52jsUQvpNvtJPjeul4VXFOslONWE6As
+  access_token: dYSGm3Euf3lwhDlJyuVFADFZNhvQwiBkphYyeTBNrPvS23sZvKo3OcXnCxht3crkV2Z28fjPKzXLCdS3rKPddydiUKaCz4HCroIB
+  exposed_domains:
+    - switch
+    - light
+    - group
+
+#Google Calendar
+google:
+  client_id: !secret googleid
+  client_secret: !secret googlesecret
+
+light:
+  - platform: hue
+    host: 192.168.0.10
+
+mqtt:
+  broker: 192.168.0.31
+  username: !secret mqtt2user
+  password: !secret mqtt2pass
+
+emulated_hue:
+  listen_port: 80
+  exposed_domains:
+    - group
+    - switch
+    - input_boolean
+    # - media_player
+    
+# feedreader:
+#   urls:
+#     - https://hasspodcast.io/feed/podcast
+#     - https://home-assistant.io/atom.xml
+  
+script: !include_dir_merge_list script/  
+# input_number: !include input_number.yaml
+input_boolean: !include_dir_merge_named input_boolean/
+# panel_iframe: !include panel_iframe.yaml
+# sensor: !include sensors.yaml
+# Text to speech
+tts: !include tts.yaml    
+zone: !include zones.yaml
+group: !include groups.yaml
+automation: !include_dir_merge_list automations/
+panel_custom: !include panel_custom.yaml
+binary_sensor: !include binary_sensors.yaml
+# intent_script: !include intent_scripts.yaml
+# device_tracker: !include device_trackers.yaml

@@ -1,0 +1,6 @@
+# - platform: iss
+#   show_on_map: true
+  
+- platform: mqtt
+  state_topic: dummy/floorplan/sensor
+  name: Floorplan

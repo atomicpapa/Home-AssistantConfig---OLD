@@ -1,0 +1,44 @@
+  # subsonic:
+    # title: Subsonic
+    # icon: mdi:audiobook
+    # url: http://library.no-ip.info:4040
+    
+  # ubooquity:
+    # title: Comics
+    # icon: mdi:book-open-page-variant
+    # url: http://library.no-ip.info:2202
+    
+  # calibre:
+    # title: eBooks
+    # icon: mdi:book-multiple
+    # url: http://library.no-ip.info:8181
+    
+  # plex:
+    # title: Plex
+    # icon: mdi:plex
+    # url: http://app.plex.tv/desktop
+    
+  sonarr:
+    title: Sonarr
+    icon: mdi:radar
+    url: http://library.no-ip.info:8989
+    
+  # transmission:
+    # title: Transmission
+    # icon: mdi:folder-download
+    # url: http://library.no-ip.info:9091/
+    
+  nzbget:
+    title: NZBget
+    icon: mdi:download-network
+    url: http://library.no-ip.info:6789
+    
+  # pihole:
+    # title: Pi-Hole
+    # icon: mdi:raspberrypi
+    # url: http://192.168.0.31:8017/admin
+    
+  zoneminder:
+    title: ZoneMinder
+    icon: mdi:monitor-multiple
+    url: http://192.168.0.13/zm/

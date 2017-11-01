@@ -1,0 +1,71 @@
+main:
+  view: true
+  # icon: mdi:home
+  entities:
+  - group.weasley_clock
+  - group.living_room
+  - group.girls_room
+  - group.boys_room
+  - group.master_bedroom
+  - group.weather
+  - group.nzbget
+  - group.fitness
+  name: Main View
+
+master_bedroom:
+  name: Master Bedroom
+  view: true
+  # icon: mdi:human-male-female
+  entities:
+    - media_player.gorgon
+    - media_player.apollo
+    - light.desk_lamp
+
+kids_rooms:
+  name: Kid's Rooms
+  view: true
+  entities:
+    - light.girls
+    - light.boy
+
+masterbedroom:
+  name: Master Bedroom
+  view: false
+  entities:
+  - light.desk_lamp
+  - media_player.gorgon
+  - media_player.master_bedroom_home
+  
+girlsroom:
+  name: Girls Room
+  view: false
+  entities:
+  - light.girls
+  
+boysroom:
+  name: Boy's Room
+  view: false
+  entities:
+  - light.boy
+  
+living_room:
+  name: Living Room
+  view: false
+  entities:
+  - light.lego_lamp
+  
+fitness:
+  name: Fitness
+  view: false
+  entities:
+    - sensor.charge_2_battery
+    - sensor.sleep_minutesasleep
+    - sensor.steps
+    
+audio_players:
+  name: Audio Players
+  view: false
+  entities:
+    - media_player.apollo
+    - media_player.muse
+    

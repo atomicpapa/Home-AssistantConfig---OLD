@@ -1,0 +1,40 @@
+# Temperature:
+  # speech: The temperature at home is {{ states('sensor.home_temp') }} degrees
+# LocateIntent:
+  # speech: >
+    # {%- for state in states.device_tracker -%}
+      # {%- if state.name.lower() == User.lower() -%}
+        # {{ state.name }} is at {{ state.state }}
+      # {%- elif loop.last -%}
+        # I am sorry, I do not know where {{ User }} is.
+      # {%- endif -%}
+    # {%- else -%}
+      # Sorry, I don't have any trackers registered.
+    # {%- endfor -%}
+WhereAreWeIntent:
+  speech: >
+  {% if is_state("device_tracker.glenn_glenn", "home") and 
+       is_state("device_tracker.lola_lola", "home") and
+       is_state("device_tracker.eleanor_eleanor", "home") -%}
+
+  You are all home, you silly
+
+  {%- else -%}
+
+  Glenn is at {{ states("device_tracker.glenn_glenn") }} and Eleanor is at {{ states("device_tracker.eleanor_eleanor") }} and Lola is at {{ states("device_tracker.lola_lola") }}
+
+  {%- endif %}
+# TurnLights:
+  # speech: Turning {{ Room }} lights {{ OnOff }}
+  # action:
+    # - service: notify.pushbullet
+      # data_template:
+        # message: Someone asked via apiai to turn {{ Room }} lights {{ OnOff }}
+    # - service_template: >
+        # {%- if OnOff == "on" -%}
+          # switch.turn_on
+        # {%- else -%}
+          # switch.turn_off
+        # {%- endif -%}
+      # data_template:
+        # entity_id: "switch.light_{{ Room | replace(' ', '_') }}"

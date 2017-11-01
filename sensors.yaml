@@ -1,0 +1,50 @@
+# Sensors..  duh
+    
+
+
+# # Glenn's Fitbit  
+# - platform: fitbit
+#   monitored_resources:
+#     - "activities/steps"
+#     - "sleep/minutesAsleep"
+#     - "devices/battery"
+
+
+
+
+
+
+
+
+ 
+# - platform: time_date
+#   display_options:
+#     - 'time'
+#     - 'date'
+    
+# - platform: template
+#   sensors:
+#     alarm_clock_hour:
+#       value_template: '{{ states.input_number.slider1.state | int }}'
+#     alarm_clock_minute:
+#       value_template: '{{ states.input_number.slider2.state | int }}'
+#     alarm_clock_time:
+#       value_template: >-
+#         {{ states.sensor.alarm_clock_hour.state }}:
+#         {%- if states.sensor.alarm_clock_minute.state|length == 1 -%}
+#           0
+#         {%- endif -%}
+#           {{ states.sensor.alarm_clock_minute.state }}
+#     alarm_clock_time_long:
+#       value_template: >-
+#         {% if states.sensor.alarm_clock_hour.state|length == 1 -%}
+#           0
+#         {%- endif -%}
+#           {{ states.sensor.alarm_clock_hour.state }}:
+#         {%- if states.sensor.alarm_clock_minute.state|length == 1 -%}
+#           0
+#         {%- endif -%}
+#           {{ states.sensor.alarm_clock_minute.state }}
+          
+
+

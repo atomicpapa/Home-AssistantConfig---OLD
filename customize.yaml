@@ -1,0 +1,64 @@
+
+
+sensor.sleep_minutesasleep:
+  icon: mdi:sleep
+  friendly_name: Minutes Asleep
+  
+binary_sensor.floorplan:
+  custom_ui_state_card: floorplan
+  config: !include floorplan.yaml
+  
+binary_sensor.iss:
+  icon: mdi:satellite-variant
+  friendly_name: ISS Visibility
+  
+media_player.gorgon_2:
+  hidden: true
+media_player.master_bedroom_home_2:
+  hidden: true
+
+# Alarm clock sensors
+sensor.time:
+  hidden: true
+sensor.alarm_clock_hour:
+  hidden: true
+sensor.alarm_clock_minute:
+  hidden: true
+sensor.alarm_clock_time_long:
+  hidden: true
+sensor.alarm_clock_time:
+  friendly_name: 'Alarm Clock Setting'
+  icon: mdi:alarm
+
+# Alarm clock inputs
+input_slider.alarm_clock_hour:
+  friendly_name: 'Hour'
+  icon: mdi:timer
+input_slider.alarm_clock_minute:
+  friendly_name: 'Minute'
+  icon: mdi:timer
+input_boolean.alarm_clock_status:
+  friendly_name: 'Alarm Clock Status'
+  icon: mdi:alarm-check
+  
+# Zoneminder
+sensor.backyard_left_status:
+  hidden: true
+sensor.backyard_right_status:
+  hidden: true
+sensor.driveway_status:
+  hidden: true
+sensor.front_yard_status:
+  hidden: true
+sensor.front_door_status:
+  hidden: true
+sensor.backyard_left_events:
+  friendly_name: 'Backyard Left Motion Events'
+sensor.backyard_right_events:
+  friendly_name: 'Backyard Right Motion Events'
+sensor.driveway_events:
+  friendly_name: 'Driveway Motion Events'
+sensor.front_yard_events:
+  friendly_name: 'Front Yard Motion Events'
+sensor.front_door_events:
+  friendly_name: 'Front Door Motion Events'

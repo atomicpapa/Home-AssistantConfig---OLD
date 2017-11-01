@@ -1,0 +1,89 @@
+# -------------------------- All Calendars --------------------------
+
+# Tracked Calendars -------------------------------------------------
+
+- cal_id: family08435615380738305057@group.calendar.google.com
+  entities:
+  - device_id: family
+    name: Family
+    track: true
+
+- cal_id: c0ghihbkk3kobplsk0al89imdg@group.calendar.google.com
+  entities:
+  - device_id: responsibilities
+    name: Responsibilities
+    track: true
+
+- cal_id: 30idnjh173ip0j7nnqob2hh23c@group.calendar.google.com
+  entities:
+  - device_id: bills
+    name: Bills
+    track: true
+
+- cal_id: mdrk32fp716d53t8ja3orlvpst1rqh2b@import.calendar.google.com
+  entities:
+  - device_id: httplibrarynoipinfo8989feedcalendarsonarricsapikeyced9c0d2c6f64569ac2bc166502a8e1a
+    name: Sonarr
+    track: true
+
+- cal_id: 9l52498q7cqd7a1v5ttsj4td9g@group.calendar.google.com
+  entities:
+  - device_id: work
+    name: Work
+    track: true
+
+# Untracked Calendars ---------------------------------------------------
+
+- cal_id: d9ff2bcola65oi3kv1dggeeqio@group.calendar.google.com
+  entities:
+  - device_id: sleep
+    name: Sleep
+    track: false
+
+- cal_id: moa3un66j0hi8l77ikphmotv2k@group.calendar.google.com
+  entities:
+  - device_id: paydays
+    name: Paydays
+    track: false
+
+- cal_id: wm.g.morrison@gmail.com
+  entities:
+  - device_id: glenns_personal_calendar
+    name: Glenn's Personal Calendar
+    track: false
+
+- cal_id: d0djh2lc6ijt3u9p4d0om60jn4@group.calendar.google.com
+  entities:
+  - device_id: tv
+    name: TV
+    track: false
+
+- cal_id: ogq6nnqgeq9upgarm04pecfodg@group.calendar.google.com
+  entities:
+  - device_id: family2
+    name: Family2
+    track: false
+
+- cal_id: '#contacts@group.v.calendar.google.com'
+  entities:
+  - device_id: contacts
+    name: Contacts
+    track: false
+
+- cal_id: en.usa#holiday@group.v.calendar.google.com
+  entities:
+  - device_id: holidays_in_united_states
+    name: Holidays in United States
+    track: false
+
+- cal_id: ncaaf_83_%54exas+%4conghorns#sports@group.v.calendar.google.com
+  entities:
+  - device_id: texas_longhorns
+    name: Texas Longhorns
+    track: false
+
+- cal_id: bpbtj11a64en3mm0t53c25cf0k@group.calendar.google.com
+  entities:
+  - device_id: pick_up_schedule
+    name: Pick up schedule
+    track: false

@@ -3,8 +3,8 @@
 !scenes
 !packages
 !automations
-! script
-!www/custom_ui/floorplan/*
+!script
+!www/custom_ui/floorplan
 !custom_components
 !input_boolean
 !.gitignore

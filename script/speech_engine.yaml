@@ -1,0 +1,168 @@
+######################################################################################################
+###Script to send notifications to the ChromeCast Audios during normal hours and only when we are home! Call like this:
+  # action:
+    # service: script.speech_engine
+    # data:
+    #   call_no_announcement:
+    #   call_dark_outside:
+    #   call_window_check:
+    #   call_garage_check:
+    #   call_responsibilities
+    #   call_light_check
+    #   call_inside_weather
+    #   call_outside_weather
+    #   call_weather_tomorrow
+# # @CCOSTAN
+# Original Repo : https://github.com/CCOSTAN/Home-AssistantConfig
+######################################################################################################
+
+speech_engine:
+  sequence:
+    - condition: or
+      conditions:
+        - condition: state
+          entity_id: group.weasley_clock
+          state: 'home'
+        - condition: state
+          entity_id: input_boolean.guest_mode
+          state: 'on'
+
+    - service: script.speech_processing
+      data_template:
+        speech_message: >
+          {%- macro dark_outside() -%}
+              {{ [
+              "It is pretty dark outside.  I will turn on the outside lights now.",
+              "It is a little past Sunset. Time to turn on the outside lights. I am on it.",
+              "I will switch on the outside lights.  It is getting dark outside.",
+              "Time to turn on the front lights. I will take care of it."
+              ] | random }}
+          {%- endmacro -%}
+          {%- macro meds() -%}
+              {{"Everyone, do not forget your meds, especially Lola and William!" }}
+          {%- endmacro -%}
+          {%- macro responsibilities_lola() -%}
+              {{states('sensor.chores_lola')}}
+          {%- endmacro -%}
+          {%- macro responsibilities_eleanor() -%}
+              {{states('sensor.chores_eleanor')}}
+          {%- endmacro -%}
+          {%- macro responsibilities_william() -%}
+              {{states('sensor.chores_william')}}
+          {%- endmacro -%}
+          {%- macro responsibilities() -%}
+              {{states('sensor.responsibilities')}}
+          {%- endmacro -%}
+          {%- macro inside_weather() -%}
+              Inside the house, it is {{ states.climate.downstairs.attributes["current_temperature"]}} degrees with around {{states('sensor.downstairs_thermostat_humidity')}} percent humidity.
+          {%- endmacro -%}
+          {%- macro outside_weather() -%}
+              Outside, it is going to be {{states('sensor.dark_sky_hourly_summary')}}, with a high of {{states('sensor.dark_sky_daily_high_temperature')}} and a low of {{states('sensor.dark_sky_daily_low_temperature')}}
+          {%- endmacro -%}
+          {%- macro weather_tomorrow() -%}
+              Tomorrow, the weather will be {{states('sensor.dark_sky_daily_summary')}} Please dress accordingly.
+          {%- endmacro -%}
+          {%- macro pollen() -%}
+              {{"The pollen level for today will be in the "}}
+              {%- if is_state('sensor.pollen_level', 'Med/Low') -%}
+                medium low
+                {%- elif is_state('sensor.pollen_level', 'Med/High') -%}
+                  medium high
+              {%- else -%}
+                {{states('sensor.pollen_level')}}
+              {%- endif -%}
+              {{" range. Upcoming,"}} {{states('sensor.pollen_outlook')}}.
+              {%- if is_state('sensor.pollen_level', 'Med/High') or is_state('sensor.pollen_level', 'High') -%}
+                {{"Lola, be sure to use your Flonase and it might not hurt to hit that inhaler right now."}}"
+              {%- endif -%}
+          {%- endmacro -%}
+          {%- macro family_calendar() -%}
+             {% if (states('states.calendar.family.attributes.start_time')) != 'unknown' %}
+                {%- if (strptime(states.calendar.family.attributes.start_time, '%Y-%m-%d %H:%M:%S').strftime('%j') | int) - (now().strftime('%j') | int) < 7 -%}
+                The next event on the family calendar is {{ states.calendar.family.attributes.message }}
+                  {%- if strptime(states.calendar.family.attributes.start_time, '%Y-%m-%d %H:%M:%S').day | int == now().day | int -%}
+                    today at {{ strptime(states.calendar.family.attributes.start_time, '%Y-%m-%d %H:%M:%S').strftime('%I:%M %p') }}.
+                  {%- elif strptime(states.calendar.family.attributes.start_time, '%Y-%m-%d %H:%M:%S').day | int == now().day | int + 1 -%}
+                    tomorrow at {{ strptime(states.calendar.family.attributes.start_time, '%Y-%m-%d %H:%M:%S').strftime('%I:%M %p') }}.
+                  {%- elif strptime(states.calendar.family.attributes.start_time, '%Y-%m-%d %H:%M:%S').day | int == now().day | int + 2 -%}
+                    day after tomorrow {{ strptime(states.calendar.family.attributes.start_time, '%Y-%m-%d %H:%M:%S').strftime('%A') }} 
+                    at {{ strptime(states.calendar.family.attributes.start_time, '%Y-%m-%d %H:%M:%S').strftime('%I:%M %p') }}.
+                  {%- else -%}
+                    in {{ (strptime(states.calendar.family.attributes.start_time, '%Y-%m-%d %H:%M:%S').strftime('%j') | int) - (now().strftime('%j') | int) }} days.
+                  {%- endif -%}
+                {% endif %} 
+              {% endif %}
+          {%- endmacro -%}
+          {%- macro iss() -%}
+              {%- if is_state('binary_sensor.iss', 'on') -%}
+                Here is something interesting.  The international space station is above us now.  There are {{ states.binary_sensor.iss.attributes["number_of_people_in_space"]}} people in space right now.
+                {{outside_weather()}}
+              {%- endif -%}
+          {%- endmacro -%}
+          {%- macro pihole() -%}
+              {% if states.sensor.pihole_ads_blocked_today.state|int > 1000 -%}
+                Our internet blocking system has blocked {{states.sensor.pihole_ads_blocked_today.state}} ads today!
+                Happy Internet surfing!
+              {% endif -%}
+          {%- endmacro -%}
+          {%- macro moon() -%}
+            {%- if states.sensor.moon.state == 'Full moon' -%}
+            Check out the full moon tonight!
+            {%- endif -%}
+          {%- endmacro %}
+          {#  ********************************************* #}
+          {#   ******** Start the Speech routines *******   #}
+          {#                                                #}
+          {#  ********************************************* #}
+            {%- if call_no_announcement != 1 -%}
+              {%- if now().strftime("%H")|int < 12 and now().strftime("%H")|int > 5 -%}
+              Good morning.
+              {%- elif now().strftime("%H")|int >= 12 and now().strftime("%H")|int < 18 -%}
+              Good afternoon.
+              {%- else -%}
+              Good evening.
+              {%- endif -%}
+            {%- endif -%}
+            {{ personarriving }} {# Called from Annoucenments #}
+            {%- if call_weather_tomorrow == 1 -%}
+              {{weather_tomorrow()}}
+            {%- endif -%}
+            {%- if call_inside_weather == 1 -%}
+              {{inside_weather()}}
+            {%- endif -%}
+            {%- if call_outside_weather == 1 -%}
+              {{outside_weather()}}
+            {% endif %}
+            {%- if call_pollen == 1 -%}
+              {{pollen()}}
+            {% endif %}
+            {%- if call_family_calendar == 1 -%}
+              {{family_calendar()}}
+            {%- endif -%}
+            {%- if call_dark_outside == 1 -%}
+              {{dark_outside()}}
+            {%- endif -%}
+            {%- if call_responsibilities_lola == 1 -%}
+              {{responsibilities_lola()}}
+            {%- endif -%}
+            {%- if call_responsibilities_eleanor == 1 -%}
+              {{responsibilities_eleanor()}}
+            {%- endif -%}
+            {%- if call_responsibilities_william == 1 -%}
+              {{responsibilities_william()}}
+            {%- endif -%}
+            {%- if call_responsibilities == 1 -%}
+              {{responsibilities()}}
+            {%- endif -%}
+            {%- if call_meds == 1 -%}
+              {{meds()}}
+            {%- endif -%}
+            {{ value1 }}
+            {%- if call_no_announcement != 1 -%}
+              {{([iss, pihole, moon]| random)()}} {# call a Random fact about the house #}
+            {%- endif -%}
+
+    - service: input_boolean.turn_off
+      entity_id:
+        - input_boolean.home_stats
+        - input_boolean.responsibilities

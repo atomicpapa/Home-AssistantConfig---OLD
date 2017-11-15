@@ -5,6 +5,8 @@
 !automations
 !script
 !www
+!*.svg
+!*.css
 !custom_components
 !input_boolean
 !.gitignore

@@ -1,0 +1,34 @@
+- alias: "Morning Routine"
+
+  trigger:
+    - platform: time
+      at: '06:15:00'
+    - platform: time
+      at: '09:00:00'
+  condition:
+      condition: and
+      conditions:
+        - condition: or
+          conditions:
+            - condition: and
+              conditions:
+              - condition: template
+                value_template: '{{ (now().hour | int == 6) and (now().minute | int == 15) and states.binary_sensor.workday_sensor.state == "on" }}'
+              - condition: state
+                entity_id: input_boolean.school_mode
+                state: 'on'
+            - condition: template
+              value_template: '{{ (now().hour | int == 9) and (now().minute | int == 0) and states.binary_sensor.workday_sensor.state == "off" }}'
+        - condition: state
+          entity_id: group.weasley_clock
+          state: 'home'
+
+  action:
+
+    - service: script.speech_engine
+      data:
+        call_outside_weather: 1
+        call_pollen: 1
+        call_family_calendar: 1
+        call_meds: 1
+        # call_responsibilities: 1

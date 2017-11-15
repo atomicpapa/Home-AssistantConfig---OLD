@@ -1,0 +1,58 @@
+#-------------------------------------------
+#  PiHole ad Blocking Related Packages
+#-------------------------------------------
+homeassistant:
+  customize:
+
+    sensor.pihole_ads_percentage_today:
+      friendly_name: Percentage of Ad Traffic Blocked
+      unit_of_measurement: '%'
+      icon: mdi:ticket-percent
+
+    sensor.pihole_domains_being_blocked:
+      friendly_name: Total Domains Blocking
+      icon: mdi:do-not-disturb
+
+    sensor.pihole_unique_clients:
+      friendly_name: Unique Clients
+      icon: mdi:desktop-classic
+
+    sensor.pihole_ads_blocked_today:
+      friendly_name: Ads Blocked Today
+      icon: mdi:do-not-disturb
+
+    sensor.pihole_dns_queries_today:
+      friendly_name: DNS Queries Today
+      icon: mdi:note-text
+
+#-------------------------------------------
+sensor:
+  - platform: pi_hole
+    host: localhost:8017
+    monitored_conditions:
+      - dns_queries_today
+      - ads_blocked_today
+      - ads_percentage_today
+      - unique_clients
+
+# Pi-Hole switch
+switch:
+  - platform: command_line
+    switches:
+      pihole_temp_disable:
+        command_on: "curl -X GET 'http://192.168.0.31/admin/api.php?enable&auth='"
+        command_off: "curl -X GET 'http://192.168.0.31/admin/api.php?disable=3600&auth='"
+#        command_state: "curl -X GET 'http://192.168.0.31/admin/api.php?status'"
+#        value_template: "{{ value_json.status == 'enabled' }}
+
+#-------------------------------------------
+group:
+  pihole:
+    name: Pi-Hole
+    entities:
+      - sensor.pihole_dns_unique_clients
+      - sensor.pihole_dns_queries_today
+      - sensor.pihole_ads_blocked_today
+      - sensor.pihole_ads_percentage_blocked_today
+      - switch.pihole_temp_disable
+#-------------------------------------------

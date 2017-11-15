@@ -3,5 +3,6 @@
 - platform: amazon_polly
   aws_access_key_id: !secret awsid
   aws_secret_access_key: !secret awssecret
+  voice: Amy
   name: polly
   

@@ -1,0 +1,56 @@
+homeassistant:
+  customize:
+    sensor.life360_sensor:
+      friendly_name: Life 360
+      hidden: true
+
+device_tracker:
+  - platform: owntracks
+# - platform: bluetooth_le_tracker
+  - platform: bluetooth_tracker
+  # - platform: icloud
+  #   username: !secret eryiniclouduser
+  #   password: !secret eryinicloudpass
+  #   account_name: Eryin
+#   - platform: icloud
+#     username: !secret emmyiclouduser
+#     password: !secret emmyicloudpass
+#     account_name: Emmy
+#   - platform: icloud
+#     username: !secret lolaiclouduser
+#     password: !secret lolaicloudpass
+#     account_name: Lola
+  - platform: nmap_tracker
+    hosts: 192.168.0.1/24
+    exclude: 
+      - 192.168.0.31
+
+sensor:
+  - platform: life360
+    username: !secret life360_username
+    password: !secret life360_password
+    mqtt_topic: "/life360/data"
+    scan_interval: 30
+
+group:
+  weasley_clock:
+    name: Weasley Clock
+    view: false
+    entities:
+    - device_tracker.glenn_glenn
+    - device_tracker.eryin_eryin
+    - device_tracker.eleanor_eleanor
+    - device_tracker.lola_lola
+
+automation:
+  - alias: Notify Life360 Sensor State Change
+    initial_state: true
+    hide_entity: true
+    trigger:
+      platform: state
+      entity_id: sensor.life360_sensor
+    action:
+      - service: notify.join
+        data_template:
+          value1: "Life360 Sensor state changed to: {{ trigger.to_state.state| upper }}."
+          value2: "" 

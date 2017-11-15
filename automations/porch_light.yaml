@@ -1,0 +1,38 @@
+# Controlling automated on/off of porch light at sunset/sunrise
+
+- alias: Porch Light On at Sunset
+  trigger:
+    platform: sun
+    event: sunset
+    offset: "-00:05:00"
+  action:
+    - service: script.speech_engine
+      data:
+        call_dark_outside: 1
+    - service: light.turn_on
+      entity_id: light.front_porch
+      data:
+        transition: 60
+        brightness: 254
+
+- alias: Porch Light Dim at 9pm
+  trigger:
+    platform: time
+    at: "21:00:00"
+  action:
+    service: light.turn_on
+    entity_id: light.front_porch
+    data:
+      transition: 60
+      brightness: 85
+
+- alias: Porch Light Off at Sunrise
+  trigger:
+    platform: sun
+    event: sunrise
+    offset: "00:30:00"
+  action:
+    service: light.turn_off
+    entity_id: light.front_porch
+    data:
+      transition: 60

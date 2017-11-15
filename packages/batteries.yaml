@@ -1,0 +1,544 @@
+###############################################################################
+#   @author         :   Mahasri Kalavala
+#   @date           :   04/15/2017
+#   @package        :   Batteries
+#   @description    :   Status about various baterries (phones, sensors...etc)
+###############################################################################
+homeassistant:
+  customize:
+
+    ################################################
+    ## Node Anchors
+    ################################################
+
+    package.node_anchors:
+      customize: &customize
+        package: 'batteries'
+
+      exposed: &exposed
+        <<: *customize
+        emulated_hue: true
+        homebridge_hidden: false
+        critical: true
+
+      not_exposed: &not_exposed
+        <<: *customize
+        emulated_hue: false
+        homebridge_hidden: true
+        critical: false
+
+      hidden: &hidden
+        <<: *customize
+        hidden: true
+        critical: false
+
+      not_hidden: &not_hidden
+        <<: *customize
+        hidden: false
+        critical: true
+
+    group.batteries:
+      order: 2
+
+    sensor.glenns_phone_battery_state:
+      hidden: true
+    sensor.eryins_phone_battery_state:
+      hidden: true
+    sensor.eleanors_phone_battery_state:
+      hidden: true
+    sensor.lolas_phone_battery_state:
+      hidden: true
+
+    sensor.glenns_phone_battery_ot:
+      hidden: true
+    sensor.eryins_phone_battery_ot:
+      hidden: true
+    sensor.eleanors_phone_battery_ot:
+      hidden: true
+    sensor.lolas_phone_battery_ot:
+      hidden: true
+
+    sensor.glenn_phone_battery_ot:
+      friendly_name: Glenn's Phone Battery
+    sensor.eryin_phone_battery_ot:
+      friendly_name: Eryin's Phone Battery
+    sensor.eleanor_phone_battery_ot:
+      friendly_name: Eleanor's Phone Battery
+    sensor.lola_phone_battery_ot:
+      friendly_name: Lola's Phone Battery
+
+    sensor.lolas_phone_wifi_state:
+      friendly_name: Lola's Phone Wi-Fi Status
+    sensor.eryins_phone_wifi_state:
+      friendly_name: Eryin's Phone Wi-Fi Status
+    sensor.eleanors_phone_wifi_state:
+      friendly_name: Eleanor's Phone Wi-Fi Status
+    sensor.glenns_phone_wifi_state:
+      friendly_name: Glenn's Phone Wi-Fi Status
+
+group:
+  Batteries:
+    control: hidden
+    entities:
+      - sensor.glenn_phone_battery_ot
+      - sensor.eryin_phone_battery_ot
+      - sensor.eleanor_phone_battery_ot
+      - sensor.lola_phone_battery_ot
+
+  WiFi:
+    entities:
+      - sensor.lolas_phone_wifi_state
+      - sensor.eryins_phone_wifi_state
+      - sensor.eleanors_phone_wifi_state
+      - sensor.glenns_phone_wifi_state
+
+sensor:
+
+  - platform: mqtt
+    state_topic: "owntracks/eryin/eryin"
+    name: "eryin's phone Battery (OT)"
+    unit_of_measurement: "%"
+    value_template: "{{ value_json.batt }}"
+    
+  - platform: mqtt
+    state_topic: "owntracks/glenn/glenn"
+    name: "glenn's phone Battery (OT)"
+    unit_of_measurement: "%"
+    value_template: "{{ value_json.batt }}"
+  
+  - platform: mqtt
+    state_topic: "owntracks/eleanor/eleanor"
+    name: "eleanor's phone Battery (OT)"
+    unit_of_measurement: "%"
+    value_template: "{{ value_json.batt }}"
+      
+  - platform: mqtt
+    state_topic: "owntracks/lola/lola"
+    name: "lola's phone Battery (OT)"
+    unit_of_measurement: "%"
+    value_template: "{{ value_json.batt }}"
+
+  - platform: mqtt
+    state_topic: "owntracks/eryin/eryin"
+    name: "eryin's phone Battery State"
+    value_template: >
+      {% if value_json.charging == 1 %}
+        Charging
+      {% else %}
+        Not Charging
+      {% endif %}
+
+  - platform: mqtt
+    state_topic: "owntracks/glenn/glenn"
+    name: "glenn's phone Battery State"
+    value_template: >
+      {% if value_json.charging == 1 %}
+        Charging
+      {% else %}
+        Not Charging
+      {% endif %}
+  
+  - platform: mqtt
+    state_topic: "owntracks/eleanor/eleanor"
+    name: "eleanor's phone Battery State"
+    value_template: >
+      {% if value_json.charging == 1 %}
+        Charging
+      {% else %}
+        Not Charging
+      {% endif %}
+
+  - platform: mqtt
+    state_topic: "owntracks/lola/lola"
+    name: "lola's phone Battery State"
+    value_template: >
+      {% if value_json.charging == 1 %}
+        Charging
+      {% else %}
+        Not Charging
+      {% endif %}
+
+  - platform: mqtt
+    state_topic: "owntracks/eryin/eryin"
+    name: "eryin's phone Wifi State"
+    value_template: >
+      {% if value_json.conn == "w" %}
+        Connected
+      {% else %}
+        Not Connected
+      {% endif %}
+
+  - platform: mqtt
+    state_topic: "owntracks/glenn/glenn"
+    name: "glenn's phone Wifi State"
+    value_template: >
+      {% if value_json.conn == "w" %}
+        Connected
+      {% else %}
+        Not Connected
+      {% endif %}
+
+  - platform: mqtt
+    state_topic: "owntracks/eleanor/eleanor"
+    name: "eleanor's phone Wifi State"
+    value_template: >
+      {% if value_json.conn == "w" %}
+        Connected
+      {% else %}
+        Not Connected
+      {% endif %}
+
+  - platform: mqtt
+    state_topic: "owntracks/lola/lola"
+    name: "lola's phone Wifi State"
+    value_template: >
+      {% if value_json.conn == "w" %}
+        Connected
+      {% else %}
+        Not Connected
+      {% endif %}
+
+  - platform: template
+    sensors:
+      glenn_phone_battery_ot:
+        unit_of_measurement: '%'
+        entity_id: device_tracker.glenn_glenn
+        value_template: >
+          {% if states('sensor.glenns_phone_battery_ot') != "unknown" %}
+            {{ states('sensor.glenns_phone_battery_ot')| int }}
+          {% else %}
+            0
+          {% endif %}
+        icon_template: >-
+          {% if states('sensor.glenns_phone_battery_ot') != "unknown" %}
+            {% set battery_level = states('sensor.glenns_phone_battery_ot')|int (-1)%}
+            {% set battery_round = (battery_level|int / 10)|int * 10 %}
+            {% if states.sensor.glenns_phone_battery_state.state | lower == "charging" %}
+              {% if battery_level == -1 %}
+                mdi:battery-unknown
+              {% else %}
+                {% if battery_round >= 100 %}
+                  mdi:battery-charging-100
+                {% elif battery_round > 0 %}
+                  mdi:battery-charging-{{ battery_round }}
+                {% else %}
+                  mdi:battery-alert
+                {% endif %}
+              {% endif %}
+            {% else %}
+              {% if battery_level == -1 %}
+                mdi:battery-unknown
+              {% else %}
+                {% if battery_round >= 100 %}
+                  mdi:battery
+                {% elif battery_round > 0 %}
+                  mdi:battery-{{ battery_round }}
+                {% else %}
+                  mdi:battery-alert
+                {% endif %}
+              {% endif %}            
+            {% endif %}
+          {% else %}
+            mdi:battery-alert
+          {% endif %}
+
+  - platform: template
+    sensors:
+      eryin_phone_battery_ot:
+        unit_of_measurement: '%'
+        entity_id: device_tracker.eryin_eryin
+        value_template: "{{ states('sensor.eryins_phone_battery_ot')|int(-1) }}"
+        icon_template: >-
+          {% if states('sensor.eryins_phone_battery_ot') != "unknown" %}
+            {% set battery_level = states('sensor.eryins_phone_battery_ot')|int (-1)%}
+            {% set battery_round = (battery_level|int / 10)|int * 10 %}
+            {% if states.sensor.eryins_phone_battery_state.state | lower == "charging" %}
+              {% if battery_level == -1 %}
+                mdi:battery-unknown
+              {% else %}
+                {% if battery_round >= 100 %}
+                  mdi:battery-charging-100
+                {% elif battery_round > 0 %}
+                  mdi:battery-charging-{{ battery_round }}
+                {% else %}
+                  mdi:battery-alert
+                {% endif %}
+              {% endif %}
+            {% else %}
+              {% if battery_level == -1 %}
+                mdi:battery-unknown
+              {% else %}
+                {% if battery_round >= 100 %}
+                  mdi:battery
+                {% elif battery_round > 0 %}
+                  mdi:battery-{{ battery_round }}
+                {% else %}
+                  mdi:battery-alert
+                {% endif %}
+              {% endif %}            
+            {% endif %}
+          {% else %}
+            mdi:battery-alert
+          {% endif %}
+  
+  - platform: template
+    sensors:
+      eleanor_phone_battery_ot:
+        unit_of_measurement: '%'
+        entity_id: device_tracker.eleanor_eleanor
+        value_template: "{{ states('sensor.eleanors_phone_battery_ot')|int(-1) }}"
+        icon_template: >-
+          {% if states('sensor.eleanors_phone_battery_ot') != "unknown" %}
+            {% set battery_level = states('sensor.eleanors_phone_battery_ot')|int (-1)%}
+            {% set battery_round = (battery_level|int / 10)|int * 10 %}
+            {% if states.sensor.eleanors_phone_battery_state.state | lower == "charging" %}
+              {% if battery_level == -1 %}
+                mdi:battery-unknown
+              {% else %}
+                {% if battery_round >= 100 %}
+                  mdi:battery-charging-100
+                {% elif battery_round > 0 %}
+                  mdi:battery-charging-{{ battery_round }}
+                {% else %}
+                  mdi:battery-alert
+                {% endif %}
+              {% endif %}
+            {% else %}
+              {% if battery_level == -1 %}
+                mdi:battery-unknown
+              {% else %}
+                {% if battery_round >= 100 %}
+                  mdi:battery
+                {% elif battery_round > 0 %}
+                  mdi:battery-{{ battery_round }}
+                {% else %}
+                  mdi:battery-alert
+                {% endif %}
+              {% endif %}            
+            {% endif %}
+          {% else %}
+            mdi:battery-alert
+          {% endif %}
+  
+  - platform: template
+    sensors:
+      lola_phone_battery_ot:
+        unit_of_measurement: '%'
+        entity_id: device_tracker.lola_lola
+        value_template: "{{ states('sensor.lolas_phone_battery_ot')|int(-1) }}"
+        icon_template: >-
+          {% if states('sensor.lolas_phone_battery_ot') != "unknown" %}
+            {% set battery_level = states('sensor.lolas_phone_battery_ot')|int (-1)%}
+            {% set battery_round = (battery_level|int / 10)|int * 10 %}
+            {% if states.sensor.lolas_phone_battery_state.state | lower == "charging" %}
+              {% if battery_level == -1 %}
+                mdi:battery-unknown
+              {% else %}
+                {% if battery_round >= 100 %}
+                  mdi:battery-charging-100
+                {% elif battery_round > 0 %}
+                  mdi:battery-charging-{{ battery_round }}
+                {% else %}
+                  mdi:battery-alert
+                {% endif %}
+              {% endif %}
+            {% else %}
+              {% if battery_level == -1 %}
+                mdi:battery-unknown
+              {% else %}
+                {% if battery_round >= 100 %}
+                  mdi:battery
+                {% elif battery_round > 0 %}
+                  mdi:battery-{{ battery_round }}
+                {% else %}
+                  mdi:battery-alert
+                {% endif %}
+              {% endif %}            
+            {% endif %}
+          {% else %}
+            mdi:battery-alert
+          {% endif %}
+
+automation:
+
+###############################################################################
+# Automation: Notify of phone Low Battery
+###############################################################################
+  - alias: Notify Low battery
+    initial_state: true
+    trigger:
+      platform: numeric_state
+      entity_id:
+      - device_tracker.glenn_glenn
+      - device_tracker.eryin_eryin
+      - device_tracker.eleanor_eleanor
+      - device_tracker.lola_lola
+      value_template: '{{ state.attributes.battery }}'
+      below: 10
+    
+    condition: 
+      condition: time
+      after: '08:00:00'
+      before: '19:00:00'
+
+    action:
+      # - service: script.notify_me
+      #   data_template:
+      #     message: "{{ trigger.to_state.attributes.friendly_name }}'s phone battery is less than: {{ trigger.to_state.attributes.battery }}%."
+      - service: media_player.volume_set
+        data_template:
+          entity_id: media_player.whole_house
+          volume_level: 0.9
+      - service: tts.amazon_polly_say
+        entity_id: media_player.whole_house
+        data_template:
+          message: "{{ trigger.to_state.attributes.friendly_name }}'s phone battery is less than: {{ trigger.to_state.attributes.battery }}%."
+      # - service: mqtt.publish
+        # data_template:
+          # topic: /dump/numeric_state
+          # retain: false
+          # payload: >-
+            # {% macro dumpState(type, stateObj) %}
+              # type ~ ".state: " {{ stateObj.state }}{{- "\n" -}}
+              # type ~ ".entity_id: " {{ stateObj.entity_id }}{{- "\n" -}}
+              # type ~ ".domain: " {{ stateObj.domain }}{{- "\n" -}}
+              # type ~ ".object_id: " {{ stateObj.object_id }}{{- "\n" -}}
+              # type ~ ".name: " {{ stateObj.name }}{{- "\n" -}}
+              # type ~ ".state.last_updated: "{{ stateObj.state.last_updated }}{{- "\n" -}}
+              # type ~ ".state.last_changed: " {{ stateObj.state.last_changed }}{{- "\n" -}}
+              # type ~ ".state.attributes: "{{- "\n" -}}
+              # {%- for attrib in stateObj.attributes | sort() %}
+                # {%- if attrib is defined %} 
+                  # {{attrib}}: {{ item.attributes[attrib] }}{{- "\n" -}}
+                # {%- endif %}
+              # {% endfor %}
+            # {% endmacro %}
+            # trigger.platform: {{ trigger.platform }}{{- "\n" -}}
+            # trigger.entity_id: {{ trigger.entity_id }}{{- "\n" -}}
+            # trigger.below: {{trigger.below }}{{- "\n" -}}
+            # trigger.above: {{ trigger.above }}{{- "\n" -}}
+            # trigger.from_state Attributes: {{ dumpState("trigger.from_state.state", trigger.from_state) }} {{- "\n" -}}
+            # trigger.to_state Attributes: {{ dumpState("trigger.to_state.state", trigger.to_state) }}
+
+# ###############################################################################
+# # Automation: Notify of Sensor's Low Battery
+# ###############################################################################
+  # - alias: Alert Low Battery Level of Sensors
+  #   initial_state: true
+  #   trigger:
+  #     platform: numeric_state
+  #     entity_id:
+  #     - sensor.upstairs_multisensor_battery
+  #     - sensor.downstairs_multisensor_battery
+  #     - sensor.single_car_garage_door_sensor_battery
+  #     - sensor.two_car_garage_door_sensor_battery
+  #     - sensor.frontroom_multisensor_battery
+  #     below: 10
+  #   condition:
+  #     - condition: template
+  #       value_template: >-
+  #         {%- if states.sensor.upstairs_multisensor_battery -%}
+  #           true
+  #         {%- else -%}
+  #           true
+  #         {%- endif -%}
+  #     - condition: template
+  #       value_template: >-
+  #         {%- if states.sensor.downstairs_multisensor_battery -%}
+  #           true
+  #         {%- else -%}
+  #           true
+  #         {%- endif -%}
+  #     - condition: template
+  #       value_template: >-
+  #         {%- if states.sensor.single_car_garage_door_sensor_battery -%}
+  #           true
+  #         {%- else -%}
+  #           true
+  #         {%- endif -%}
+  #     - condition: template
+  #       value_template: >-
+  #         {%- if states.sensor.two_car_garage_door_sensor_battery -%}
+  #           true
+  #         {%- else -%}
+  #           true
+  #         {%- endif -%}
+  #     - condition: template
+  #       value_template: >-
+  #         {%- if states.sensor.frontroom_multisensor_battery -%}
+  #           true
+  #         {%- else -%}
+  #           true
+  #         {%- endif -%}
+  #     - condition: template
+  #       value_template: "{{ trigger.to_state.state != 'unknown' and trigger.from_state.state != 'unknown'}}"
+  #     - condition: template
+  #       value_template: "{{ trigger.to_state.state > 0 and trigger.to_state.state < 10 }}"
+  #   action:
+  #     - service: script.notify_me
+  #       data_template:
+  #         message: "Attention! {{ trigger.to_state.attributes.friendly_name }} level is: {{ trigger.to_state.state }}%."
+  #     - service: script.voice_notify
+  #       data_template:
+  #         message: "Attention! {{ trigger.to_state.attributes.friendly_name }} level is: {{ trigger.to_state.state }}%."
+          
+  # - alias: Check Wi-Fi Status of phones At Home
+  #   initial_state: true
+  #   hide_entity: true
+  #   trigger:
+  #     - platform: state
+  #       entity_id:
+  #         - device_tracker.eryin_eryin
+  #         - device_tracker.glenn_glenn
+  #         - device_tracker.eleanor_eleanor
+  #         - device_tracker.lola_lola
+  #       from: 'not_home'
+  #       to: 'home'
+  #       for: '00:05:00'
+  #   condition:
+  #     condition: or
+  #     conditions:
+  #       - condition: state
+  #         entity_id: sensor.lolas_phone_wifi_state
+  #         state: 'Not Connected'
+  #       - condition: state
+  #         entity_id: sensor.eryins_phone_wifi_state
+  #         state: 'Not Connected'
+  #       - condition: state
+  #         entity_id: sensor.eleanors_phone_wifi_state
+  #         state: 'Not Connected'
+  #       - condition: state
+  #         entity_id: sensor.glenns_phone_wifi_state
+  #         state: 'Not Connected'
+  #   action:
+      # - service: script.notify_me
+      #   data_template:
+      #     message: >
+      #       {% set member = trigger.entity_id.split('.')[1].split('_')[0] %}
+      #       {% if member == "glenns" %}
+      #         glenn's phone is not connected to Wi-Fi at home!
+      #       {% elif member == "eryins" %}
+      #         Mllika's phone is not connected to Wi-Fi at home!
+      #       {% elif member == "eleanors" %}
+      #         eleanor's phone is not connected to Wi-Fi at home!
+      #       {% elif member == "lolas" %}
+      #         lola's phone is not connected to Wi-Fi at home!
+      #       {% endif %}
+      # - service: media_player.volume_set
+      #   data_template:
+      #     entity_id: media_player.whole_house
+      #     volume_level: 0.9
+      # - service: tts.amazon_polly_say
+      #   entity_id: media_player.whole_house
+      #   data_template:
+      #     message: >
+      #       {% set member = trigger.entity_id.split('.')[1].split('_')[0] %}
+      #       {% if member == "glenns" %}
+      #         glenn's phone is not connected to Wi-Fi at home!
+      #       {% elif member == "eryins" %}
+      #         Mllika's phone is not connected to Wi-Fi at home!
+      #       {% elif member == "eleanors" %}
+      #         eleanor's phone is not connected to Wi-Fi at home!
+      #       {% elif member == "lolas" %}
+      #         lola's phone is not connected to Wi-Fi at home!
+      #       {% endif %}

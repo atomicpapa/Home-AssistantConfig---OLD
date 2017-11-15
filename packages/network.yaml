@@ -1,0 +1,346 @@
+# Server and Network Related Packages
+
+homeassistant:
+  customize:
+    sensor.zeus_ram_free:
+      icon: mdi:memory
+      friendly_name: Ram Free
+    sensor.zeus_ram_used:
+      icon: mdi:memory
+      friendly_name: Ram Used
+    sensor.zeus_swap_free:
+      icon: mdi:memory
+      friendly_name: Swap Free
+    sensor.zeus_swap_used:
+      icon: mdi:memory
+      friendly_name: Swap Used
+    sensor.zeus_processes_running:
+      icon: mdi:comment-processing-outline
+      friendly_name: Processes Running
+    sensor.zeus_processes_blocked:
+      icon: mdi:comment-processing
+      friendly_name: Processes Blocked
+    sensor.zeus_system_load:
+      icon: mdi:weight
+      friendly_name: System Load
+    sensor.zeus_ipv4_in:
+      icon: mdi:arrow-right-bold
+      friendly_name: IPv4 In
+    sensor.zeus_ipv4_out:
+      icon: mdi:arrow-left-bold
+      friendly_name: IPv4 Out
+    sensor.zeus_disk_free:
+      icon: mdi:harddisk
+      friendly_name: Disk Free
+
+#---------------------------------------------------------
+
+sensor:
+  - platform: template
+    sensors:
+        fycam:
+          friendly_name: 'Front Yard Camera'
+          value_template: "{{ 'Online' if is_state('device_tracker.000000000bfa', 'home') else 'Offline' }}"
+          icon_template: >-
+            {% if is_state('device_tracker.000000000bfa', 'home') %}
+              mdi:camcorder
+            {% else %}
+              mdi:camcorder-off
+            {% endif %}         
+
+        phue:
+          friendly_name: 'Phillips Hue'
+          value_template: "{{ 'Online' if is_state('device_tracker.00178819e944', 'home') else 'Offline' }}"
+          icon_template: >-
+            {% if is_state('device_tracker.00178819e944', 'home') %}
+              mdi:lightbulb-outline
+            {% else %}
+              mdi:lightbulb
+            {% endif %} 
+
+        fdcam:
+          friendly_name: 'Front Door Camera'
+          value_template: "{{ 'Online' if is_state('device_tracker.00a114011f75', 'home') else 'Offline' }}"
+          icon_template: >-
+            {% if is_state('device_tracker.00a114011f75', 'home') %}
+              mdi:camcorder
+            {% else %}
+              mdi:camcorder-off
+            {% endif %}   
+
+        bylcam:
+          friendly_name: 'Back Yard Left Camera'
+          value_template: "{{ 'Online' if is_state('device_tracker.00a114017bc8', 'home') else 'Offline' }}"
+          icon_template: >-
+            {% if is_state('device_tracker.00a114017bc8', 'home') %}
+              mdi:camcorder
+            {% else %}
+              mdi:camcorder-off
+            {% endif %}   
+
+        dwcam:
+          friendly_name: 'Driveway Camera'
+          value_template: "{{ 'Online' if is_state('device_tracker.00a1140188f3', 'home') else 'Offline' }}"
+          icon_template: >-
+            {% if is_state('device_tracker.00a1140188f3', 'home') %}
+              mdi:camcorder
+            {% else %}
+              mdi:camcorder-off
+            {% endif %}   
+
+        byrcam:
+          friendly_name: 'Back Yard Right Camera'
+          value_template: "{{ 'Online' if is_state('device_tracker.00a1140189ea', 'home') else 'Offline' }}"
+          icon_template: >-
+            {% if is_state('device_tracker.00a1140189ea', 'home') %}
+              mdi:camcorder
+            {% else %}
+              mdi:camcorder-off
+            {% endif %}   
+
+        zeus:
+          friendly_name: 'Zeus'
+          value_template: "{{ 'Online' if is_state('device_tracker.408d5c570f58', 'home') else 'Offline' }}"
+          icon_template: >-
+            {% if is_state('device_tracker.408d5c570f58', 'home') %}
+              mdi:server
+            {% else %}
+              mdi:server-off
+            {% endif %}  
+
+        printer:
+          friendly_name: 'Printer'
+          value_template: "{{ 'Online' if is_state('device_tracker.b499ba14c0e9', 'home') else 'Offline' }}"
+          icon_template: >-
+            {% if is_state('device_tracker.b499ba14c0e9', 'home') %}
+              mdi:printer
+            {% else %}
+              mdi:printer-alert
+            {% endif %}
+
+        apollo:
+          friendly_name: 'Apollo Google Home'
+          value_template: "{{ 'Online' if is_state('device_tracker.f4f5d8b662cc', 'home') else 'Offline' }}"
+          icon_template: mdi:google-assistant
+
+        muse:
+          friendly_name: 'Muse Google Home'
+          value_template: "{{ 'Online' if is_state('device_tracker.f4f5d8bcc5f6', 'home') else 'Offline' }}"
+          icon_template: mdi:google-assistant
+
+        gorgon:
+          friendly_name: 'Gorgon'
+          value_template: "{{ 'Online' if is_state('device_tracker.a4773368b514', 'home') else 'Offline' }}"
+          icon_template: mdi:television
+
+        minotaur:
+          friendly_name: 'Minotaur'
+          value_template: "{{ 'Online' if is_state('device_tracker.6cadf88d624d', 'home') else 'Offline' }}"
+          icon_template: mdi:television
+
+        eiphone:
+          friendly_name: 'Eryins iPhone'
+          value_template: "{{ 'Online' if is_state('device_tracker.54724fd6445a', 'home') else 'Offline' }}"
+          icon_template: mdi:cellphone-iphone
+
+        alexa:
+          friendly_name: 'Alexa'
+          value_template: "{{ 'Online' if is_state('device_tracker.f0272d3976f8', 'home') else 'Offline' }}"
+          icon_template: mdi:amazon
+
+        nexus6:
+          friendly_name: 'Nexus 6'
+          value_template: "{{ 'Online' if is_state('device_tracker.24da9b10876d', 'home') else 'Offline' }}"
+          icon_template: mdi:android
+
+        kindlicious:
+          friendly_name: 'Kindlicious'
+          value_template: "{{ 'Online' if is_state('device_tracker.f04f7c1cf55c', 'home') else 'Offline' }}"
+          icon_template: mdi:tablet-android
+
+        poseidon:
+          friendly_name: 'Poseidon'
+          value_template: "{{ 'Online' if is_state('device_tracker.poseidon', 'home') else 'Offline' }}"
+          icon_template: mdi:laptop
+
+        medusa:
+          friendly_name: 'Medusa'
+          value_template: "{{ 'Online' if is_state('device_tracker.medusa', 'home') else 'Offline' }}"
+          icon_template: mdi:laptop
+
+        emmy_bt:
+          friendly_name: 'Emmys iPhone'
+          value_template: "{{ 'Online' if is_state('device_tracker.emmy_2', 'home') else 'Offline' }}"
+          icon_template: mdi:cellphone-iphone
+
+        ipad_bt:
+          friendly_name: 'iPad BT'
+          value_template: "{{ 'Online' if is_state('device_tracker.arwen_s_ipad', 'home') else 'Offline' }}"
+          icon_template: mdi:ipad
+
+# Netdata server sensors
+
+  - platform: netdata
+    host: 192.168.0.13
+    port: 19999
+    name: Zeus
+    resources:
+      - memory_free
+      - memory_used
+      - swap_free
+      - swap_used
+      - processes_running
+      - processes_blocked
+      - system_load
+      - ipv4_in
+      - ipv4_out
+      - disk_free
+
+#Internet Speedtest
+  - platform: speedtest
+    minute: 30
+    hour:
+      - 0
+      - 6
+      - 12
+      - 18
+    monitored_conditions:
+      - download
+      - upload
+
+  - platform: cpuspeed
+
+# -------------------------------
+    
+group:
+  server:
+    name: Server / Network
+    view: true
+    # icon: mdi:server-network
+    entities:
+      - group.nzbget
+      - group.sonarr
+      - group.radarr
+      - group.pihole
+      - group.speedtest
+      - group.network
+      - group.netdata
+      - sensor.cpu_speed
+
+  network:
+    name: Device Status
+    entities:
+      - sensor.fycam
+      - sensor.dwcam
+      - sensor.fdcam
+      - sensor.bylcam
+      - sensor.byrcam
+      - sensor.phue
+      - sensor.zeus
+      - sensor.poseidon
+      - sensor.medusa
+      - sensor.printer
+      - sensor.apollo
+      - sensor.muse
+      - sensor.gorgon
+      - sensor.minotaur
+      - sensor.alexa
+      - sensor.nexus6
+      - sensor.eiphone
+      - sensor.emmy_bt
+      - sensor.arwen_s_ipad
+      - sensor.kindlicious
+  
+  network_source:
+    control: hidden
+    entities:
+      - device_tracker.000000000bfa
+      - device_tracker.00178819e944
+      - device_tracker.00a114011f75
+      - device_tracker.00a114017bc8
+      - device_tracker.00a1140188f3
+      - device_tracker.00a1140189ea
+      - device_tracker.408d5c570f58
+      - device_tracker.b499ba14c0e9
+      - device_tracker.f4f5d8b662cc
+      - device_tracker.f4f5d8bcc5f6
+      - device_tracker.a4773368b514
+      - device_tracker.6cadf88d624d
+      - device_tracker.54724fd6445a
+      - device_tracker.24da9b10876d
+      - device_tracker.f0272d3976f8
+      - device_tracker.64bc0c4a35d6
+      - device_tracker.74754839a0f8
+      - device_tracker.7481141cc949
+      - device_tracker.8038fd004d3f
+      - device_tracker.84d6d00f6c87
+      - device_tracker.b0b98a040c52
+      - device_tracker.f0dce2cf4129
+      - device_tracker.f04f7c1cf55c
+      - device_tracker.poseidon
+      - device_tracker.emmy_2
+      - device_tracker.arwen_s_ipad
+      - device_tracker.medusa
+
+  speedtest:
+    name: Speedtest
+    view: false
+    entities:
+      - sensor.speedtest_download
+      - sensor.speedtest_upload
+
+  netdata:
+    name: Zeus
+    view: false
+    entities:
+      - sensor.zeus_ram_free
+      - sensor.zeus_ram_used
+      - sensor.zeus_swap_free
+      - sensor.zeus_swap_used
+      - sensor.zeus_processes_running
+      - sensor.zeus_processes_blocked
+      - sensor.zeus_system_load
+      - sensor.zeus_ipv4_in
+      - sensor.zeus_ipv4_out
+      - sensor.zeus_disk_free
+# --------------------------------
+
+automation:
+  - alias: 'Device Status'
+    hide_entity: false
+    trigger:
+      - platform: state
+        entity_id:
+          - sensor.fycam
+          - sensor.dwcam
+          - sensor.fdcam
+          - sensor.bylcam
+          - sensor.byrcam
+          - sensor.phue
+          - sensor.zeus
+          - sensor.printer
+          - sensor.apollo
+          - sensor.muse
+        to: 'Offline'
+        for:
+          minutes: 5
+    condition:
+      condition: time
+      after: '08:00:00'
+      before: '22:00:00'
+    action:
+      - service: notify.pushbullet
+        data_template:
+          value1: 'Device Status:'
+          value2: "{{ trigger.to_state.attributes.friendly_name }} is "
+          value3: "{{ trigger.to_state.state }}"
+
+      - service: media_player.volume_set
+        data_template:
+          entity_id: media_player.whole_house
+          volume_level: 0.8
+      - service: tts.google_say
+        entity_id: media_player.whole_house
+        data_template:
+          message: >
+            "Attention! {{ trigger.to_state.attributes.friendly_name }} is now {{ trigger.to_state.state }}"

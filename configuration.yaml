@@ -54,6 +54,7 @@ history:
       - zone
       
 recorder:
+  # db_url: !secret dburl
   purge_interval: 2
   purge_keep_days: 14
   exclude:
@@ -85,16 +86,23 @@ logger:
     homeassistant.helpers.entity: critical
     homeassistant.components.sensor.nzbget: critical
     homeassistant.components.light.hue: critical
+    script: info
 
 # Track the sun
 sun:
 
 map:
 
+influxdb:
+  host: 192.168.0.13
+  port: 8086
+  username: !secret infuser
+  password: !secret infpass
+
 google_assistant:
-  project_id: hass-cbc79
-  client_id: wrOwDPkAQslAllvECDUJhGOi7tPp3dp2z5uu2f84gxDXpVRYkIkGjcnbqDOFCcrK4cBEM52jsUQvpNvtJPjeul4VXFOslONWE6As
-  access_token: dYSGm3Euf3lwhDlJyuVFADFZNhvQwiBkphYyeTBNrPvS23sZvKo3OcXnCxht3crkV2Z28fjPKzXLCdS3rKPddydiUKaCz4HCroIB
+  project_id: !secret google_project
+  client_id: !secret google_client
+  access_token: !secret google_token
   exposed_domains:
     - switch
     - light
@@ -111,33 +119,16 @@ light:
 
 mqtt:
   broker: 192.168.0.31
+  port: 1883
   username: !secret mqtt2user
   password: !secret mqtt2pass
 
-emulated_hue:
-  listen_port: 80
-  exposed_domains:
-    - group
-    - switch
-    - input_boolean
-    # - media_player
-    
-# feedreader:
-#   urls:
-#     - https://hasspodcast.io/feed/podcast
-#     - https://home-assistant.io/atom.xml
-  
-script: !include_dir_merge_list script/  
-# input_number: !include input_number.yaml
+script: !include_dir_merge_named script/
 input_boolean: !include_dir_merge_named input_boolean/
-# panel_iframe: !include panel_iframe.yaml
-# sensor: !include sensors.yaml
-# Text to speech
+sensor: !include sensors.yaml
 tts: !include tts.yaml    
 zone: !include zones.yaml
 group: !include groups.yaml
 automation: !include_dir_merge_list automations/
 panel_custom: !include panel_custom.yaml
 binary_sensor: !include binary_sensors.yaml
-# intent_script: !include intent_scripts.yaml
-# device_tracker: !include device_trackers.yaml

@@ -1,6 +1,15 @@
 *
 !*.yaml
 !scenes
+!packages
+!automations
+! script
+!www/custom_ui/floorplan/*
+!custom_components
+!input_boolean
 !.gitignore
 secrets.yaml
 known_devices.yaml
+google_calendars.yaml
+zones.yaml
+ip_bans.yaml

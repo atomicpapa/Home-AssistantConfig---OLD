@@ -1,50 +1,45 @@
 # Sensors..  duh
     
 
+- platform: rest
+  resource: http://192.168.0.13/hass/chores.json
+  name: chores_eleanor
+  scan_interval: 14400
+  value_template: >
+    {% set today = now().strftime('%a')  %}
+    {% set chores =  value_json.eleanor[ today ] %}
+    {{ chores }}
 
-# # Glenn's Fitbit  
-# - platform: fitbit
-#   monitored_resources:
-#     - "activities/steps"
-#     - "sleep/minutesAsleep"
-#     - "devices/battery"
+- platform: rest
+  resource: http://192.168.0.13/hass/chores.json
+  name: chores_lola
+  scan_interval: 14400
+  value_template: >
+    {% set today = now().strftime('%a')  %}
+    {% set chores =  value_json.lola[ today ] %}
+    {{ chores }}
 
+- platform: rest
+  resource: http://192.168.0.13/hass/chores.json
+  name: chores_william
+  scan_interval: 14400
+  value_template: >
+    {% set today = now().strftime('%a')  %}
+    {% set chores =  value_json.william[ today ] %}
+    {{ chores }}
 
+- platform: rest
+  resource: http://192.168.0.13/hass/chores.json
+  name: responsibilities
+  scan_interval: 14400
+  value_template: >
+    {% set today = now().strftime('%a')  %}
+    {% set chores =  value_json.eleanor[ today ] + value_json.lola[ today ] + value_json.william[ today ] %}
+    {{ chores }}
 
-
-
-
-
-
- 
-# - platform: time_date
-#   display_options:
-#     - 'time'
-#     - 'date'
-    
-# - platform: template
-#   sensors:
-#     alarm_clock_hour:
-#       value_template: '{{ states.input_number.slider1.state | int }}'
-#     alarm_clock_minute:
-#       value_template: '{{ states.input_number.slider2.state | int }}'
-#     alarm_clock_time:
-#       value_template: >-
-#         {{ states.sensor.alarm_clock_hour.state }}:
-#         {%- if states.sensor.alarm_clock_minute.state|length == 1 -%}
-#           0
-#         {%- endif -%}
-#           {{ states.sensor.alarm_clock_minute.state }}
-#     alarm_clock_time_long:
-#       value_template: >-
-#         {% if states.sensor.alarm_clock_hour.state|length == 1 -%}
-#           0
-#         {%- endif -%}
-#           {{ states.sensor.alarm_clock_hour.state }}:
-#         {%- if states.sensor.alarm_clock_minute.state|length == 1 -%}
-#           0
-#         {%- endif -%}
-#           {{ states.sensor.alarm_clock_minute.state }}
-          
-
-
+# Glenn's Fitbit  
+- platform: fitbit
+  monitored_resources:
+    - "activities/steps"
+    - "sleep/minutesAsleep"
+    - "devices/battery"

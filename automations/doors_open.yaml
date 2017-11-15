@@ -1,0 +1,21 @@
+# Voice notification of any doors left open more than 5 minutes
+
+- alias: 'Notify if any doors left open for 5 minutes'
+  trigger:
+    platform: state
+    entity_id:
+      - sensor.freezer_door
+    from: 'closed'
+    to: 'open'
+    for:
+      minutes: 5
+  action:
+    - service: media_player.volume_set
+      data_template:
+        entity_id: media_player.whole_house
+        volume_level: 0.7
+    - service: tts.amazon_polly_say
+      data_template:
+        entity_id: media_player.whole_house
+        message: >
+          The {{ trigger.to_state.attributes.friendly_name }} was left open

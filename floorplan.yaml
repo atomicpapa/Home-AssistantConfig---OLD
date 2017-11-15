@@ -13,6 +13,28 @@ date_format: DD-MMM-YYYY   # Date format to use in hover-over text
 
 groups:
 
+  - name: input_booleans
+    entities:
+      - input_boolean.guest_mode
+      - input_boolean.kids_rooms
+
+    states:
+      - state: 'on'
+        class: 'freezer-closed'
+      - state: 'off'
+        class: 'freezer-open'
+    action:
+      domain: homeassistant
+      service: toggle
+  
+  - name: input_static
+    entities:
+      - input_boolean.good_night
+      - input_boolean.responsibilities
+    action:
+      domain: homeassistant
+      service: toggle
+
   - name: Sensors
     entities:
       - sensor.freezer_door
@@ -88,20 +110,26 @@ groups:
 
   - name: Cameras
     entities:
-      - camera.front_yard
-      - camera.driveway
-      - camera.front_door
-      - camera.backyard_left
-      - camera.backyard_right
       - camera.wu_doppler_weather
     states:
       - state: 'idle'
         class: 'camera-idle'
              
+  - name: Camera Images
+    entities:
+      - camera.front_yard
+      - camera.driveway
+      - camera.front_door
+      - camera.backyard_left
+      - camera.backyard_right
+    camera_image_template: '${entity.attributes.entity_picture}'
+
   - name: Media Players
     entities:
       - media_player.gorgon
-      - media_player.master_bedroom_home
+      - media_player.minotaur
+      - media_player.apollo
+      - media_player.muse
       - media_player.spotify
     states:
       - state: 'off'
@@ -140,6 +168,18 @@ groups:
     text_template: '${entity.state ? entity.state.replace(/\s{3,}/g,"") : "undefined"}'
     class_template: 'return "static-text";'
 
+  - name: static_text
+    entities:
+      - sensor.last_message
+      - sensor.last1
+      - sensor.last2
+      - sensor.last3
+      - sensor.last4
+      - sensor.ups
+      - sensor.fedex
+    text_template: '${entity.state ? entity.state.replace(/\s{3,}/g,"") : "undefined"}'
+    class_template: 'return "static-text";'
+
   - name: text_font_date
     entities:
       - sensor.floorplan_date
@@ -157,7 +197,7 @@ groups:
       - device_tracker.glenn_glenn
       - device_tracker.eleanor_eleanor
       - device_tracker.lola_lola
-      - device_tracker.arwensipad
+      - device_tracker.eryin_eryin
     text_template: '${entity.state ? entity.state.replace("not_home", "away") : "undefined"}'
     states:
       - state: 'home'

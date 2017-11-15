@@ -4,17 +4,6 @@
   icon: mdi:home
   radius: 50
 
-- name: Garner
-  latitude: !secret garlat
-  longitude: !secret garlon
-  icon: mdi:school
-
-- name: KSAT
-  latitude: !secret ksatlat
-  longitude: !secret ksatlon
-  icon: mdi:school
-  radius: 150
-
 - name: SST
   latitude: !secret sstlat
   longitude: !secret sstlon
@@ -33,12 +22,12 @@
   longitude: !secret gglon
   radius: 50
 
-- name: DMC430
+- name: 430
   icon: mdi:work
   latitude: !secret 430lat
   longitude: !secret 430lon
 
-- name: DMC510
+- name: 510
   icon: mdi:work
   latitude: !secret 510lat
   longitude: !secret 510lon
@@ -53,12 +42,6 @@
   icon: mdi:home-variant
   latitude: !secret mgmlat
   longitude: !secret mgmlon
-  radius: 50
-
-- name: ThinAir
-  icon: mdi:store-24-hour
-  latitude: !secret talat
-  longitude: !secret talon
   radius: 50
   
 - name: Miras

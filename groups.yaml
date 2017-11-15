@@ -3,13 +3,16 @@ main:
   # icon: mdi:home
   entities:
   - group.weasley_clock
-  - group.living_room
-  - group.girls_room
-  - group.boys_room
-  - group.master_bedroom
-  - group.weather
-  - group.nzbget
-  - group.fitness
+  - group.batteries
+  - group.interior_lights
+  - group.exterior_lights
+  - group.weather_summary
+  - group.weather_forecast
+  - media_player.minotaur
+  - media_player.muse
+  - media_player.whole_house
+  - media_player.amazon_fire_tv
+
   name: Main View
 
 master_bedroom:
@@ -69,3 +72,39 @@ audio_players:
     - media_player.apollo
     - media_player.muse
     
+interior_lights:
+  name: Interior Lights
+  view: false
+  entities:
+    - light.lego_lamp
+    - light.desk_lamp
+    - light.boy
+    - light.girls
+    - light.hallway
+
+exterior_lights:
+  name: Exterior Lights
+  view: false
+  entities:
+    - light.front_porch
+
+weather_summary:
+  name: Quick Look
+  view: false
+  entities:
+    - sensor.dark_sky_temperature
+    - sensor.dark_sky_daily_high_temperature
+    - sensor.dark_sky_daily_low_temperature
+    - sensor.dark_sky_precip_probability
+    - sensor.pollen_level
+    - sensor.dark_sky_hourly_summary
+
+weather_forecast:
+  name: Forecast
+  view: false
+  entities:
+    - sensor.dark_sky_daily_high_temperature_1
+    - sensor.dark_sky_daily_low_temperature_1
+    - sensor.dark_sky_precip_probability_1
+    - sensor.pollen_level_forecast
+    - sensor.dark_sky_daily_summary

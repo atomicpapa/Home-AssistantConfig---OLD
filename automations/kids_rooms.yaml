@@ -1,0 +1,23 @@
+- alias: Kids Rooms Lights On
+
+  trigger:
+    - platform: state
+      entity_id: input_boolean.kids_rooms
+      to: 'on'
+      from: 'off'
+
+  action:
+    service: homeassistant.turn_on
+    entity_id: group.kids_rooms
+
+- alias: Kids Rooms Lights Off
+
+  trigger:
+    - platform: state
+      entity_id: input_boolean.kids_rooms
+      to: 'off'
+      from: 'on'
+
+  action:
+    service: homeassistant.turn_off
+    entity_id: group.kids_rooms

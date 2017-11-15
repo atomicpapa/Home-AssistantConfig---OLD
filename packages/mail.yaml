@@ -1,0 +1,52 @@
+# Postal Related Packages
+
+homeassistant:
+  customize:
+    sensor.usps_mail:
+      friendly_name: Mail
+
+    sensor.deliveries_today:
+      icon: mdi:package-variant
+
+    sensor.packages_in_transit:
+      icon: mdi:truck-fast
+
+    sensor.fedex:
+      icon: mdi:truck-fast
+
+    camera.mail:
+      friendly_name: Mail Scan's
+
+# usps:
+#   username: !secret uspsuser
+#   password: !secret uspspass
+
+# camera:
+#   - platform: usps
+#     scan_interval: 5
+
+sensor:
+  #FedEx
+  - platform: fedex
+    username: !secret fedexuser
+    password: !secret fedexpass
+
+  - platform: ups
+    username: !secret upsuser
+    password: !secret upspass
+
+group:
+  # mailscan_card:
+  #  name: Mail Scans
+  #  entities:
+  #    - camera.usps_mail
+
+  usps_mail_card:
+   name: Mail
+   entities:
+     - sensor.usps_mail
+     - sensor.usps_packages
+     - sensor.packages_in_transit
+     - sensor.deliveries_today
+     - sensor.fedex
+     - sensor.ups

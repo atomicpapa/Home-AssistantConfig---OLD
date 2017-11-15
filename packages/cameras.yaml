@@ -1,0 +1,70 @@
+# Camera Related Packages
+
+zoneminder:
+  host: 192.168.0.13
+  username: !secret zmuser
+  password: !secret zmpass
+
+camera:
+  - platform: generic
+    still_image_url: https://icons.wxug.com/data/weather-maps/radar/united-states/san-antonio-texas-region-current-radar.gif
+    name: WU Doppler Weather
+    
+  - platform: zoneminder
+
+  - platform: generic
+    name: worldtime
+    still_image_url: https://imgs.xkcd.com/comics/now.png
+
+group:
+
+  cameras:
+    name: Cams
+    view: true
+    # icon: mdi:camera
+    entities:
+      - group.fdcam
+      - group.dwcam
+      - group.fycam
+      - group.bylcam
+      - group.byrcam
+
+  fdcam:
+    name: Front Door
+    view: false
+    entities:
+      - camera.front_door
+      
+  dwcam:
+    name: Driveway
+    view: false
+    entities:
+      - camera.driveway
+      
+  fycam:
+    name: Front Yard
+    view: false
+    entities:
+      - camera.front_yard
+      
+  bylcam:
+    name: Backyard Left
+    view: false
+    entities:
+      - camera.backyard_left
+      
+  byrcam:
+    name: Backyard Right
+    view: false
+    entities:
+      - camera.backyard_right
+
+  motion:
+    name: Motion Events
+    view: false
+    entities:
+      - sensor.front_door_events
+      - sensor.front_yard_events
+      - sensor.backyard_left_events
+      - sensor.backyard_right_events
+      - sensor.driveway_events

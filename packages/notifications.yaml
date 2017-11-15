@@ -1,0 +1,19 @@
+# Packages Related to Notifications in Print
+
+joaoapps_join:
+  - name: Home Assistant
+    device_id: 88c696a4143849cda043eb47f9041193
+    api_key: !secret joinapi
+
+notify:
+
+  - platform: joaoapps_join
+    api_key: !secret joinapi
+    # device_id: d5asdfasdf54645h45h368761dfe5gt8a   *optional
+    device_ids: 88c696a4143849cda043eb47f9041193, 4223bc6429eb4dcc8861d69e0717b68a
+    device_names: Nexus 6, Poseidon
+    name: Join
+
+#   - name: HASS
+#     platform: pushbullet
+#     api_key: !secret pushbullet

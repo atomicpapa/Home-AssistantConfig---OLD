@@ -1,0 +1,37 @@
+#triggers
+good_night:
+  name: Good Night
+  initial: off
+
+good_morning:
+  name: Good Morning
+  initial: off
+
+meal_time:
+  name: Meal Time
+  initial: off
+  icon: mdi:food-variant
+
+tv_time:
+  name: TV Time
+  initial: off
+
+work:
+  name: Work
+  initial: off
+
+flash:
+  name: Flash
+  initial: off
+
+color_tornado:
+  name: Color Tornado!
+  initial: off
+
+guard_dog:
+  name: Guard Dog
+  initial: off
+
+kids_rooms:
+  name: Kids Rooms
+  initial: off

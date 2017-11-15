@@ -87,3 +87,8 @@
   - device_id: pick_up_schedule
     name: Pick up schedule
     track: false
+- cal_id: e5o5hn50ugmnans3cckea5gc48@group.calendar.google.com
+  entities:
+  - device_id: school_holidays
+    name: School Holidays
+    track: true

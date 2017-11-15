@@ -1,0 +1,140 @@
+# Media Server Package
+
+homeassistant:
+  customize:
+    sensor.sonarr_commands:
+      icon: mdi:apple-keyboard-command
+      friendly_name: Commands Running
+    sensor.sonarr_queue:
+      icon: mdi:view-list
+      friendly_name: Items in Queue
+    sensor.sonarr_series:
+      icon: mdi:format-list-bulleted
+      friendly_name: '# of Series Tracked'
+    sensor.sonarr_upcoming:
+      icon: mdi:alarm-multiple
+      friendly_name: Upcoming Shows
+    sensor.sonarr_wanted:
+      icon: mdi:alert-outline
+      friendly_name: Shows Wanted
+    sensor.nzbget_uptime:
+      icon: mdi:arrow-up-bold
+      friendly_name: Uptime
+    sensor.nzbget_article_cache:
+      icon: mdi:cached
+      friendly_name: Articles Cached
+    sensor.nzbget_download_rate:
+      icon: mdi:download
+      friendly_name: Download Rate
+    sensor.nzbget_download_size:
+      icon: mdi:folder-download
+      friendly_name: Dwonload Size
+    sensor.nzbget_average_download_rate:
+      icon: mdi:download
+      friendly_name: Avg. Download Rate
+    sensor.radarr_movies:
+      icon: mdi:movie-roll
+      friendly_name: Movies Tracked
+    sensor.radarr_status:
+      icon: mdi:radar
+      friendly_name: Status
+    sensor.radarr_upcoming:
+      icon: mdi:alarm-multiple
+      friendly_name: Upcoming Movies
+
+media_player:
+  - platform: cast
+  - platform: plex
+    entity_namespace: 'plex'
+    include_non_clients: false
+    scan_interval: 5
+    show_all_controls: false
+    use_custom_entity_ids: true
+    use_episode_art: true
+  - platform: spotify
+    client_id: !secret spotifyclient
+    client_secret: !secret spotifysecret
+  - platform: firetv
+    host: 192.168.0.13
+
+# Sensors -----------------------------------------------------------------------------
+
+sensor:
+  #Plex Media Server      
+  - platform: plex
+    host: 192.168.0.13
+    name: Zeus
+    username: !secret plexuser
+    password: !secret plexpass
+
+  #Sonarr TV Episode Indexer  
+  - platform: sonarr
+    api_key: !secret sonarrapi
+    host: 192.168.0.24
+    port: 8989
+    monitored_conditions:
+      - series
+      - upcoming
+      - queue
+      - wanted
+      - commands
+    days: 7
+
+  #Radarr Movie Downloader    
+  - platform: radarr
+    api_key: !secret radarrapi
+    host: 192.168.0.24
+    port: 7878
+    monitored_conditions:
+      - movies
+      - upcoming
+      - status
+    days: 30
+
+  #NZBget 
+  - platform: nzbget
+    host: 192.168.0.24
+    username: nzbget
+    password: !secret nzbget
+    monitored_variables:
+      - uptime
+      - average_download_rate
+      - download_rate
+      - download_size
+      - article_cache
+
+  # - platform: pocketcasts
+  #   username: wm.g.morrison@gmail.com
+  #   password: stinky1303
+  
+# Groups ------------------------------------------------------------------------------------
+
+group:
+  nzbget:
+    name: NZBget
+    view: false
+    entities:
+      - sensor.nzbget_uptime
+      - sensor.nzbget_article_cache
+      - sensor.nzbget_speed
+      - sensor.nzbget_size
+      - sensor.nzbget_average_speed
+      
+  sonarr:
+    name: Sonarr
+    view: false
+    entities:
+      - sensor.sonarr_commands
+      - sensor.sonarr_queue
+      - sensor.sonarr_series
+      - sensor.sonarr_upcoming
+      - sensor.sonarr_wanted
+      
+  radarr:
+    name: Radarr
+    view: false
+    entities:
+      - sensor.radarr_movies
+      - sensor.radarr_status
+      - sensor.radarr_upcoming
+

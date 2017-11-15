@@ -1,0 +1,13 @@
+# Automation part of Alarm Clock script
+
+# - alias: 'Hue light on gradually with alarm'
+#   hide_entity: False
+#   trigger:
+#     platform: template
+#     value_template: '{{ states.sensor.time.state == states.sensor.alarm_clock_time_long.state }}'
+#   condition:
+#     condition: state
+#     entity_id: input_boolean.alarm_clock_status
+#     state: 'on'
+#   action:
+#     service: script.wake_up

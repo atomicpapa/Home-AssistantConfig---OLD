@@ -4,7 +4,7 @@
 !packages
 !automations
 !script
-!www
+!www/custom_ui/floorplan
 !*.svg
 !*.css
 !custom_components

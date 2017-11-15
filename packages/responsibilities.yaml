@@ -1,0 +1,32 @@
+######################################################################
+##  Who's day is it anyway? Pretty sure my parent's didn't code to figure this out.
+######################################################################
+homeassistant:
+  customize:
+    sensor.chores_eleanor:
+      friendly_name: Eleanor
+    sensor.chores_lola:
+      friendly_name: Lola
+    sensor.chores_william:
+      friendly_name: William
+      
+automation:
+  - alias: 'responsibilities'
+    trigger:
+      - platform: state
+        entity_id: input_boolean.responsibilities
+        to: 'on'
+    action:
+      - service: script.speech_engine
+        data:
+          call_responsibilities: 1
+          call_no_announcement: 1
+
+group:
+  - responsibilities:
+      name: Responsibilities
+      view: false
+      entities:
+        - sensor.chores_eleanor
+        - sensor.chores_lola
+        - sensor.chores_william

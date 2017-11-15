@@ -3,6 +3,7 @@ main:
   # icon: mdi:home
   entities:
   - group.weasley_clock
+  - group.responsibilities
   - group.batteries
   - group.interior_lights
   - group.exterior_lights
@@ -30,6 +31,7 @@ kids_rooms:
   entities:
     - light.girls
     - light.boy
+    - group.responsibilities
 
 masterbedroom:
   name: Master Bedroom

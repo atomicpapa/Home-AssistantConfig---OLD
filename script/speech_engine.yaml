@@ -57,7 +57,7 @@ speech_engine:
               Inside the house, it is {{ states.climate.downstairs.attributes["current_temperature"]}} degrees with around {{states('sensor.downstairs_thermostat_humidity')}} percent humidity.
           {%- endmacro -%}
           {%- macro outside_weather() -%}
-              Outside, it is going to be {{states('sensor.dark_sky_hourly_summary')}}, with a high of {{states('sensor.dark_sky_daily_high_temperature')}} and a low of {{states('sensor.dark_sky_daily_low_temperature')}}
+              Outside, it is going to be {{states('sensor.dark_sky_hourly_summary')}}, with a high of {{states('sensor.dark_sky_daily_high_temperature')|int}} and a low of {{states('sensor.dark_sky_daily_low_temperature')|int}}
           {%- endmacro -%}
           {%- macro weather_tomorrow() -%}
               Tomorrow, the weather will be {{states('sensor.dark_sky_daily_summary')}} Please dress accordingly.

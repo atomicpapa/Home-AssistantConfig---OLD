@@ -198,13 +198,11 @@ sensor:
 
 #Internet Speedtest
   - platform: speedtest
-    minute: 30
-    hour:
+    minute: 
       - 0
-      - 6
-      - 12
-      - 18
+      - 30
     monitored_conditions:
+      - ping
       - download
       - upload
 

@@ -1,0 +1,2 @@
+automation:
+  initial_state: 'off'

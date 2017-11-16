@@ -36,15 +36,18 @@
           {%- endmacro -%}
           "{{greeting_sentence(person)}}"
         call_no_announcement: 1
-        call_responsibilities_lola: >
-          {% if trigger.entity_id.split('.')[1].split('_')[0] == 'lola' &}
-            1
-          {% else %}
-            0
-          {% endif %}
-        call_responsibilities_eleanor: >
-          {% if trigger.entity_id.split('.')[1].split('_')[0] == 'eleanor' &}
-            1
-          {% else %}
-            0
-          {% endif %}
+
+# Currently not working correctly
+
+        call_responsibilities_lola: "{{ 1 if trigger.entity_id.split('.')[1].split('_')[0] == 'lola' else 0 }}"
+          # {% if trigger.entity_id.split('.')[1].split('_')[0] == 'lola' &}
+          #   1
+          # {% else %}
+          #   0
+          # {% endif %}
+        call_responsibilities_eleanor: "{{ 1 if trigger.entity_id.split('.')[1].split('_')[0] == 'eleanor' else 0 }}"
+          # {% if trigger.entity_id.split('.')[1].split('_')[0] == 'eleanor' %}
+          #   1
+          # {% else %}
+          #   0
+          # {% endif %}

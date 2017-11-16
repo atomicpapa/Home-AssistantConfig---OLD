@@ -23,10 +23,10 @@ automation:
           call_no_announcement: 1
 
 group:
-  - responsibilities:
-      name: Responsibilities
-      view: false
-      entities:
-        - sensor.chores_eleanor
-        - sensor.chores_lola
-        - sensor.chores_william
+  responsibilities:
+    name: Responsibilities
+    view: false
+    entities:
+      - sensor.chores_eleanor
+      - sensor.chores_lola
+      - sensor.chores_william

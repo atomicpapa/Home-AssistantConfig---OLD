@@ -38,3 +38,10 @@ sensor.front_yard_events:
   friendly_name: 'Front Yard Motion Events'
 sensor.front_door_events:
   friendly_name: 'Front Door Motion Events'
+
+sensor.steps_2:
+  hidden: true
+sensor.charge_2_battery_2:
+  hidden: true
+sensor.sleep_minutes_asleep_2:
+  hidden: true

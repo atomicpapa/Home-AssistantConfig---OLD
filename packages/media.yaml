@@ -54,8 +54,8 @@ media_player:
   - platform: spotify
     client_id: !secret spotifyclient
     client_secret: !secret spotifysecret
-  - platform: firetv
-    host: 192.168.0.13
+  # - platform: firetv
+  #   host: 192.168.0.13
 
 # Sensors -----------------------------------------------------------------------------
 
@@ -70,7 +70,7 @@ sensor:
   #Sonarr TV Episode Indexer  
   - platform: sonarr
     api_key: !secret sonarrapi
-    host: 192.168.0.24
+    host: 192.168.0.13
     port: 8989
     monitored_conditions:
       - series
@@ -83,7 +83,7 @@ sensor:
   #Radarr Movie Downloader    
   - platform: radarr
     api_key: !secret radarrapi
-    host: 192.168.0.24
+    host: 192.168.0.13
     port: 7878
     monitored_conditions:
       - movies
@@ -93,7 +93,7 @@ sensor:
 
   #NZBget 
   - platform: nzbget
-    host: 192.168.0.24
+    host: 192.168.0.13
     username: nzbget
     password: !secret nzbget
     monitored_variables:

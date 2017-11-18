@@ -3,26 +3,26 @@ sensor:
   #   state_topic: "polly/lastmsg"
   #   name: "Last Message"
 
-  - platform: template
-    sensors:
-      last1:
-        value_template: '{{ (states.sensor.last_message.state | wordwrap(100, true,"§")).split("§")[0]}}'
-        friendly_name: 'last1'
+  # - platform: template
+  #   sensors:
+  #     last1:
+  #       value_template: '{{ (states.sensor.last_message.state | wordwrap(100, true,"§")).split("§")[0]}}'
+  #       friendly_name: 'last1'
 
-  - platform: template
-    sensors:
-      last2:
-        value_template: '{{ (states.sensor.last_message.state | wordwrap(100, true,"§")).split("§")[1]}}'
-        friendly_name: 'last2'
+  # - platform: template
+  #   sensors:
+  #     last2:
+  #       value_template: '{{ (states.sensor.last_message.state | wordwrap(100, true,"§")).split("§")[1]}}'
+  #       friendly_name: 'last2'
 
-  - platform: template
-    sensors:
-      last3:
-        value_template: '{{ (states.sensor.last_message.state | wordwrap(100, true,"§")).split("§")[2]}}'
-        friendly_name: 'last3'
+  # - platform: template
+  #   sensors:
+  #     last3:
+  #       value_template: '{{ (states.sensor.last_message.state | wordwrap(100, true,"§")).split("§")[2]}}'
+  #       friendly_name: 'last3'
 
-  - platform: template
-    sensors:
-      last4:
-        value_template: '{{ (states.sensor.last_message.state | wordwrap(100, true,"§")).split("§")[3]}}'
-        friendly_name: 'last4'
+  # - platform: template
+  #   sensors:
+  #     last4:
+  #       value_template: '{{ (states.sensor.last_message.state | wordwrap(100, true,"§")).split("§")[3]}}'
+  #       friendly_name: 'last4'

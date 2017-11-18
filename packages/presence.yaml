@@ -7,7 +7,7 @@ homeassistant:
 device_tracker:
   - platform: owntracks
 # - platform: bluetooth_le_tracker
-  - platform: bluetooth_tracker
+  # - platform: bluetooth_tracker
   # - platform: icloud
   #   username: !secret eryiniclouduser
   #   password: !secret eryinicloudpass
@@ -53,4 +53,3 @@ automation:
       - service: notify.join
         data_template:
           value1: "Life360 Sensor state changed to: {{ trigger.to_state.state| upper }}."
-          value2: "" 

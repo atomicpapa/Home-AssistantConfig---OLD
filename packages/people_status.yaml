@@ -1,0 +1,275 @@
+
+homeassistant:
+  customize:
+    sensor.glenn_status:
+      entity_picture: /local/atomicpapa.jpg
+    sensor.eryin_status:
+      entity_picture: /local/eryin.png
+    sensor.eleanor_status:
+      entity_picture: /local/tiger.jpg
+    sensor.lola_status:
+      entity_picture: /local/ladybug.jpg
+
+input_select:
+  glenn_status_dropdown:
+    name: Glenn
+    options:
+      - Home
+      - Just Arrived
+      - Just Left
+      - Away
+      - Extended Away
+      - Work
+    initial: Home
+  eryin_status_dropdown:
+    name: Eryin
+    options:
+      - Home
+      - Just Arrived
+      - Just Left
+      - Away
+      - Extended Away
+    initial: Home
+  eleanor_status_dropdown:
+    name: Eleanor
+    options:
+      - Home
+      - Just Arrived
+      - Just Left
+      - Away
+      - Extended Away
+      - SST
+    initial: Home
+  lola_status_dropdown:
+    name: Lola
+    options:
+      - Home
+      - Just Arrived
+      - Just Left
+      - Away
+      - Extended Away
+      - SST
+    initial: Home
+
+sensor:
+  - platform: template
+    sensors:
+      glenn_status:
+        value_template: '{{ states.input_select.glenn_status_dropdown.state }}'
+        friendly_name: 'Glenn'
+        entity_id: input_select.glenn_status_dropdown
+      eryin_status:
+        value_template: '{{ states.input_select.eryin_status_dropdown.state }}'
+        friendly_name: 'Eryin'
+        entity_id: input_select.eryin_status_dropdown
+      eleanor_status:
+        value_template: '{{ states.input_select.eleanor_status_dropdown.state }}'
+        friendly_name: 'Eleanor'
+        entity_id: input_select.eleanor_status_dropdown
+      lola_status:
+        value_template: '{{ states.input_select.lola_status_dropdown.state }}'
+        friendly_name: 'Lola'
+        entity_id: input_select.lola_status_dropdown
+
+group:
+  people_status:
+    name: People Status
+    entities:
+      - sensor.glenn_status
+      - sensor.eryin_status
+      - sensor.eleanor_status
+      - sensor.lola_status
+
+automation:
+  - alias: Mark person as just arrived
+    trigger:
+      - platform: state
+        entity_id: device_tracker.glenn_glenn
+        from: 'not_home'
+        to: 'home'
+      - platform: state
+        entity_id: device_tracker.eryin_eryin
+        from: 'not_home'
+        to: 'home'
+      - platform: state
+        entity_id: device_tracker.eleanor_eleanor
+        from: 'not_home'
+        to: 'home'
+      - platform: state
+        entity_id: device_tracker.lola_lola
+        from: 'not_home'
+        to: 'home'
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: >
+            {% if trigger.entity_id == 'device_tracker.glenn_glenn' %}
+              input_select.glenn_status_dropdown
+            {% elif trigger.entity_id == 'device_tracker.eryin_eryin' %}
+              input_select.eryin_status_dropdown
+            {% elif trigger.entity_id == 'device_tracker.eleanor_eleanor' %}
+              input_select.eleanor_status_dropdown
+            {% else %}
+              input_select.lola_status_dropdown
+            {% endif %}
+          option: Just Arrived
+  
+  - alias: Mark person as home
+    trigger:
+      - platform: state
+        entity_id: input_select.glenn_status_dropdown
+        to: 'Just Arrived'
+        for:
+          minutes: 10
+      - platform: state
+        entity_id: input_select.eryin_status_dropdown
+        to: 'Just Arrived'
+        for:
+          minutes: 10
+      - platform: state
+        entity_id: input_select.eleanor_status_dropdown
+        to: 'Just Arrived'
+        for:
+          minutes: 10
+      - platform: state
+        entity_id: input_select.lola_status_dropdown
+        to: 'Just Arrived'
+        for:
+          minutes: 10
+      - platform: state
+        entity_id: input_select.glenn_status_dropdown
+        from: 'Just Left'
+        to: 'Just Arrived'
+      - platform: state
+        entity_id: input_select.eryin_status_dropdown
+        from: 'Just Left'
+        to: 'Just Arrived'
+      - platform: state
+        entity_id: input_select.eleanor_status_dropdown
+        from: 'Just Left'
+        to: 'Just Arrived'
+      - platform: state
+        entity_id: input_select.lola_status_dropdown
+        from: 'Just Left'
+        to: 'Just Arrived'
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: >
+            {% if trigger.entity_id == 'input_select.glenn_status_dropdown' %}
+              input_select.glenn_status_dropdown
+            {% elif trigger.entity_id == 'input_select.eryin_status_dropdown' %}
+              input_select.eryin_status_dropdown
+            {% elif trigger.entity_id == 'input_select.eleanor_status_dropdown' %}
+              input_select.eleanor_status_dropdown
+            {% else %}
+              input_select.lola_status_dropdown
+            {% endif %}
+          option: Home
+  
+  - alias: Mark person as just left
+    trigger:
+      - platform: state
+        entity_id: device_tracker.glenn_glenn
+        from: 'home'
+        to: 'not_home'
+      - platform: state
+        entity_id: device_tracker.eryin_eryin
+        from: 'home'
+        to: 'not_home'
+      - platform: state
+        entity_id: device_tracker.eleanor_eleanor
+        from: 'home'
+        to: 'not_home'
+      - platform: state
+        entity_id: device_tracker.lola_lola
+        from: 'home'
+        to: 'not_home'
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: >
+            {% if trigger.entity_id == 'device_tracker.glenn_glenn' %}
+              input_select.glenn_status_dropdown
+            {% elif trigger.entity_id == 'device_tracker.eryin_eryin' %}
+              input_select.eryin_status_dropdown
+            {% elif trigger.entity_id == 'device_tracker.eleanor_eleanor' %}
+              input_select.eleanor_status_dropdown
+            {% else %}
+              input_select.lola_status_dropdown
+            {% endif %}
+          option: Just Left
+  
+  - alias: Mark person as away
+    trigger:
+      - platform: state
+        entity_id: input_select.glenn_status_dropdown
+        to: 'Just Left'
+        for:
+          minutes: 10
+      - platform: state
+        entity_id: input_select.eryin_status_dropdown
+        to: 'Just Left'
+        for:
+          minutes: 10
+      - platform: state
+        entity_id: input_select.eleanor_status_dropdown
+        to: 'Just Left'
+        for:
+          minutes: 10
+      - platform: state
+        entity_id: input_select.lola_status_dropdown
+        to: 'Just Left'
+        for:
+          minutes: 10
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: >
+            {% if trigger.entity_id == 'input_select.glenn_status_dropdown' %}
+              input_select.glenn_status_dropdown
+            {% elif trigger.entity_id == 'input_select.eryin_status_dropdown' %}
+              input_select.eryin_status_dropdown
+            {% elif trigger.entity_id == 'input_select.eleanor_status_dropdown' %}
+              input_select.eleanor_status_dropdown
+            {% else %}
+              input_select.lola_status_dropdown
+            {% endif %}
+          option: Away
+  
+  - alias: Mark person as extended away
+    trigger:
+      - platform: state
+        entity_id: input_select.glenn_status_dropdown
+        to: 'Away'
+        for:
+          hours: 24
+      - platform: state
+        entity_id: input_select.eryin_status_dropdown
+        to: 'Away'
+        for:
+          hours: 24
+      - platform: state
+        entity_id: input_select.eleanor_status_dropdown
+        to: 'Away'
+        for:
+          hours: 24
+      - platform: state
+        entity_id: input_select.lola_status_dropdown
+        to: 'Away'
+        for:
+          hours: 24
+    action:
+      - service: input_select.select_option
+        data_template:
+          entity_id: >
+            {% if trigger.entity_id == 'input_select.glenn_status_dropdown' %}
+              input_select.glenn_status_dropdown
+            {% elif trigger.entity_id == 'input_select.eryin_status_dropdown' %}
+              input_select.eryin_status_dropdown
+            {% elif trigger.entity_id == 'input_select.eleanor_status_dropdown' %}
+              input_select.eleanor_status_dropdown
+            {% else %}
+              input_select.lola_status_dropdown
+            {% endif %}
+          option: Extended Away

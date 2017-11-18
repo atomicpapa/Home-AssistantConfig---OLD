@@ -482,35 +482,35 @@ automation:
   #       data_template:
   #         message: "Attention! {{ trigger.to_state.attributes.friendly_name }} level is: {{ trigger.to_state.state }}%."
           
-  # - alias: Check Wi-Fi Status of phones At Home
-  #   initial_state: true
-  #   hide_entity: true
-  #   trigger:
-  #     - platform: state
-  #       entity_id:
-  #         - device_tracker.eryin_eryin
-  #         - device_tracker.glenn_glenn
-  #         - device_tracker.eleanor_eleanor
-  #         - device_tracker.lola_lola
-  #       from: 'not_home'
-  #       to: 'home'
-  #       for: '00:05:00'
-  #   condition:
-  #     condition: or
-  #     conditions:
-  #       - condition: state
-  #         entity_id: sensor.lolas_phone_wifi_state
-  #         state: 'Not Connected'
-  #       - condition: state
-  #         entity_id: sensor.eryins_phone_wifi_state
-  #         state: 'Not Connected'
-  #       - condition: state
-  #         entity_id: sensor.eleanors_phone_wifi_state
-  #         state: 'Not Connected'
-  #       - condition: state
-  #         entity_id: sensor.glenns_phone_wifi_state
-  #         state: 'Not Connected'
-  #   action:
+  - alias: Check Wi-Fi Status of phones At Home
+    initial_state: true
+    hide_entity: true
+    trigger:
+      - platform: state
+        entity_id:
+          - device_tracker.eryin_eryin
+          - device_tracker.glenn_glenn
+          - device_tracker.eleanor_eleanor
+          - device_tracker.lola_lola
+        from: 'not_home'
+        to: 'home'
+        for: '00:05:00'
+    condition:
+      condition: or
+      conditions:
+        - condition: state
+          entity_id: sensor.lolas_phone_wifi_state
+          state: 'Not Connected'
+        - condition: state
+          entity_id: sensor.eryins_phone_wifi_state
+          state: 'Not Connected'
+        - condition: state
+          entity_id: sensor.eleanors_phone_wifi_state
+          state: 'Not Connected'
+        - condition: state
+          entity_id: sensor.glenns_phone_wifi_state
+          state: 'Not Connected'
+    action:
       # - service: script.notify_me
       #   data_template:
       #     message: >
@@ -524,21 +524,21 @@ automation:
       #       {% elif member == "lolas" %}
       #         lola's phone is not connected to Wi-Fi at home!
       #       {% endif %}
-      # - service: media_player.volume_set
-      #   data_template:
-      #     entity_id: media_player.whole_house
-      #     volume_level: 0.9
-      # - service: tts.amazon_polly_say
-      #   entity_id: media_player.whole_house
-      #   data_template:
-      #     message: >
-      #       {% set member = trigger.entity_id.split('.')[1].split('_')[0] %}
-      #       {% if member == "glenns" %}
-      #         glenn's phone is not connected to Wi-Fi at home!
-      #       {% elif member == "eryins" %}
-      #         Mllika's phone is not connected to Wi-Fi at home!
-      #       {% elif member == "eleanors" %}
-      #         eleanor's phone is not connected to Wi-Fi at home!
-      #       {% elif member == "lolas" %}
-      #         lola's phone is not connected to Wi-Fi at home!
-      #       {% endif %}
+      - service: media_player.volume_set
+        data_template:
+          entity_id: media_player.whole_house
+          volume_level: 0.9
+      - service: tts.amazon_polly_say
+        entity_id: media_player.whole_house
+        data_template:
+          message: >
+            {% set member = trigger.entity_id.split('.')[1].split('_')[0] %}
+            {% if member == "glenns" %}
+              glenn's phone is not connected to Wi-Fi at home!
+            {% elif member == "eryins" %}
+              Mllika's phone is not connected to Wi-Fi at home!
+            {% elif member == "eleanors" %}
+              eleanor's phone is not connected to Wi-Fi at home!
+            {% elif member == "lolas" %}
+              lola's phone is not connected to Wi-Fi at home!
+            {% endif %}

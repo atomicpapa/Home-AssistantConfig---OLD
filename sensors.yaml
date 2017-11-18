@@ -38,8 +38,8 @@
     {{ chores }}
 
 # Glenn's Fitbit  
-# - platform: fitbit
-#   monitored_resources:
-#     - "activities/steps"
-#     - "sleep/minutesAsleep"
-#     - "devices/battery"
+- platform: fitbit
+  monitored_resources:
+    - "activities/steps"
+    - "sleep/minutesAsleep"
+    - "devices/battery"

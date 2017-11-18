@@ -64,7 +64,7 @@ fitness:
   view: false
   entities:
     - sensor.charge_2_battery
-    - sensor.sleep_minutesasleep
+    - sensor.sleep_minutes_asleep
     - sensor.steps
     
 audio_players:

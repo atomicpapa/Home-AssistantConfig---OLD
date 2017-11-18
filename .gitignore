@@ -4,12 +4,14 @@
 !packages
 !automations
 !script
-!www/custom_ui/floorplan
+!floorplan
 !*.svg
 !*.css
 !custom_components
 !input_boolean
 !.gitignore
+!panels
+!scenes
 secrets.yaml
 known_devices.yaml
 google_calendars.yaml

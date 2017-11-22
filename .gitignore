@@ -17,5 +17,5 @@ known_devices.yaml
 google_calendars.yaml
 zones.yaml
 ip_bans.yaml
-!/www
+!www/custom_ui/floorplan/*
 

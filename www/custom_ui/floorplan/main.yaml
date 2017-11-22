@@ -1,0 +1,305 @@
+name: Demo Floorplan
+image: /local/custom_ui/floorplan/floorplan.svg
+stylesheet: /local/custom_ui/floorplan/floorplan.css
+      
+      # These options are optional
+      # warnings:                  # enable warnings (to find out why things might ot be working correctly)
+# pan_zoom:                  # enable experimental panning / zooming
+hide_app_toolbar:          # hide the application toolbar (when used as a custom panel)
+date_format: DD-MMM-YYYY   # Date format to use in hover-over text
+      
+      # last_motion_entity: sensor.template_last_motion
+      # last_motion_class: last-motion
+
+groups:
+
+  - name: input_booleans
+    entities:
+      - input_boolean.guest_mode
+      - input_boolean.kids_rooms
+
+    states:
+      - state: 'on'
+        class: 'freezer-closed'
+      - state: 'off'
+        class: 'freezer-open'
+    action:
+      domain: homeassistant
+      service: toggle
+  
+  - name: input_static
+    entities:
+      - input_boolean.good_night
+      - input_boolean.responsibilities
+    action:
+      domain: homeassistant
+      service: toggle
+
+  - name: Sensors
+    entities:
+      - sensor.freezer_door
+    states:
+      - state: 'open'
+        class: 'freezer-open'
+      - state: 'closed'
+        class: 'freezer-closed'
+
+  - name: Lights
+    entities:
+     - light.master_bedroom
+     - light.boy
+     - light.girls
+     - light.hall
+     - light.front_porch
+     - light.lego_lamp
+    states:
+      - state: 'on'
+        class: 'light-on'
+      - state: 'off'
+        class: 'light-off'
+    action:
+      domain: light   # This optional parameter allows you to use other services such as homeassistant.toggle like here.
+      service: toggle
+
+  # - name: Switches
+    # entities:
+       # - switch.doorbell
+    # states:
+      # - state: 'on'
+        # class: 'doorbell-on'
+      # - state: 'off'
+        # class: 'doorbell-off'
+
+  # - name: NVR
+    # entities:
+       # - binary_sensor.blue_iris_nvr
+    # text_template: '${(entity.state === "on") ? "online" : "offline"}'
+          # states:
+            # - state: 'off'
+              # class: 'danger-text'
+            # - state: 'on'
+              # class: 'success-text'
+
+        # - name: Alarm Panel
+          # entities:
+             # - alarm_control_panel.alarm
+          # states:
+            # - state: 'armed_away'
+              # class: 'alarm-armed'
+            # - state: 'armed_home'
+              # class: 'alarm-armed'
+            # - state: 'disarmed'
+              # class: 'alarm-disarmed'
+
+        # - name: Binary sensors
+          # entities:
+            # - binary_sensor.front_hallway
+            # - binary_sensor.kitchen
+            # - binary_sensor.master_bedroom
+            # - binary_sensor.theatre_room
+          # states:
+            # - state: 'off'
+              # class: 'info-background'
+            # - state: 'on'
+              # class: 'warning-background'
+          # state_transitions:
+            # - name: On to off
+              # from_state: 'on'
+              # to_state: 'off'
+              # duration: 10
+
+  - name: Cameras
+    entities:
+      - camera.wu_doppler_weather
+    states:
+      - state: 'idle'
+        class: 'camera-idle'
+             
+  - name: Camera Images
+    entities:
+      - camera.front_yard
+      - camera.driveway
+      - camera.front_door
+      - camera.backyard_left
+      - camera.backyard_right
+    camera_image_template: '${entity.attributes.entity_picture}'
+
+  - name: Media Players
+    entities:
+      - media_player.gorgon
+      - media_player.minotaur
+      - media_player.apollo
+      - media_player.muse
+      - media_player.spotify
+    states:
+      - state: 'off'
+        class: 'squeezebox-off'
+      - state: 'idle'
+        class: 'squeezebox-off'
+      - state: 'paused'
+        class: 'squeezebox-off'
+      - state: 'playing'
+        class: 'squeezebox-on'
+              
+  - name: temp_darksky
+    entities:
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_daily_high_temperature
+      - sensor.dark_sky_daily_low_temperature
+      - sensor.dark_sky_daily_high_temperature_1
+      - sensor.dark_sky_daily_high_temperature_2
+      - sensor.dark_sky_daily_low_temperature_1
+      - sensor.dark_sky_daily_low_temperature_2
+    text_template: '${entity.state ? Math.ceil(entity.state) + "°": "undefined"}'
+    class_template: 'return "static-temp";'
+
+  - name: temp_round
+    entities:
+      - sensor.dark_sky_humidity
+      - sensor.dark_sky_humidity_1
+      - sensor.dark_sky_humidity_2
+    text_template: '${entity.state ? Math.ceil(entity.state) : "undefined"}'
+    class_template: 'return "static-temp";'
+    
+  - name: darksky_forecast
+    entities:
+      - sensor.dark_sky_hourly_summary
+      - sensor.dark_sky_daily_summary
+    text_template: '${entity.state ? entity.state.replace(/\s{3,}/g,"") : "undefined"}'
+    class_template: 'return "static-text";'
+
+  - name: static_text
+    entities:
+      - sensor.last_message
+      - sensor.last1
+      - sensor.last2
+      - sensor.last3
+      - sensor.last4
+      - sensor.ups
+      - sensor.fedex
+    text_template: '${entity.state ? entity.state.replace(/\s{3,}/g,"") : "undefined"}'
+    class_template: 'return "static-text";'
+
+  - name: text_font_date
+    entities:
+      - sensor.floorplan_date
+    text_template: '${entity.state ? entity.state : "undefined"}'
+    class_template: 'return "static-text-date";'
+
+  - name: text_font_time
+    entities:
+      - sensor.floorplan_time
+    text_template: '${entity.state ? entity.state : "undefined"}'
+    class_template: 'return "static-text-time";'
+
+  - name: Family
+    entities:
+      - device_tracker.glenn_glenn
+      - device_tracker.eleanor_eleanor
+      - device_tracker.lola_lola
+      - device_tracker.eryin_eryin
+    text_template: '${entity.state ? entity.state.replace("not_home", "away") : "undefined"}'
+    states:
+      - state: 'home'
+        class: 'text-home'
+      - state: 'not_home'
+        class: 'text-away'
+      - state: 'SST'
+        class: 'text-home'
+      - state: 'KSAT'
+        class: 'text-home'
+      - state: 'GGs'
+        class: 'text-home'
+      - state: 'Allys'
+        class: 'text-home'
+      - state: 'DMC510'
+        class: 'text-home'
+      - state: 'DMC430'
+        class: 'text-home'
+      - state: 'Garner'
+        class: 'text-home'
+ 
+  - name: text_font_date
+    entities:
+      - sensor.floorplan_date
+    text_template: '${entity.state ? entity.state : "undefined"}'
+    class_template: 'return "static-text-date";'
+
+  - name: text_font_time
+    entities:
+      - sensor.floorplan_time
+    text_template: '${entity.state ? entity.state : "undefined"}'
+    class_template: 'return "static-text-time";'
+       
+  - name: Weather
+    elements:
+      - weather_button
+    action:
+      domain: class
+      service: toggle
+      data:
+        elements:
+          - weather_layer
+        classes:
+          - layer-visible
+          - layer-hidden
+        default_class: layer-hidden
+      
+
+  - name: Presence
+    elements:
+      - presence_button
+    action:
+      domain: class
+      service: toggle
+      data:
+        elements:
+          - presence_layer
+        classes:
+          - layer-visible
+          - layer-hidden
+        default_class: layer-hidden
+
+  - name: Control
+    elements:
+      - control_button
+    action:
+      domain: class
+      service: toggle
+      data:
+        elements:
+          - control_layer
+        classes:
+          - layer-visible
+          - layer-hidden
+        default_class: layer-hidden
+
+#   - name: thermostat_temp
+#          entities:
+#            - climate.downstairs
+#            - climate.upstairs
+#          text_template: '${entity.attributes.current_temperature ? entity.attributes.current_temperature : "undefined"}'
+#
+# The above text_template uses extended attributes from the climate.* objects to get current temperature.
+
+#        - name: text_states
+#          entities:
+#            - sensor.downstairs_thermostat_humidity
+#            - sensor.dark_sky_temperature
+#            - sensor.last_message
+#          text_template: '${entity.state ? entity.state.replace(/\s{2,}/g,"") : "undefined"}'
+#
+# The above text_template uses jQuery syntax to search and replace any instance of 2 consecutive (or more) spaces in a string of text.
+
+# sensor:
+  # - platform: template
+    # sensors:
+      # template_last_motion:
+        # friendly_name: 'Last Motion'
+        # value_template: >
+          # {%- set sensors = [states.binary_sensor.theatre_room, states.binary_sensor.back_hallway, states.binary_sensor.front_hallway, states.binary_sensor.kitchen] %}
+          # {% for sensor in sensors %}
+            # {% if as_timestamp(sensor.last_changed) == as_timestamp(sensors | map(attribute='last_changed') | max) %}
+              # {{ sensor.name }}
+            # {% endif %}
+          # {% endfor %}

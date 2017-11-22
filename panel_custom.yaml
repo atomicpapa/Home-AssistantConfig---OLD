@@ -2,10 +2,22 @@
     sidebar_title: Floorplan
     sidebar_icon: mdi:floor-plan
     url_path: floorplan
-    config: !include floorplan.yaml
+    config:
+      hide_app_toolbar:
+      config: /local/custom_ui/floorplan/floorplan.yaml
 
-  # - name: lcars
-    # sidebar_title: LCARS
-    # sidebar_icon: mdi:floor-plan
-    # url_path: lcars
-    # config: !include lcars-floorplan.yaml
+  - name: lcars
+    sidebar_title: LCARS
+    sidebar_icon: mdi:floor-plan
+    url_path: lcars
+    config:
+      hide_app_toolbar:
+      config: /local/custom_ui/floorplan/lcars.yaml
+
+  - name: girlspanel
+    sidebar_title: Girls Panel
+    sidebar_icon: mdi:floor-plan
+    url_path: girlspanel
+    config:
+      hide_app_toolbar:
+      config: /local/custom_ui/floorplan/girlspanel.yaml

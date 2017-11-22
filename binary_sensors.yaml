@@ -1,10 +1,6 @@
 - platform: iss
   show_on_map: false
   
-- platform: mqtt
-  state_topic: dummy/floorplan/sensor
-  name: Floorplan
-
 - platform: workday
   country: US
   excludes:

@@ -1,12 +1,6 @@
-
-
 sensor.sleep_minutesasleep:
   icon: mdi:sleep
   friendly_name: Minutes Asleep
-  
-binary_sensor.floorplan:
-  custom_ui_state_card: floorplan
-  config: !include floorplan.yaml
   
 binary_sensor.iss:
   icon: mdi:satellite-variant

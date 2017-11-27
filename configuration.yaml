@@ -14,6 +14,7 @@ homeassistant:
 # Enables the frontend
 frontend:
   themes: !include themes.yaml
+  javascript_version: latest
 
 # Enables configuration UI
 config:
@@ -35,12 +36,11 @@ updater:
 
 # Discover some devices automatically
 discovery:
-  ignore: 
-    # - google_cast
+  ignore:
     - philips_hue
 
 # Allows you to issue voice commands from the frontend in enabled browsers
-conversation:
+#conversation:
 
 # Enables support for tracking state changes over time
 history:
@@ -54,14 +54,13 @@ history:
       - zone
       
 recorder:
-  # db_url: !secret dburl
+  db_url: !secret dburl
   purge_interval: 2
   purge_keep_days: 14
   exclude:
     domains:
       - camera
       - group
-      - sensor
       - sun
       - updater
       - zone
@@ -118,7 +117,7 @@ light:
     host: 192.168.0.10
 
 mqtt:
-  broker: 192.168.0.31
+  broker: 192.168.0.13
   port: 1883
   username: !secret mqtt2user
   password: !secret mqtt2pass

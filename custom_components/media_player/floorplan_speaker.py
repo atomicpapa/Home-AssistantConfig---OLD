@@ -53,7 +53,7 @@ def setup_platform(hass, config, add_devices, discovery_info=None):
 
     """Set up an endpoint for the media player."""
     hass.http.register_view(device)
-
+    
     add_devices([device])
 
     return True
@@ -84,7 +84,7 @@ class FloorplanSpeakerDevice(MediaPlayerDevice, http.HomeAssistantView):
 
         if data is not None and not isinstance(data, dict):
             return self.json_message('Event data should be a JSON object', HTTP_BAD_REQUEST)
-
+            
         data = json.loads(body) if body else None
 
         _LOGGER.info("Received from Fully Kiosk: %s: %s", self.url, data)

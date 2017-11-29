@@ -102,10 +102,8 @@ google_assistant:
   project_id: !secret google_project
   client_id: !secret google_client
   access_token: !secret google_token
-  exposed_domains:
-    - switch
-    - light
-    - group
+  expose_by_default: false
+
 
 #Google Calendar
 google:

@@ -29,18 +29,18 @@
 
   action:
     - service: media_player.turn_on
-      entity_id: media_player.girls_panel
+      entity_id: media_player.muse
 
     - service: media_player.volume_set
       entity_id:
-        - media_player.girls_panel
+        - media_player.muse
       data:
         volume_level: 0.5
 
     - service: media_player.play_media
       data_template:
         entity_id:
-          - media_player.girls_panel
+          - media_player.muse
         media_content_id: >
           {% if now().strftime("%M")|int == 30 %}
           https://raw.githubusercontent.com/CCOSTAN/Home-AssistantConfig/master/sounds/cuckoo-clock-01.wav

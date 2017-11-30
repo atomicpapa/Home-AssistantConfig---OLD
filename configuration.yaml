@@ -14,7 +14,7 @@ homeassistant:
 # Enables the frontend
 frontend:
   themes: !include themes.yaml
-  javascript_version: latest
+  # javascript_version: latest
 
 # Enables configuration UI
 config:

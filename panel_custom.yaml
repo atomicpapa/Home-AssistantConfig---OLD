@@ -12,4 +12,12 @@
       url_path: girls
       config:
         hide_app_toolbar:
-        config: /local/custom_ui/floorplan/girlspanel.yaml
+        config: /local/custom_ui/floorplan/floorgirls.yaml
+
+    - name: floorplan
+      sidebar_title: Boys Room
+      sidebar_icon: mdi:home
+      url_path: boy
+      config:
+        hide_app_toolbar:
+        config: /local/custom_ui/floorplan/floorboy.yaml

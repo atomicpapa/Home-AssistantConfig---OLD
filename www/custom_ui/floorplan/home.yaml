@@ -9,6 +9,12 @@ defaults:
 rules:
 
   - entities:
+    - sensor.tomorrow
+    - sensor.day_after_tomorrow
+    - sensor.day_after_that
+    class_template: 'return "static-text";'
+
+  - entities:
       - input_boolean.guest_mode
       - input_boolean.kids_rooms
     states:
@@ -78,7 +84,9 @@ rules:
               
   - entities:
       - sensor.dark_sky_temperature
-      # - sensor.dark_sky_daily_high_temperature
+      - sensor.dark_sky_daily_high_temperature_1
+      - sensor.dark_sky_daily_high_temperature_2
+      - sensor.dark_sky_daily_high_temperature_3
       # - sensor.dark_sky_daily_low_temperature
     text_template: '${entity.state ? Math.ceil(entity.state) + "°": "undefined"}'
     class_template: 'return "static-temp";'

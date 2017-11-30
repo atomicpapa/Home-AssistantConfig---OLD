@@ -23,3 +23,14 @@
   state_topic: floorplan/girls_panel_plugged
   name: Girls Panel Plugged
   retain: true
+
+- platform: mqtt
+  state_topic: floorplan/boys_panel_motion
+  name: Boys Panel Motion
+  device_class: motion
+  retain: true
+
+- platform: mqtt
+  state_topic: floorplan/boys_panel_plugged
+  name: Boys Panel Plugged
+  retain: true

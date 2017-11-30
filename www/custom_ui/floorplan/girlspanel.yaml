@@ -21,6 +21,11 @@ rules:
         media_content_id: http://listen.djcmedia.com:80/americascountryhigh
         media_content_type: audio/mp4
 
+  - entities:
+    - sensor.chores_eleanor
+    - sensor.chores_lola
+    class_template: 'return "static-text";'
+  
   - entity: light.girls
     states:
       - state: 'on'

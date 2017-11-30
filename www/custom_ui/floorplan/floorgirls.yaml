@@ -10,7 +10,7 @@ fully_kiosk:
   - name: Girls Panel
     address: 84:d6:d0:0f:6c:87
     motion_sensor: binary_sensor.girls_panel_motion
-    # plugged_sensor: binary_sensor.clock_plugged
+    plugged_sensor: binary_sensor.girls_panel_plugged
     # screensaver_light: light.clock_screensaver
     media_player: media_player.girls_panel
 

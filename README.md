@@ -23,4 +23,4 @@ Additions coming quickly will include:
   <li>Kindle Fire tablets for user interfaces (more on that in a bit)</li>
   <li>2 Google Home Minis</li>
   <li>Door and Window Sensors</li>
-  <li>WiFi controlled LED strip lights inside and outside</li>
+  <li>WiFi controlled RGB LED strip lights inside and outside</li>

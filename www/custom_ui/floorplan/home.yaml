@@ -87,6 +87,9 @@ rules:
       - sensor.dark_sky_daily_high_temperature_1
       - sensor.dark_sky_daily_high_temperature_2
       - sensor.dark_sky_daily_high_temperature_3
+      - sensor.dark_sky_daily_low_temperature_1
+      - sensor.dark_sky_daily_low_temperature_2
+      - sensor.dark_sky_daily_low_temperature_3
       # - sensor.dark_sky_daily_low_temperature
     text_template: '${entity.state ? Math.ceil(entity.state) + "°": "undefined"}'
     class_template: 'return "static-temp";'

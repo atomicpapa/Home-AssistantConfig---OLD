@@ -736,46 +736,89 @@
 <text
            xml:space="preserve"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#00ffff;fill-opacity:1;stroke:none"
-           x="300.63965"
+           x="302.1026"
            y="1612.7397"
            id="sensor.dark_sky_daily_high_temperature_1"
            inkscape:label="#text6949"><tspan
              sodipodi:role="line"
              id="tspan6947"
-             x="300.63965"
+             x="302.1026"
              y="1612.7397">xx</tspan></text>
 <text
            xml:space="preserve"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#00ffff;fill-opacity:1;stroke:none"
-           x="353.25589"
+           x="354.71887"
            y="1612.7397"
            id="sensor.dark_sky_daily_high_temperature_2"
            inkscape:label="#text6949-2"><tspan
              sodipodi:role="line"
              id="tspan6947-7"
-             x="353.25589"
+             x="354.71887"
              y="1612.7397">xx</tspan></text>
 <text
            xml:space="preserve"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#00ffff;fill-opacity:1;stroke:none"
-           x="405.87213"
+           x="407.33511"
            y="1612.7397"
            id="sensor.dark_sky_daily_high_temperature_3"
            inkscape:label="#text6949-3"><tspan
              sodipodi:role="line"
              id="tspan6947-0"
-             x="405.87213"
+             x="407.33511"
              y="1612.7397">xx</tspan></text>
 <text
            xml:space="preserve"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#00ffff;fill-opacity:1;stroke:none"
-           x="233.79652"
+           x="233.49229"
            y="1612.6167"
            id="text6979"><tspan
              sodipodi:role="line"
              id="tspan6977"
-             x="233.79652"
+             x="233.49229"
              y="1612.6167">High</tspan></text>
+<text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#00ffff;fill-opacity:1;stroke:none"
+           x="233.49229"
+           y="1638.7238"
+           id="text6979-9"><tspan
+             sodipodi:role="line"
+             id="tspan6977-2"
+             x="233.49229"
+             y="1638.7238">Low</tspan></text>
+<text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#00ffff;fill-opacity:1;stroke:none"
+           x="302.1026"
+           y="1636.9919"
+           id="sensor.dark_sky_daily_low_temperature_1"
+           inkscape:label="#text6949"><tspan
+             sodipodi:role="line"
+             id="tspan6947-5"
+             x="302.1026"
+             y="1636.9919">xx</tspan></text>
+<text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#00ffff;fill-opacity:1;stroke:none"
+           x="407.33511"
+           y="1636.9919"
+           id="sensor.dark_sky_daily_low_temperature_3"
+           inkscape:label="#text6949"><tspan
+             sodipodi:role="line"
+             id="tspan6947-5-3"
+             x="407.33511"
+             y="1636.9919">xx</tspan></text>
+<text
+           xml:space="preserve"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:Arial;-inkscape-font-specification:Arial;letter-spacing:0px;word-spacing:0px;fill:#00ffff;fill-opacity:1;stroke:none"
+           x="354.71887"
+           y="1636.9919"
+           id="sensor.dark_sky_daily_low_temperature_2"
+           inkscape:label="#text6949"><tspan
+             sodipodi:role="line"
+             id="tspan6947-5-7"
+             x="354.71887"
+             y="1636.9919">xx</tspan></text>
 </g><text
          transform="scale(1.0063797,0.99366079)"
          class="st5 st3 st22"

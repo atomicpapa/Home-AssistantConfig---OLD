@@ -1,0 +1,19 @@
+## This is the main Floorplan configuration page.  To define the pages.
+## This one is called Floorgirls since this is for my daughters bedroom panel.
+## log_level: which can be set to one these: error, warning,  info or debug
+
+date_format: MMM-DD-YYYY
+log_level: debug
+
+fully_kiosk:
+
+  - name: Girls Panel
+    address: 84:d6:d0:0f:6c:87
+    motion_sensor: binary_sensor.girls_panel_motion
+    # plugged_sensor: binary_sensor.clock_plugged
+    # screensaver_light: light.clock_screensaver
+    media_player: media_player.girls_panel
+
+pages:
+  -  /local/custom_ui/floorplan/girlspanel.yaml
+  # -  /local/custom_ui/floorplan/clock_config.yaml

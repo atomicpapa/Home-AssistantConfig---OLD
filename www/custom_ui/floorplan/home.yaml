@@ -1,0 +1,169 @@
+page_id: home
+image: /local/custom_ui/floorplan/floorplan.svg
+stylesheet: /local/custom_ui/floorplan/floorplan.css
+
+defaults:
+  hover_over: false
+  more_info: false
+
+rules:
+
+  - entities:
+      - input_boolean.guest_mode
+      - input_boolean.kids_rooms
+    states:
+      - state: 'on'
+        class: 'freezer-closed'
+      - state: 'off'
+        class: 'freezer-open'
+    action:
+      service: homeassistant.toggle
+  
+  - entities:
+      - input_boolean.good_night
+      - input_boolean.responsibilities
+    action:
+      service: homeassistant.toggle
+
+  # - entity: sensor.freezer_door
+  #   states:
+  #     - state: 'open'
+  #       class: 'freezer-open'
+  #     - state: 'closed'
+  #       class: 'freezer-closed'
+
+  - entities:
+     - light.master_bedroom
+     - light.boy
+     - light.girls
+     - light.hall
+     - light.front_porch
+     - light.lego_lamp
+    states:
+      - state: 'on'
+        class: 'light-on'
+      - state: 'off'
+        class: 'light-off'
+    action:
+      service: light.toggle # This optional parameter allows you to use other services such as homeassistant.toggle like here.
+
+  - entity: camera.wu_doppler_weather
+    states:
+      - state: 'idle'
+        class: 'camera-idle'
+             
+  - entities:
+      - camera.front_yard
+      - camera.driveway
+      - camera.front_door
+      - camera.backyard_left
+      - camera.backyard_right
+    image_template: '${entity.attributes.entity_picture}'
+
+  - entities:
+      - media_player.gorgon
+      # - media_player.minotaur
+      - media_player.apollo
+      - media_player.muse
+      # - media_player.spotify
+    states:
+      - state: 'off'
+        class: 'squeezebox-off'
+      - state: 'idle'
+        class: 'squeezebox-off'
+      - state: 'paused'
+        class: 'squeezebox-off'
+      - state: 'playing'
+        class: 'squeezebox-on'
+              
+  - entities:
+      - sensor.dark_sky_temperature
+      # - sensor.dark_sky_daily_high_temperature
+      # - sensor.dark_sky_daily_low_temperature
+    text_template: '${entity.state ? Math.ceil(entity.state) + "°": "undefined"}'
+    class_template: 'return "static-temp";'
+
+  - entities:
+      - sensor.dark_sky_humidity
+    text_template: '${entity.state ? Math.ceil(entity.state) : "undefined"}'
+    class_template: 'return "static-temp";'
+    
+  - entities:
+      - sensor.dark_sky_hourly_summary
+      - sensor.dark_sky_minutely_summary
+    text_template: '${entity.state ? entity.state.replace(/\s{3,}/g,"") : "undefined"}'
+    class_template: 'return "static-text";'
+
+  - entities:
+      - sensor.ups
+      - sensor.fedex
+    text_template: '${entity.state ? entity.state.replace(/\s{3,}/g,"") : "undefined"}'
+    class_template: 'return "static-text";'
+
+  - entity: sensor.floorplan_date
+    text_template: '${entity.state ? entity.state : "undefined"}'
+    class_template: 'return "static-text-date";'
+
+  - entity: sensor.floorplan_time
+    text_template: '${entity.state ? entity.state : "undefined"}'
+    class_template: 'return "static-text-time";'
+
+  - entities:
+      - device_tracker.glenn_glenn
+      - device_tracker.eleanor_eleanor
+      - device_tracker.lola_lola
+      - device_tracker.eryin_eryin
+    text_template: '${entity.state ? entity.state.replace("not_home", "away") : "undefined"}'
+    states:
+      - state: 'home'
+        class: 'text-home'
+      - state: 'not_home'
+        class: 'text-away'
+      - state: 'SST'
+        class: 'text-home'
+      - state: 'KSAT'
+        class: 'text-home'
+      - state: 'GGs'
+        class: 'text-home'
+      - state: 'Allys'
+        class: 'text-home'
+      - state: 'DMC510'
+        class: 'text-home'
+      - state: 'DMC430'
+        class: 'text-home'
+      - state: 'Garner'
+        class: 'text-home'
+       
+  # - element: weather_button
+  #   action:
+  #     service: floorplan.class_toggle
+  #     data:
+  #       elements:
+  #         - weather_layer
+  #       classes:
+  #         - layer-visible
+  #         - layer-hidden
+  #       default_class: layer-hidden
+      
+
+  # - element: presence_button
+  #   action:
+  #     service: floorplan.class_toggle
+  #     data:
+  #       elements:
+  #         - presence_layer
+  #       classes:
+  #         - layer-visible
+  #         - layer-hidden
+  #       default_class: layer-hidden
+
+  # - element: control_button
+  #   action:
+  #     service: floorplan.class_toggle
+  #     data:
+  #       elements:
+  #         - control_layer
+  #       classes:
+  #         - layer-visible
+  #         - layer-hidden
+  #       default_class: layer-hidden

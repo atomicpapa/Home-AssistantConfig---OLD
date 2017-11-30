@@ -1,0 +1,18 @@
+log_level: warning
+date_format: DD-MMM-YYYY
+
+# 1. In Fully Kiosk Browser, add outward facing web address for HASS instance so tablet is usable anywhere in the world.  
+# 2. Turn on "Enable Website Integration" in "Settings > Other" within Fully Kiosk Browser.  
+# 3. Copy WiFi MAC Address from tablet into "address:" below.
+
+fully_kiosk:
+
+#   - name: Bedroom Tablet
+#     address: 84:d6:d0:0f:6c:87 # WiFi MAC address of device running Fully Kiosk browser
+#     motion_sensor: binary_sensor.entry_motion
+# #    plugged_sensor: binary_sensor.entry_plugged
+# #    screensaver_light: light.entry_screensaver
+#     media_player: media_player.bedroom_tablet
+
+pages:
+  -  /local/custom_ui/floorplan/home.yaml

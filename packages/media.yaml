@@ -56,8 +56,10 @@ media_player:
     client_secret: !secret spotifysecret
   # - platform: firetv
   #   host: 192.168.0.13
+  # - platform: floorplan_speaker
+  #   name: Bedroom Tablet
   - platform: floorplan_speaker
-    name: Bedroom Tablet
+    name: Girls Panel
 
 # Sensors -----------------------------------------------------------------------------
 

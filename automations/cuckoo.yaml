@@ -12,35 +12,35 @@
       minutes: 30
       seconds: 00
 
-  condition:
-    - condition: time
-      after: '09:30:00'
-      before: '21:30:00'
-    - condition: state
-      entity_id: group.weasley_clock
-      state: 'home'
-    - condition: template
-      value_template: >
-        {% if is_state('media_player.muse', 'playing') %}
-          false
-        {% else %}
-          true
-        {% endif %}
+  # condition:
+  #   - condition: time
+  #     after: '09:30:00'
+  #     before: '21:30:00'
+  #   - condition: state
+  #     entity_id: group.weasley_clock
+  #     state: 'home'
+  #   - condition: template
+  #     value_template: >
+  #       {% if is_state('media_player.muse', 'playing') %}
+  #         false
+  #       {% else %}
+  #         true
+  #       {% endif %}
 
   action:
     - service: media_player.turn_on
-      entity_id: media_player.muse
+      entity_id: media_player.girls_panel
 
     - service: media_player.volume_set
       entity_id:
-        - media_player.muse
+        - media_player.girls_panel
       data:
-        volume_level: 0.22
+        volume_level: 0.5
 
     - service: media_player.play_media
       data_template:
         entity_id:
-          - media_player.muse
+          - media_player.girls_panel
         media_content_id: >
           {% if now().strftime("%M")|int == 30 %}
           https://raw.githubusercontent.com/CCOSTAN/Home-AssistantConfig/master/sounds/cuckoo-clock-01.wav

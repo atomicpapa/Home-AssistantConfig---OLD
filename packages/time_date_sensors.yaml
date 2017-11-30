@@ -56,3 +56,27 @@ sensor:
         friendly_name: 'Clock Date'
         value_template: >-
           {{now().strftime("%B")}} {{now().strftime("%d")}} {{now().year}}
+
+  - platform: template
+    scan_interval: 30000
+    sensors:
+      tomorrow:
+        friendly_name: 'Tomorrow'
+        value_template: >-
+          {{ (as_timestamp(now()) + 86400) | timestamp_custom("%a") }}
+
+  - platform: template
+    scan_interval: 30000
+    sensors:
+      day_after_tomorrow:
+        friendly_name: 'Day After Tomorrow'
+        value_template: >-
+          {{ (as_timestamp(now()) + 172800) | timestamp_custom("%a") }}
+
+  - platform: template
+    scan_interval: 30000
+    sensors:
+      day_after_that:
+        friendly_name: 'Day After That'
+        value_template: >-
+          {{ (as_timestamp(now()) + 259200) | timestamp_custom("%a") }}

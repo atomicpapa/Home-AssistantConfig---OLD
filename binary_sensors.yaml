@@ -6,3 +6,15 @@
   excludes:
     - sat
     - sun
+
+- platform: mqtt
+  state_topic: floorplan/bedroom_tablet_motion
+  name: Bedroom Tablet Motion
+  device_class: motion
+  retain: true
+
+- platform: mqtt
+  state_topic: floorplan/girls_panel_motion
+  name: Girls Panel Motion
+  device_class: motion
+  retain: true

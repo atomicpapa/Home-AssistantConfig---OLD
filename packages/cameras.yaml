@@ -10,7 +10,7 @@ camera:
     still_image_url: https://icons.wxug.com/data/weather-maps/radar/united-states/san-antonio-texas-region-current-radar.gif
     name: WU Doppler Weather
     
-  # - platform: zoneminder
+  - platform: zoneminder
 
   # - platform: generic
   #   name: worldtime

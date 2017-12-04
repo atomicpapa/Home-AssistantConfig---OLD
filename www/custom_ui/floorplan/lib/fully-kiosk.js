@@ -1,6 +1,6 @@
 /*
   Floorplan Fully Kiosk for Home Assistant
-  Version: 1.0.7.34
+  Version: 1.0.7.37
   By Petar Kozul
   https://github.com/pkozul/ha-floorplan
 */
@@ -14,13 +14,14 @@
 
   class FullyKiosk {
     constructor(floorplan) {
-      this.version = '1.0.7.34';
+      this.version = '1.0.7.37';
 
       this.floorplan = floorplan;
       this.authToken = (window.localStorage && window.localStorage.authToken) ? window.localStorage.authToken : '';
 
       this.fullyInfo = {};
       this.fullyState = {};
+      this.iBeacons = {};
     }
 
     init() {
@@ -103,12 +104,12 @@
     }
 
     addFullyEventHandlers() {
-      window['onFullyEvent'] = (e, a, b, c, d) => {
-        let event = new Event(e);
-        event['a'] = a;
-        event['b'] = a;
-        event['c'] = a;
-        event['d'] = a;
+      window['onFullyEvent'] = (e) => { window.dispatchEvent(new Event(e)); }
+
+      window['onFullyIBeaconEvent'] = (e, uuid, major, minor, distance) => {
+        let event = new CustomEvent(e, {
+          detail: { uuid: uuid, major: major, minor: minor, distance: distance, timestamp: new Date() }
+        });
         window.dispatchEvent(event);
       }
 
@@ -142,7 +143,7 @@
       fully.bind('onBatteryLevelChanged', 'onFullyEvent("fully.onBatteryLevelChanged");')
       fully.bind('onMotion', 'onFullyEvent("fully.onMotion");') // Max. one per second
       fully.bind('onMovement', 'onFullyEvent("fully.onMovement");')
-      fully.bind('onIBeacon', 'onFullyEvent("fully.onIBeacon", "$id1", "$id2", "$id3", $distance);')
+      fully.bind('onIBeacon', 'onFullyIBeaconEvent("fully.onIBeacon", "$id1", "$id2", "$id3", $distance);')
     }
 
     onScreenOn() {
@@ -209,7 +210,7 @@
     }
 
     onMovement() {
-      this.logInfo('FULLY_KIOSK', 'Movement detected');
+      this.logDebug('FULLY_KIOSK', 'Movement detected');
 
       if (this.fullyInfo.supportsGeolocation) {
         this.updateCurrentPosition()
@@ -220,7 +221,17 @@
     }
 
     onIBeacon(e) {
-      this.logInfo('FULLY_KIOSK', `iBeacon (${JSON.stringify(e)}) (${a}, ${b}, ${c}, ${d})`);
+      let iBeacon = e.detail;
+
+      this.logDebug('FULLY_KIOSK', `iBeacon (${JSON.stringify(iBeacon)})`);
+
+      let iBeaconId = iBeacon.uuid;
+      iBeaconId += (iBeacon.major ? `_${iBeacon.major}` : '');
+      iBeaconId += (iBeacon.minor ? `_${iBeacon.minor}` : '');
+
+      this.iBeacons[iBeaconId] = iBeacon;     
+      
+      this.sendMotionState();
     }
 
     sendMotionState() {
@@ -266,7 +277,7 @@
     newPayload(state) {
       this.updateFullyState();
 
-      return {
+      let payload = {
         state: state,
         brightness: this.fullyState.screenBrightness,
         attributes: {
@@ -278,14 +289,17 @@
           device_id: this.fullyInfo.deviceId,
           battery_level: this.fullyState.batteryLevel,
           screen_brightness: this.fullyState.screenBrightness,
-          latitude: this.position && this.position.coords.latitude,
-          longitude: this.position && this.position.coords.longitude,
           _isScreenOn: this.fullyState.isScreenOn,
           _isPluggedIn: this.fullyState.isPluggedIn,
           _isMotionDetected: this.fullyState.isMotionDetected,
           _isScreensaverOn: this.fullyState.isScreensaverOn,
+          _latitude: this.position && this.position.coords.latitude,
+          _longitude: this.position && this.position.coords.longitude,
+          _iBeacons: JSON.stringify(Object.keys(this.iBeacons).map(iBeaconId => this.iBeacons[iBeaconId])),
         }
       };
+      
+      return payload;
     }
 
     onAudioPlay() {
@@ -463,7 +477,7 @@
       return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            this.logInfo('FULLY_KIOSK', `Current location: latitude: ${position.coords.latitude}, longitude: ${position.coords.longitude}`);
+            this.logDebug('FULLY_KIOSK', `Current location: latitude: ${position.coords.latitude}, longitude: ${position.coords.longitude}`);
             this.position = position;
             resolve(position);
           },

@@ -45,6 +45,7 @@ speech_engine:
               "Turning off the outside lights.  It's getting light out there",
               'Time to turn off the outside lights. I've got it."
               ] | random }}
+          {%- endmacro -%}
           {%- macro meds() -%}
               {{"Everyone, do not forget your meds, especially Lola and William!" }}
           {%- endmacro -%}
@@ -148,6 +149,9 @@ speech_engine:
             {%- endif -%}
             {%- if call_dark_outside == 1 -%}
               {{dark_outside()}}
+            {%- endif -%}
+            {%- if call_light_outside == 1 -%}
+              {{light_outside()}}
             {%- endif -%}
             {%- if call_responsibilities_lola == 1 -%}
               {{responsibilities_lola()}}

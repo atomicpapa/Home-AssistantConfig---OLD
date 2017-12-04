@@ -38,6 +38,13 @@ speech_engine:
               "Time to turn on the front lights. I will take care of it."
               ] | random }}
           {%- endmacro -%}
+          {% macro light_outside() %}
+              {{ [
+              "The sun is coming up.  I don't think we need the outside lights on now.  Don't worry, I've got it.",
+              "Here comes the sun again.  I'll turn off the porch light.",
+              "Turning off the outside lights.  It's getting light out there",
+              'Time to turn off the outside lights. I've got it."
+              ] | random }}
           {%- macro meds() -%}
               {{"Everyone, do not forget your meds, especially Lola and William!" }}
           {%- endmacro -%}
@@ -94,7 +101,7 @@ speech_engine:
               {% endif %}
           {%- endmacro -%}
           {%- macro iss() -%}
-              {%- if is_state('binary_sensor.iss', 'on') -%}
+              {% if is_state('binary_sensor.iss', 'on') %}
                 Here is something interesting.  The international space station is above us now.  There are {{ states.binary_sensor.iss.attributes["number_of_people_in_space"]}} people in space right now.
                 {{outside_weather()}}
               {%- endif -%}
@@ -107,7 +114,7 @@ speech_engine:
           {%- endmacro -%}
           {%- macro moon() -%}
             {%- if states.sensor.moon.state == 'Full moon' -%}
-            Check out the full moon tonight!
+              Check out the full moon tonight!
             {%- endif -%}
           {%- endmacro %}
           {#  ********************************************* #}

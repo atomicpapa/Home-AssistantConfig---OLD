@@ -43,3 +43,10 @@
 #     - "activities/steps"
 #     - "sleep/minutesAsleep"
 #     - "devices/battery"
+
+- platform: mqtt_room
+  device_id: a445425b_c718_461c_a876_aa647abd99d4
+  name: 'Cool device'
+  state_topic: 'room_presence'
+  timeout: 5
+  away_timeout: 60

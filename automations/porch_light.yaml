@@ -32,7 +32,10 @@
     event: sunrise
     offset: "00:30:00"
   action:
-    service: light.turn_off
-    entity_id: light.front_porch
-    data:
-      transition: 60
+    - service: script.speech_engine
+      data:
+        call_light_outside: 1
+    - service: light.turn_off
+      entity_id: light.front_porch
+      data:
+        transition: 60

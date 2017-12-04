@@ -29,6 +29,8 @@ http:
   trusted_networks:
     - 192.168.0.0/24
     - 127.0.0.1
+    - 192.168.0.24
+    - 192.168.0.75
 
 updater:
   # Optional, allows Home Assistant developers to focus on popular components.

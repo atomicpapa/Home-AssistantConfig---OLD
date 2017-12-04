@@ -7,8 +7,6 @@
   trigger:
     - platform: state
       entity_id:
-        - device_tracker.eleanor_eleanor
-        - device_tracker.lola_lola
         - device_tracker.glenn_glenn
         - device_tracker.eryin_eryin
       to: 'home'
@@ -25,7 +23,32 @@
           "Guess who is home?" ~ person +" is!",
           person + " is now in the house.",
           "Welcome Home " ~ person + ".  We have missed you. Or at least the fish did.",
-          "Our home is now complete, Rest your head and relax your feet! Welcome Back " ~ person,
+          "Hey there " ~ person + " Welcome Home!"
+          ] | random }}
+          {%- endmacro -%}
+          "{{greeting_sentence(person)}}"
+        call_no_announcement: 1
+
+- alias: 'Eleanor Greeting'
+
+  trigger:
+    - platform: state
+      entity_id:
+        - device_tracker.eleanor_eleanor
+      to: 'home'
+      for: '00:01:00'
+
+  action:
+    - service: script.speech_engine
+      data_template:
+        personarriving: >
+          {% set person = trigger.entity_id.split('.')[1].split('_')[0] %}
+          {%- macro greeting_sentence(person) -%}
+          {{ [
+          "Welcome back home " ~ person,
+          "Guess who is home?" ~ person +" is!",
+          person + " is now in the house.",
+          "Welcome Home " ~ person + ".  We have missed you. Or at least the fish did.",
           "Life is like a song, you’re back where you belong. Welcome home " ~ person,
           "Hey there " ~ person + " Welcome Home!",
           "Knock Knock. Who is There? "   ~ person +" is!",
@@ -35,19 +58,37 @@
           ] | random }}
           {%- endmacro -%}
           "{{greeting_sentence(person)}}"
+        call_responsibilities_eleanor: 1
         call_no_announcement: 1
 
-# Currently not working correctly
+- alias: 'Lola Greeting'
 
-        call_responsibilities_lola: "{{ 1 if trigger.entity_id.split('.')[1].split('_')[0] == 'lola' else 0 }}"
-          # {% if trigger.entity_id.split('.')[1].split('_')[0] == 'lola' &}
-          #   1
-          # {% else %}
-          #   0
-          # {% endif %}
-        call_responsibilities_eleanor: "{{ 1 if trigger.entity_id.split('.')[1].split('_')[0] == 'eleanor' else 0 }}"
-          # {% if trigger.entity_id.split('.')[1].split('_')[0] == 'eleanor' %}
-          #   1
-          # {% else %}
-          #   0
-          # {% endif %}
+  trigger:
+    - platform: state
+      entity_id:
+        - device_tracker.lola_lola
+      to: 'home'
+      for: '00:03:00'
+
+  action:
+    - service: script.speech_engine
+      data_template:
+        personarriving: >
+          {% set person = trigger.entity_id.split('.')[1].split('_')[0] %}
+          {%- macro greeting_sentence(person) -%}
+          {{ [
+          "Welcome back home " ~ person,
+          "Guess who is home?" ~ person +" is!",
+          person + " is now in the house.",
+          "Welcome Home " ~ person + ".  We have missed you. Or at least the fish did.",
+          "Life is like a song, you’re back where you belong. Welcome home " ~ person,
+          "Hey there " ~ person + " Welcome Home!",
+          "Knock Knock. Who is There? "   ~ person +" is!",
+          person ~ "! You are home!",
+          "I know a secret! "  ~ person +" is home!",
+          "Everyone hide! " ~ person +" is home!"
+          ] | random }}
+          {%- endmacro -%}
+          "{{greeting_sentence(person)}}"
+        call_responsibilities_lola: 1
+        call_no_announcement: 1

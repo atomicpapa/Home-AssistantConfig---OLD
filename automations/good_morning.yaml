@@ -31,4 +31,7 @@
         call_pollen: 1
         call_family_calendar: 1
         call_meds: 1
-        # call_responsibilities: 1
+    - service: script.tweet_engine
+      data_template:
+        tweet: >
+          "My family is preparing for their day, so I just let them know about the weather, pollen levels and agenda from their calendar.  I love helping start their day off right."

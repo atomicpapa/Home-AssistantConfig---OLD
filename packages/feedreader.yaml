@@ -24,15 +24,13 @@ automation:
           data:
             url: "https://hasspodcast.io/"
 
-      # - service: notify.html5
-      #   data_template:
-      #     title: "New HA Podcast available"
-      #     message: "New HA Podcast - {{ as_timestamp(now()) | timestamp_custom('%I:%M:%S %p %d%b%Y', true) }}"
-      #     data:
-      #       url: "https://hasspodcast.io/"
-
       - service: persistent_notification.create
         data_template:
           title: "New HA Podcast available"
           message: "New Podcast available - {{ as_timestamp(now()) | timestamp_custom('%I:%M:%S %p %d%b%Y', true) }}"
           notification_id: "update_available"
+
+      - service: script.tweet_engine
+        data_template:
+          tweet: >
+            "A new Home Assistant Podcast is now available at http://hasspodcast.io"

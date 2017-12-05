@@ -393,32 +393,6 @@ automation:
         entity_id: media_player.whole_house
         data_template:
           message: "{{ trigger.to_state.attributes.friendly_name }}'s phone battery is less than: {{ trigger.to_state.attributes.battery }}%."
-      # - service: mqtt.publish
-        # data_template:
-          # topic: /dump/numeric_state
-          # retain: false
-          # payload: >-
-            # {% macro dumpState(type, stateObj) %}
-              # type ~ ".state: " {{ stateObj.state }}{{- "\n" -}}
-              # type ~ ".entity_id: " {{ stateObj.entity_id }}{{- "\n" -}}
-              # type ~ ".domain: " {{ stateObj.domain }}{{- "\n" -}}
-              # type ~ ".object_id: " {{ stateObj.object_id }}{{- "\n" -}}
-              # type ~ ".name: " {{ stateObj.name }}{{- "\n" -}}
-              # type ~ ".state.last_updated: "{{ stateObj.state.last_updated }}{{- "\n" -}}
-              # type ~ ".state.last_changed: " {{ stateObj.state.last_changed }}{{- "\n" -}}
-              # type ~ ".state.attributes: "{{- "\n" -}}
-              # {%- for attrib in stateObj.attributes | sort() %}
-                # {%- if attrib is defined %} 
-                  # {{attrib}}: {{ item.attributes[attrib] }}{{- "\n" -}}
-                # {%- endif %}
-              # {% endfor %}
-            # {% endmacro %}
-            # trigger.platform: {{ trigger.platform }}{{- "\n" -}}
-            # trigger.entity_id: {{ trigger.entity_id }}{{- "\n" -}}
-            # trigger.below: {{trigger.below }}{{- "\n" -}}
-            # trigger.above: {{ trigger.above }}{{- "\n" -}}
-            # trigger.from_state Attributes: {{ dumpState("trigger.from_state.state", trigger.from_state) }} {{- "\n" -}}
-            # trigger.to_state Attributes: {{ dumpState("trigger.to_state.state", trigger.to_state) }}
 
 # ###############################################################################
 # # Automation: Notify of Sensor's Low Battery

@@ -14,6 +14,10 @@
       data:
         transition: 60
         brightness: 254
+    - service: script.tweet_engine
+      data_template:
+        tweet: >
+          "My family doesn't have to worry about turning on outside lights when it gets dark.  I just turned on the lights for them.  I'm cool like that."
 
 - alias: Porch Light Dim at 9pm
   trigger:
@@ -39,3 +43,7 @@
       entity_id: light.front_porch
       data:
         transition: 60
+    - service: script.tweet_engine
+      data_template:
+        tweet: >
+          "The sun is up so it's time to turn the outside lights off.  Lucky for my family, I have them covered!"

@@ -17,14 +17,14 @@ notify_engine:
     #   data_template: {"event":"notify_engine", "value1":"{{ value1 }}", "value2":"{{ value2 }}", "value3":"{{ value3 }}"}
 
     - service_template: >
-          {% if who == 'stacey' %}
-            notify.ios_staceys_iphone
-          {% elif who == 'carlo' %}
-            notify.ios_carlo_6s
-          {% elif who == 'parents' %}
-            notify.ios_parents
+          {% if who == 'twitter' %}
+            notify.Atomic_HA
+          {% elif who == 'glenn' %}
+            notify.join
+          {% elif who == 'eryin' %}
+            notify.eryin
           {% else %}
-            notify.ios_family
+            notify.family
           {% endif %}
       data_template:
         message: "{{ value1 }} {{ value2 }} {{ value3 }}"

@@ -43,7 +43,7 @@ speech_engine:
               "The sun is coming up.  I don't think we need the outside lights on now.  Don't worry, I've got it.",
               "Here comes the sun again.  I'll turn off the porch light.",
               "Turning off the outside lights.  It's getting light out there",
-              'Time to turn off the outside lights. I've got it."
+              "Time to turn off the outside lights. I've got it."
               ] | random }}
           {%- endmacro -%}
           {%- macro meds() -%}

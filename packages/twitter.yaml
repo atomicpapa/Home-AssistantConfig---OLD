@@ -13,12 +13,12 @@
 #Random number - https://www.random.org/integers/?num=1&min=1&max=10&col=1&base=10&format=plain&rnd=new
 
 notify:
-  - name: BearStoneHA
+  - name: Atomic_HA
     platform: twitter
-    consumer_key: !secret twitter_consumer_key
-    consumer_secret: !secret twitter_consumer_secret
-    access_token: !secret twitter_access_token
-    access_token_secret: !secret twitter_access_token_secret
+    consumer_key: !secret twitterconsumerkey
+    consumer_secret: !secret twitterconsumersecret
+    access_token: !secret twitteraccesstoken
+    access_token_secret: !secret twitteraccesssecret
 
 automation:
   - alias: 'New Twitter follower!'
@@ -30,7 +30,7 @@ automation:
       - service: media_player.play_media
         data_template:
           entity_id:
-            - media_player.livingroomCC
+            - media_player.muse
           media_content_id: "https://raw.githubusercontent.com/CCOSTAN/Home-AssistantConfig/master/sounds/twitter-chirp.mp3"
           media_content_type: audio/mp4
 
@@ -48,28 +48,28 @@ automation:
 ##  Good night tweet
 ######################################################################
 
-  - alias: 'Good Night tweet'
-    hide_entity: True
-    trigger:
-      - platform: state
-        entity_id: group.bed
-        to: 'on'
-        from: 'off'
-    condition:
-      - condition: state
-        entity_id: sun.sun
-        state: 'below_horizon'
-    action:
-      - service: script.tweet_engine
-        data_template:
-          tweet: >
-            {{ [
-            "Bed status: {{states.sensor.sleep_number_bed.state }} Family status: In Bed.",
-            "Shutting down all the lights inside since it is time for bed.",
-            "Lights out.  Get a good nights rest.",
-            "Tonights @SleepNumber number is {{states.sensor.sleepnumber_carlo_carlo_sleepnumber.state}}. Time for bed.",
-            "The @SleepNumber bed tells me when everyone is in bed & time for lights out."
-            ] | random + "(http://amzn.to/2kxdXXI)"}}
+  # - alias: 'Good Night tweet'
+  #   hide_entity: True
+  #   trigger:
+  #     - platform: state
+  #       entity_id: group.bed
+  #       to: 'on'
+  #       from: 'off'
+  #   condition:
+  #     - condition: state
+  #       entity_id: sun.sun
+  #       state: 'below_horizon'
+  #   action:
+  #     - service: script.tweet_engine
+  #       data_template:
+  #         tweet: >
+  #           {{ [
+  #           "Bed status: {{states.sensor.sleep_number_bed.state }} Family status: In Bed.",
+  #           "Shutting down all the lights inside since it is time for bed.",
+  #           "Lights out.  Get a good nights rest.",
+  #           "Tonights @SleepNumber number is {{states.sensor.sleepnumber_carlo_carlo_sleepnumber.state}}. Time for bed.",
+  #           "The @SleepNumber bed tells me when everyone is in bed & time for lights out."
+  #           ] | random + "(http://amzn.to/2kxdXXI)"}}
 
 
 # {% macro moon() -%}

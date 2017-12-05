@@ -2,7 +2,7 @@
 <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 
 <svg
-   xmlns:ns="&amp;#38;ns_ai;"
+   xmlns:ns="&amp;#38;#38;ns_ai;"
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -36,8 +36,8 @@
      inkscape:window-height="1001"
      id="namedview160"
      showgrid="false"
-     inkscape:zoom="1.367077"
-     inkscape:cx="507.2772"
+     inkscape:zoom="1.1334457"
+     inkscape:cx="468.23695"
      inkscape:cy="337.75321"
      inkscape:window-x="-9"
      inkscape:window-y="-9"
@@ -436,7 +436,7 @@
            inkscape:transform-center-y="17.520888"
            inkscape:transform-center-x="-29.153997"
            class="st8"
-           points="345.2,1743.4 345.3,1752.9 295.3,1753.5 295.2,1744 "
+           points="295.2,1744 345.2,1743.4 345.3,1752.9 295.3,1753.5 "
            style="fill:#e6e6e6" /><rect
            id="rect4568-2-31"
            x="308.79999"
@@ -690,7 +690,7 @@
            id="text145"
            style="font-size:18.66670036px;font-family:ArialMT;fill:#0000ff">Good Night</text>
 <path
-           id="input_boolean.kids_rooms"
+           id="group.kids_rooms"
            inkscape:label="Kids Rooms"
            class="st0"
            d="m 1073,1684.1 h 138.2 c 3.9,0 7,3.2 7,7 v 23.9 c 0,3.9 -3.2,7 -7,7 H 1073 c -3.9,0 -7,-3.2 -7,-7 v -23.9 c 0,-3.8 3.2,-7 7,-7 z"

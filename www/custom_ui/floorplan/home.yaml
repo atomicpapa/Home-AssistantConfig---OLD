@@ -16,7 +16,7 @@ rules:
 
   - entities:
       - input_boolean.guest_mode
-      - input_boolean.kids_rooms
+      - group.kids_rooms
     states:
       - state: 'on'
         class: 'freezer-closed'

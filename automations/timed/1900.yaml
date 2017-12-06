@@ -10,3 +10,8 @@
     - service: script.speech_engine
       data:
         call_weather_tomorrow: 1
+
+    - service: script.tweet_engine
+      data_template:
+        tweet: >
+        "My family needs to prepare for tomorrow, so I just gave them the weather forecast for the next 24 hours. (http://darksky.net)"

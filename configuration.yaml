@@ -79,7 +79,7 @@ logbook:
       - zone
 
 logger:
-  default: error
+  default: info
   logs:
     requests.packages.urllib3: critical
     homeassistant.components.camera: fatal

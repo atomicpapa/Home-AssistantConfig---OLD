@@ -40,8 +40,7 @@ automation:
             {{ [
             "Hey @{{Value1}}! Enjoy the Journey!",
             "I have a new follower (@{{Value1}}), I just sounded a chirp in the house.",
-            "Each new follower like (@{{Value1}}) makes me sound a chirp in the house.",
-            "If the AMP (http://amzn.to/2j18dlT) is on & I get a new follower, I sound a chirp! Like (@{{Value1}})!"
+            "Each new follower like (@{{Value1}}) makes me sound a chirp in the house."
             ] | random + "#follome"}}
 
   - alias: full_moon
@@ -102,4 +101,3 @@ automation:
             "I can look up RIGHT NOW and see the ISS.",
             "The International Space Station Rocks! And it's above me RIGHT NOW!"
             ] | random + "#Space"}}
-            

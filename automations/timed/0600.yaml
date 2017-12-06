@@ -1,8 +1,8 @@
 ######################################################################
-##  Stuff that needs to happen at 06:30am.
+##  Stuff that needs to happen at 06:00am.
 ######################################################################
 
-- alias: 'Timed 640.'
+- alias: 'Timed 0600.'
   trigger:
     - platform: time
       at: '06:00:00'

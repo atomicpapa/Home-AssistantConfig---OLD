@@ -1,6 +1,6 @@
 /*
   Floorplan Fully Kiosk for Home Assistant
-  Version: 1.0.7.40
+  Version: 1.0.7.42
   By Petar Kozul
   https://github.com/pkozul/ha-floorplan
 */
@@ -14,7 +14,7 @@
 
   class FullyKiosk {
     constructor(floorplan) {
-      this.version = '1.0.7.40';
+      this.version = '1.0.7.42';
 
       this.floorplan = floorplan;
       this.authToken = (window.localStorage && window.localStorage.authToken) ? window.localStorage.authToken : '';
@@ -346,10 +346,13 @@
         uuid: iBeacon.uuid,
         major: iBeacon.major,
         minor: iBeacon.minor,
-        minor: iBeacon.distance,
       };
 
-      this.PostToHomeAssistant(`/api/services/device_tracker/see`, payload);
+      //this.PostToHomeAssistant(`/api/services/device_tracker/see`, payload);
+
+      let fullyId = this.fullyInfo.macAddress.replace(/[:-]/g, "_");
+      payload = { topic: `room_presence/${fullyId}`, payload: { id: iBeacon.uuid, distance: iBeacon.distance } };
+      this.floorplan.hass.callService('mqtt', 'publish', payload);
     }
 
     newPayload(state) {

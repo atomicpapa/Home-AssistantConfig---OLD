@@ -88,6 +88,7 @@ logger:
     homeassistant.components.sensor.nzbget: critical
     homeassistant.components.light.hue: critical
     script: info
+    sensor: info
 
 # Track the sun
 sun:

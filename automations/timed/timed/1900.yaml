@@ -1,0 +1,12 @@
+#Weather forecast for the next 24 hours daily at 7pm
+
+- alias: Weather Tomorrow
+
+  trigger:
+    platform: time
+    at: '19:00:00'
+
+  action:
+    - service: script.speech_engine
+      data:
+        call_weather_tomorrow: 1

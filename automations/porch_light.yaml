@@ -17,7 +17,7 @@
     - service: script.tweet_engine
       data_template:
         tweet: >
-          "My family doesn't have to worry about turning on outside lights when it gets dark.  I just turned on the lights for them.  I'm cool like that."
+          "It's {{now().strftime("%-I")}}:{{now().strftime("%M")}} {{now().strftime("%p")}} and getting dark. I just turned on the lights for my family.  I'm cool like that."
 
 - alias: Porch Light Dim at 9pm
   trigger:

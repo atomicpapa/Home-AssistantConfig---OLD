@@ -26,3 +26,8 @@
         call_pollen: 1
         call_family_calendar: 1
         call_responsibilities: 1
+
+    - service: script.tweet_engine
+      data_template:
+        tweet: >
+          "Time for the kids to do their chores, so I just clued them in!  I'm sure they love me for it!"

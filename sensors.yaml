@@ -45,8 +45,8 @@
 #     - "devices/battery"
 
 - platform: mqtt_room
-  device_id: a445425b_c718_461c_a876_aa647abd99d4
-  name: 'Cool device'
+  device_id: A445425BC718461CA876AA647ABD99D5
+  name: 'Nexus Beacon'
   state_topic: 'room_presence'
   timeout: 5
   away_timeout: 60

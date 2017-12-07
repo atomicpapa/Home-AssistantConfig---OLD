@@ -11,8 +11,10 @@ fully_kiosk:
     address: 74:75:48:39:a0:f8
     motion_sensor: binary_sensor.boys_panel_motion
     plugged_sensor: binary_sensor.boys_panel_plugged
-    # screensaver_light: light.clock_screensaver
+    screensaver_light: light.clock_screensaver
     media_player: media_player.boys_panel
+    presence_detection:
+      location_name: Boys Room
 
 pages:
   -  /local/custom_ui/floorplan/boyspanel.yaml

@@ -79,7 +79,7 @@ logbook:
       - zone
 
 logger:
-  default: info
+  default: error
   logs:
     requests.packages.urllib3: critical
     homeassistant.components.camera: fatal
@@ -87,8 +87,8 @@ logger:
     homeassistant.helpers.entity: critical
     homeassistant.components.sensor.nzbget: critical
     homeassistant.components.light.hue: critical
+    custom_components.sensor.http_room: info
     script: info
-    sensor: info
 
 # Track the sun
 sun:

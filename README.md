@@ -16,6 +16,7 @@ Above are the various configuration files for my Home Assistant (HASS) setup.  C
 Hardware currently connected to HASS includes:
 
 <ul>
+  <li>Kindle Fire tablets for user interfaces (more on that in a bit)</li>
   <li>5 IP cameras (cheap, chinese clones)</li>
   <li>2 Google Homes</li>
   <li>Phillips Hue Hub</li>
@@ -23,7 +24,6 @@ Hardware currently connected to HASS includes:
 
 Additions coming quickly will include:
 <ul>
-  <li>Kindle Fire tablets for user interfaces (more on that in a bit)</li>
   <li>2 Google Home Minis</li>
   <li>Door and Window Sensors</li>
   <li>WiFi controlled RGB LED strip lights inside and outside</li>
@@ -31,4 +31,4 @@ Additions coming quickly will include:
 
 <h3>Custom User Interface</h3>
 
-I am using <a href="http://www.github.com/pkozul/ha-floorplan">Floorplan</a> to provide a custom interface for Home Assistant.  This allows me to design relevant screens for each room where I place one of the Kindle Fire's.  For example, in my son's room, by his light switch, I have mounted on the wall a 7" Kindle Fire that is running <a href="http://www.ozerov.de/fully-kiosk-browser/">Fully Kiosk Browser</a>.  Fully Kiosk Browser allows, not only displaying my son's "<a href="https://github.com/atomicpapa/Home-AssistantConfig/blob/master/www/boyspanel.jpg">panel</a>", but also interactivity with HASS in the background.
+I am using <a href="http://www.github.com/pkozul/ha-floorplan">Floorplan</a> to provide a custom interface for Home Assistant.  This allows me to design relevant screens for each room where I place one of the Kindle Fire's.  For example, in my son's room, by his light switch, I have mounted on the wall a 7" Kindle Fire that is running <a href="http://www.ozerov.de/fully-kiosk-browser/">Fully Kiosk Browser</a>.  For example, Fully Kiosk Browser allows, not only displaying my son's "<a href="https://github.com/atomicpapa/Home-AssistantConfig/blob/master/www/boyspanel.jpg">panel</a>", but also interactivity with HASS in the background.

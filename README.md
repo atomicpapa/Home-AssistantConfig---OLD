@@ -26,3 +26,4 @@ Additions coming quickly will include:
   <li>2 Google Home Minis</li>
   <li>Door and Window Sensors</li>
   <li>WiFi controlled RGB LED strip lights inside and outside</li>
+

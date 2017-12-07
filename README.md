@@ -31,4 +31,4 @@ Additions coming quickly will include:
 
 <h3>Custom User Interface</h3>
 
-I am using <a href="http://www.github.com/pkozul/ha-floorplan>Floorplan</a> to provide a custom interface for Home Assistant.  This allows me to design relevant screens for each room where I place one of the Kindle Fire's.
+I am using <a href="http://www.github.com/pkozul/ha-floorplan">Floorplan</a> to provide a custom interface for Home Assistant.  This allows me to design relevant screens for each room where I place one of the Kindle Fire's.

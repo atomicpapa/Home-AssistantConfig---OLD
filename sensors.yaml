@@ -44,9 +44,8 @@
 #     - "sleep/minutesAsleep"
 #     - "devices/battery"
 
-- platform: mqtt_room
-  device_id: A445425BC718461CA876AA647ABD99D5
-  name: 'Nexus Beacon'
-  state_topic: 'room_presence'
+- platform: http_room
+  device_id: a445425b-c718-461c-a876-aa647abd99d5
+  name: 'Son Beacon'
   timeout: 5
   away_timeout: 60

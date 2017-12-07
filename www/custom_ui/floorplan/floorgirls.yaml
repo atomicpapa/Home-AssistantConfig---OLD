@@ -3,7 +3,7 @@
 ## log_level: which can be set to one these: error, warning,  info or debug
 
 date_format: MMM-DD-YYYY
-log_level: info
+log_level: debug
 
 fully_kiosk:
 
@@ -11,9 +11,16 @@ fully_kiosk:
     address: 84:d6:d0:0f:6c:87
     motion_sensor: binary_sensor.girls_panel_motion
     plugged_sensor: binary_sensor.girls_panel_plugged
-    # screensaver_light: light.clock_screensaver
+    screensaver_light: light.girl_panel_screensaver
     media_player: media_player.girls_panel
-
+  # - name: Entry Tablet
+  #   address: 88:71:e5:60:a2:a8
+  #   motion_sensor: binary_sensor.entry_motion
+  #   plugged_sensor: binary_sensor.entry_plugged
+  #   screensaver_light: light.entry_screensaver
+  #   media_player: media_player.entry_alarm_panel
+    presence_detection:
+      location_name: Entry Hall
 pages:
   -  /local/custom_ui/floorplan/girlspanel.yaml
   # -  /local/custom_ui/floorplan/clock_config.yaml

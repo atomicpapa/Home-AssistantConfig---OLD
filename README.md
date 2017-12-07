@@ -6,6 +6,7 @@ Above are the various configuration files for my Home Assistant (HASS) setup.  C
 <ul>
   <li>Plex Media Server</li>
   <li>a Minecraft server</li>
+  <li>Mosquitto MQTT Broker</li>
   <li>Sonarr</li>
   <li>Radarr</li>
   <li>NZBget</li>
@@ -26,4 +27,8 @@ Additions coming quickly will include:
   <li>2 Google Home Minis</li>
   <li>Door and Window Sensors</li>
   <li>WiFi controlled RGB LED strip lights inside and outside</li>
+</ul>
 
+<h3>Custom User Interface</h3>
+
+I am using Floorplan to provide a custom interface for Home Assistant.  This allows me to design relevant screens for each room where I place one of the Kindle Fire's.

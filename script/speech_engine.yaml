@@ -30,6 +30,19 @@ speech_engine:
     - service: script.speech_processing
       data_template:
         speech_message: >
+          {%- macro dude_meds_school_day() -%}
+              {{ [
+              "You might not want to leave before the Dude has not had his morning meds.",
+              "Don't leave quite yet. The dude hasn't had his meds yet."
+              ] | random }}
+          {%- endmacro -%}
+          {%- macro dude_meds_non_school_day() -%}
+              {{ [
+              "It's after 9 and the Dude has yet to have his meds.",
+              "It's time for the Dude to have his meds.",
+              "You might want to consider giving the Dude his meds now."
+              ] | random }}
+          {%- endmacro -%}
           {%- macro dark_outside() -%}
               {{ [
               "It is pretty dark outside.  I will turn on the outside lights now.",
@@ -165,8 +178,11 @@ speech_engine:
             {%- if call_responsibilities == 1 -%}
               {{responsibilities()}}
             {%- endif -%}
-            {%- if call_meds == 1 -%}
-              {{meds()}}
+            {%- if call_dude_meds_school_day == 1 -%}
+              {{dude_meds_school_day()}}
+            {%- endif -%}
+            {%- if call_dude_meds_non_school_day == 1 -%}
+              {{dude_meds_non_school_day()}}
             {%- endif -%}
             {{ value1 }}
             {%- if call_no_announcement != 1 -%}

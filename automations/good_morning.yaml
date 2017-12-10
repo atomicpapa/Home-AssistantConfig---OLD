@@ -4,7 +4,7 @@
     - platform: time
       at: '06:15:00'
     - platform: time
-      at: '09:00:00'
+      at: '09:10:00'
   condition:
       condition: and
       conditions:
@@ -18,7 +18,7 @@
                 entity_id: input_boolean.school_mode
                 state: 'on'
             - condition: template
-              value_template: '{{ (now().hour | int == 9) and (now().minute | int == 0) and states.binary_sensor.workday_sensor.state == "off" }}'
+              value_template: '{{ (now().hour | int == 9) and (now().minute | int == 10) and states.binary_sensor.workday_sensor.state == "off" }}'
         - condition: state
           entity_id: group.weasley_clock
           state: 'home'

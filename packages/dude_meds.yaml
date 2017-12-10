@@ -37,8 +37,8 @@ automation:
 
     action:
       - service: input_boolean.turn_on
-        entity: input_boolean.alert_mode
-        
+        entity_id: input_boolean.alert_mode
+
       - service: script.speech_engine
         data:
           call_dude_meds_school_day: 1
@@ -66,7 +66,7 @@ automation:
 
     action:
       - service: input_boolean.turn_on
-        entity: input_boolean.alert_mode
+        entity_id: input_boolean.alert_mode
 
       - service: script.speech_engine
         data:

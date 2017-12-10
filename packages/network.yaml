@@ -32,6 +32,8 @@ homeassistant:
     sensor.zeus_disk_free:
       icon: mdi:harddisk
       friendly_name: Disk Free
+    sensor.external_ip:
+      show_last_changed: true
 
 #---------------------------------------------------------
 
@@ -208,6 +210,11 @@ sensor:
 
   - platform: cpuspeed
 
+  - platform: rest
+    resource: http://ip.jsontest.com
+    name: External IP
+    value_template: '{{ value_json.ip }}'
+
 # -------------------------------
     
 group:
@@ -301,6 +308,7 @@ group:
       - sensor.zeus_ipv4_in
       - sensor.zeus_ipv4_out
       - sensor.zeus_disk_free
+      - sensor.external_ip
 # --------------------------------
 
 automation:

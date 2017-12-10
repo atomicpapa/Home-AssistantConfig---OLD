@@ -42,11 +42,12 @@ automation:
             {% set phrases = [
             "Hey " ~ handle ~ "! Thanks for the follow!",
             "I have a new follower, " ~ handle ~ " from " ~ location ~ "! That makes me so happy, I have to CHIRP!",
-            "Wanna know who is super cool? " ~ handle ~ " from " ~ location ~ " IS!!! Thanks for making me CHIRP!"
+            "Wanna know who is super cool? " ~ handle ~ " IS!!! Thanks for making me CHIRP!"
             ] %}
             {% set hashtags = [
               "#ThanksForTheFollow",
-              "#MakingitChirp"
+              "#MakingitChirp",
+              "(http://www.vmwareinfo.com/2017/11/building-digital-cuckoo-clock-with-home.html)"
             ] %}
             {{ phrases|random ~ " " ~ hashtags|random }}
 
@@ -58,16 +59,10 @@ automation:
     action:
       - service: script.tweet_engine
         data_template:
-          tweet: >-
-            {% set ads_blocked = states.sensor.pihole_ads_blocked_today.state %}
-            {% set phrases = [
-            "Today, I prevented " ~ ads_blocked ~ " ads from reaching my family! ",
-            "My family was saved from viewing " ~ ads_blocked ~ " ads today because I am on the job! ",
-            "Do you like seeng ads when you surf the web? " ~ ads_blocked ~ " ads didn't make it to my family today! "
-            ] %}
-            {{ phrases | random + "#pihole"}}
+          tweet: >
+            "Today, I prevented {{states.sensor.pihole_ads_blocked_today.state}} ads from reaching my family via Pi-hole!"
 
-  - alias: 'Spotify Tweet'
+  - alias: 'Spotify'
     trigger:
       - platform: state
         entity_id: media_player.spotify
@@ -91,14 +86,13 @@ automation:
     action:
       - service: script.tweet_engine
         data_template:
-          tweet: >-
-            {% set people = trigger.event.data.number_of_people_in_space %}
-            {% set phrases = [
-            "The ISS is above me right now with " ~ people ~ " onboard! ",
-            "There are " ~ people ~ " people aboard the ISS and all " ~ people ~ " are above me RIGHT NOW! ",
-            "I can look up RIGHT NOW and see the ISS. I wonder if the " ~ people ~ " people onboard can see me?
-            ] %}
-            {{phrases | random + "#Space " + "#ISS"}}
+          tweet: >
+            {{ [
+            "The ISS is above me right now!",
+            "The International Space Station flys by once a day & that time is NOW! (For me)",
+            "I can look up RIGHT NOW and see the ISS.",
+            "The International Space Station Rocks! And it's above me RIGHT NOW!"
+            ] | random + "#Space"}}
 
   - alias: 'Full Moon -Tweet'
     trigger:

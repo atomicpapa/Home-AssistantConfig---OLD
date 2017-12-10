@@ -60,6 +60,8 @@ media_player:
     name: Boys Panel
   - platform: floorplan_speaker
     name: Girls Panel
+  - platform: snapcast
+    host: 192.168.0.13
 
 # Sensors -----------------------------------------------------------------------------
 

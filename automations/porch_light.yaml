@@ -1,6 +1,7 @@
 # Controlling automated on/off of porch light at sunset/sunrise
 
 - alias: Porch Light On at Sunset
+  initial_state: 'on'
   trigger:
     platform: sun
     event: sunset
@@ -20,6 +21,7 @@
           "It's {{now().strftime("%-I")}}:{{now().strftime("%M")}} {{now().strftime("%p")}} and getting dark. I just turned on the lights for my family.  I'm cool like that."
 
 - alias: Porch Light Dim at 9pm
+  initial_state: 'on'
   trigger:
     platform: time
     at: "21:00:00"
@@ -31,6 +33,7 @@
       brightness: 85
 
 - alias: Porch Light Off at Sunrise
+  initial_state: 'on'
   trigger:
     platform: sun
     event: sunrise

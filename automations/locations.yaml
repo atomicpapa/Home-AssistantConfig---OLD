@@ -1,6 +1,7 @@
 # Voice announcements when the kids arrive and leave various zones
 
 - alias: Kids Arrive at Ally's
+  initial_state: 'on'
   trigger:
     platform: state
     entity_id: 
@@ -22,6 +23,7 @@
         call_no_announcement: 1
 
 - alias: Kids Leave Ally's
+  initial_state: 'on'
   trigger:
     platform: state
     entity_id: 
@@ -42,6 +44,7 @@
         call_no_announcement: 1
 
 - alias: Kids Arrive at GG's
+  initial_state: 'on'
   trigger:
     platform: state
     entity_id: 
@@ -63,6 +66,7 @@
         call_no_announcement: 1
 
 - alias: Kids Leave GG's
+  initial_state: 'on'
   trigger:
     platform: state
     entity_id: 
@@ -83,6 +87,7 @@
         call_no_announcement: 1
           
 - alias: Kids Arrive at School
+  initial_state: 'on'
   trigger:
     platform: state
     entity_id: 
@@ -114,6 +119,7 @@
         call_no_announcement: 1
           
 - alias: Kids Left School
+  initial_state: 'on'
   trigger:
     platform: state
     entity_id: 

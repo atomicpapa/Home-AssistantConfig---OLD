@@ -57,6 +57,7 @@ sensor:
 ###############################################################################
 automation:
   - alias: Notify Holiday State Change
+    initial_state: 'on'
     hide_entity: false
     initial_state: true
     trigger:

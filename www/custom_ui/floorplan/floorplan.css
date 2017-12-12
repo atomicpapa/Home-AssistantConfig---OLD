@@ -6,6 +6,9 @@ svg, svg * {
 }
 
 /* Hover over */
+#floorplan {
+  background: #000 !important;
+}
 
 .entity:hover {
   stroke: #03A9F4 !important;

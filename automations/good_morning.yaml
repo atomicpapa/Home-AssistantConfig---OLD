@@ -1,4 +1,5 @@
 - alias: "Morning Routine"
+  initial_state: 'on'
 
   trigger:
     - platform: time

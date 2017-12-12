@@ -6,6 +6,7 @@ input_boolean:
 
 automation:
   - alias: Button Press
+    initial_state: 'on'
     hide_entity: true
     trigger:
       - platform: event
@@ -16,6 +17,7 @@ automation:
         entity_id: input_boolean.dude_meds
 
   - alias: School Day Check
+    initial_state: 'on'
     trigger:
       - platform: time
         at: '06:45:00'
@@ -44,6 +46,7 @@ automation:
           call_dude_meds_school_day: 1
 
   - alias: Non School Day Check
+    initial_state: 'on'
     trigger:
       - platform: time
         at: '09:15:00'

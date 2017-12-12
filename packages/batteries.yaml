@@ -365,7 +365,7 @@ automation:
 # Automation: Notify of phone Low Battery
 ###############################################################################
   - alias: Notify Low battery
-    initial_state: true
+    initial_state: 'on'
     trigger:
       platform: numeric_state
       entity_id:
@@ -457,7 +457,7 @@ automation:
   #         message: "Attention! {{ trigger.to_state.attributes.friendly_name }} level is: {{ trigger.to_state.state }}%."
           
   - alias: Check Wi-Fi Status of phones At Home
-    initial_state: true
+    initial_state: 'on'
     hide_entity: true
     trigger:
       - platform: state

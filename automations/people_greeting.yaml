@@ -3,7 +3,7 @@
 ## Announce over all Chromecast Audios & Google Homes
 ######################################################################
 - alias: 'People Greeting'
-
+  initial_state: 'on'
   trigger:
     - platform: state
       entity_id:
@@ -62,7 +62,7 @@
         call_no_announcement: 1
 
 - alias: 'Lola Greeting'
-
+  initial_state: 'on'
   trigger:
     - platform: state
       entity_id:

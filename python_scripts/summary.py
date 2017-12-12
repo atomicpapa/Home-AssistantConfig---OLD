@@ -24,7 +24,7 @@ if debug:
 ##################################################
 
 # Summary by groups
-groups = ['group.family', 'group.devices_default', 'group.devices_alwayson']
+groups = ['group.weasley_clock', 'group.devices_default', 'group.devices_alwayson']
 groups_format = ['{} at home: {}', '{} in use: {}', '!{} to check it out: {}'] # Message prefix
 groups_filter = ['home', 'on|playing', 'off|not_home'] # Filter to list
 groups_badge = ['Home', 'In use', 'Status'] # Badge 'belt' (unit_of_measurement)

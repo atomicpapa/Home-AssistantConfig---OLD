@@ -21,8 +21,8 @@ notify:
     access_token_secret: !secret twitteraccesssecret
 
 automation:
-  - alias: 'New Twitter follower!'
-    hide_entity: True
+  - alias: 'Tweet - New follower!'
+    initial_state: 'on'
     trigger:
       - platform: event
         event_type: new_follower
@@ -45,14 +45,13 @@ automation:
             "Wanna know who is super cool? " ~ handle ~ " IS!!! Thanks for making me CHIRP!"
             ] %}
             {% set hashtags = [
-              "#ThanksForTheFollow",
-              "#MakingitChirp",
-              "(http://www.vmwareinfo.com/2017/11/building-digital-cuckoo-clock-with-home.html)"
+              "#FollowMe",
+              "#CHIRP, CHIRP"
             ] %}
             {{ phrases|random ~ " " ~ hashtags|random }}
 
-  - alias: 'PiHole Stats Tweet'
-    # hide_enitity: true
+  - alias: 'Tweet - PiHole Stats'
+    initial_state: 'on'
     trigger:
       - platform: time
         at: '23:59:00'
@@ -62,7 +61,8 @@ automation:
           tweet: >
             "Today, I prevented {{states.sensor.pihole_ads_blocked_today.state}} ads from reaching my family via Pi-hole!"
 
-  - alias: 'Spotify'
+  - alias: 'Tweet - Spotify'
+    initial_state: 'on'
     trigger:
       - platform: state
         entity_id: media_player.spotify
@@ -73,16 +73,14 @@ automation:
           tweet: >
             "My family is now listening to {{states.media_player.spotify.attributes["media_title"]}} by {{states.media_player.spotify.attributes["media_artist"]}} on Spotify!"
 
-
-  - alias: 'ISS is above Me -Tweet'
-
+  - alias: 'Tweet - ISS is above Me'
+    initial_state: 'on'
     trigger:
       - platform: state
         entity_id:
           - binary_sensor.iss
         to: 'on'
         from: 'off'
-
     action:
       - service: script.tweet_engine
         data_template:
@@ -94,7 +92,8 @@ automation:
             "The International Space Station Rocks! And it's above me RIGHT NOW!"
             ] | random + "#Space"}}
 
-  - alias: 'Full Moon -Tweet'
+  - alias: 'Tweet - Full Moon'
+    initial_state: 'on'
     trigger:
       - platform: state
         entity_id: sensor.moon
@@ -108,4 +107,26 @@ automation:
               "It's a full moon tonight in Old San Antone! Riverwalk anyone?",
               "Wolfbloods Unite!!  It's a Full Moon tonight!! Arrrooooooooooo! (http://www.imdb.com/title/tt2321596/)",
               "There's a Full Moon Risin'! (Yeah, I know it's a bad pun, but HEY!  I'm just a house!)"
-            ] | random }}
+            ] | random + "#FullMoon" }}
+            
+  - alias: 'Tweet - Blog Post'
+    initial_state: 'on'
+    trigger:
+      - platform: event
+        event_type: blog
+
+    action:
+      - service: script.tweet_engine
+        data_template:
+          tweet: >-
+            {% set title = trigger.event.data.title %}
+            {% set url = trigger.event.data.url %}
+            {% set phrases = [
+            "AtomicPapa just wrote about me on his new blog - " ~ title ~ " - " ~ url ~ " ",
+            "I'm so cool, there's a blog post about me! " ~ title ~ " - " ~ url ~ " "
+            ] %}
+            {% set hashtags = [
+              "#HomeAssistant",
+              "#BlogPost"
+            ] %}
+            {{ phrases|random ~ " " ~ hashtags|random }}

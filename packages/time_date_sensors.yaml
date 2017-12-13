@@ -58,6 +58,7 @@ sensor:
           {{now().strftime("%B")}} {{now().strftime("%d")}} {{now().year}}
 
   - platform: template
+    hide_entity: true
     scan_interval: 30000
     sensors:
       tomorrow:
@@ -66,6 +67,7 @@ sensor:
           {{ (as_timestamp(now()) + 86400) | timestamp_custom("%a") }}
 
   - platform: template
+    hide_entity: true
     scan_interval: 30000
     sensors:
       day_after_tomorrow:
@@ -74,6 +76,7 @@ sensor:
           {{ (as_timestamp(now()) + 172800) | timestamp_custom("%a") }}
 
   - platform: template
+    hide_entity: true
     scan_interval: 30000
     sensors:
       day_after_that:

@@ -42,6 +42,6 @@ sensor.sleep_minutes_asleep_2:
 
 light.desk_lamp:
   google_assistant: true
-  google_assistant_name: Jim Bob
+  google_assistant_name: Desk Lamp
   aliases:
-    - James Robert
+    - Desk Lamp

@@ -1,6 +1,6 @@
 #Weather forecast for the next 24 hours daily at 7pm
 
-- alias: Weather Tomorrow
+- alias:'Timed 1900'
 
   trigger:
     platform: time

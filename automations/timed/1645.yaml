@@ -1,4 +1,4 @@
-- alias: "Afternoon Routine"
+- alias: 'Timed 1645'
 
   trigger:
     - platform: time

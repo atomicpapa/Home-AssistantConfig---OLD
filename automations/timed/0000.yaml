@@ -1,6 +1,6 @@
 # Automations that run at midnight every day
 
-- alias: Clear Dudes Meds
+- alias: 'Timed 0000'
 
   trigger:
     platform: time

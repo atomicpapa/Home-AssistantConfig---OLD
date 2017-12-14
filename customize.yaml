@@ -45,3 +45,48 @@ light.desk_lamp:
   google_assistant_name: Desk Lamp
   aliases:
     - Desk Lamp
+    - Glenns Lamp
+
+group.kids_lights:
+  google_assistant: true
+  google_assisteant_name: Kids Lights
+  google_assistant_type: light
+  aliases:
+    - Kids Lights
+    - Brats Lights
+    - The Kids
+
+light.lego_lamp:
+  google_assistant: true
+  google_assisteant_name: Hanging Lamp 
+  aliases:
+    - Hanging Lamp
+    - Pendant Lamp
+    - Living Room Lamp
+
+light.hall:
+  google_assistant: true
+  google_assisteant_name: Hall
+  aliases:
+    - Hall
+    - Hallway
+
+light.girls:
+  google_assistant: true
+  google_assisteant_name: Girls Light
+  aliases:
+    - Girls Light
+
+light.boy:
+  google_assistant: true
+  google_assisteant_name: Boys Light
+  aliases:
+    - Boys Light
+    - Dudes Light
+
+light.front_porch:
+  google_assistant: true
+  google_assisteant_name: Front Porch
+  aliases:
+    - Front Porch
+    - Porch

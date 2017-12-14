@@ -62,6 +62,8 @@ media_player:
     name: Girls Panel
   - platform: snapcast
     host: 192.168.0.13
+  - platform: mpd
+    host: 192.168.0.13
 
 # Sensors -----------------------------------------------------------------------------
 

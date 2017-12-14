@@ -110,3 +110,10 @@ weather_forecast:
     - sensor.dark_sky_precip_probability_1
     - sensor.pollen_level_forecast
     - sensor.dark_sky_daily_summary
+
+kids_lights:
+  name:  Kids Lights
+  view: false
+  entities:
+    - light.boy
+    - light.girls

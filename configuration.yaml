@@ -124,15 +124,38 @@ google_assistant:
   agent_user_id: !secret google_agent_user_id
   api_key: !secret google_api_key
 
+cloud:
+  alexa:
+    filter:
+      include_entities:
+        - group.kids_lights
+        - light.desk_lamp
+        - light.lego_lamp
+        - light.boy
+        - light.girls
+        - light.hall
+        - light.front_porch
+      exclude_domains:
+        - light
+        - group
+        - scene
+        - alert
+        - automation
+        - cover
+        - switch
+        - fan
+        - media_player
+        - script
 
 #Google Calendar
 google:
   client_id: !secret googleid
   client_secret: !secret googlesecret
 
-light:
-  - platform: hue
-    host: 192.168.0.10
+hue:
+  bridges:
+    - host: 192.168.0.10
+      filename: phue.conf
 
 mqtt:
   broker: 192.168.0.13

@@ -16,6 +16,13 @@ automation:
       - service: input_boolean.turn_on
         entity_id: input_boolean.dude_meds
 
+      - service: script.tweet_engine
+        data_template:
+          tweet: >
+            {{ [
+            "Rest easy teachers, the Dude has had his meds today!",
+            "Looks like no reminders needed today.  The Dude has taken his meds!"
+            ] | random + "https://atomicautomation.wordpress.com/2017/12/13/dude-amazon-dash-button-to-home-automation/"}}
   - alias: School Day Check
     initial_state: 'on'
     trigger:

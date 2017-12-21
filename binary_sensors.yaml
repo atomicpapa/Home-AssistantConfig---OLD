@@ -34,3 +34,10 @@
   state_topic: floorplan/boys_panel_plugged
   name: Boys Panel Plugged
   retain: true
+
+- platform: mqtt
+  state_topic: "/Entry_Hall/Motion/Motion"
+  name: "Entry_Hall_Motion"
+  payload_on: 1
+  payload_off: 0
+  device_class: motion

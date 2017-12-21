@@ -65,6 +65,8 @@ fitness:
   entities:
     - sensor.charge_2_battery
     - sensor.sleep_minutes_asleep
+    - sensor.sleep_efficiency
+    - sensor.awakenings_count
     - sensor.steps
     
 audio_players:

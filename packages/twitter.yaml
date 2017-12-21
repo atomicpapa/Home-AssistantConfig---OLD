@@ -41,7 +41,7 @@ automation:
             {% set location = trigger.event.data.vallue2 %}
             {% set phrases = [
             "Hey " ~ handle ~ "! Thanks for the follow!",
-            "I have a new follower, " ~ handle ~ " from " ~ location ~ "! That makes me so happy, I have to CHIRP!",
+            "I have a new follower, " ~ handle ~ "! That makes me so happy, I have to CHIRP!",
             "Wanna know who is super cool? " ~ handle ~ " IS!!! Thanks for making me CHIRP!"
             ] %}
             {% set hashtags = [
@@ -59,7 +59,10 @@ automation:
       - service: script.tweet_engine
         data_template:
           tweet: >
-            "Today, I prevented {{states.sensor.pihole_ads_blocked_today.state}} ads from reaching my family via Pi-hole!"
+            {{ [
+            "Today, I prevented {{states.sensor.pihole_ads_blocked_today.state}} ads from reaching my family via Pi-hole!",
+            "Today was a good day!  Why, you ask? Because I blocked {{states.sensor.pihole_ads_blocked_today.state}} ads via Pi-Hole!"
+            ] | random + " http://www.pi-hole.net"}}
 
   - alias: 'Tweet - Spotify'
     initial_state: 'on'
@@ -70,8 +73,15 @@ automation:
     action:
       - service: script.tweet_engine
         data_template:
-          tweet: >
-            "My family is now listening to {{states.media_player.spotify.attributes["media_title"]}} by {{states.media_player.spotify.attributes["media_artist"]}} on Spotify!"
+          tweet: >-
+            {% set title = states.media_player.spotify.attributes["media_title"] %}
+            {% set artist = states.media_player.spotify.attributes["media_artist"] %}
+            {% set phrases = [
+            "My family is now listening to " ~ title ~ " by " ~ artist ~ " on Spotify!",
+            "This house is rockin out to " ~ title ~ " by " ~ artist ~ " on Spotify!",
+            "My family likes Spotify and so do I.  We are now listening to " ~ title ~ " by " ~ artist ~ "!"
+            ] %}
+            {{phrases|random + "#Spotify" }}
 
   - alias: 'Tweet - ISS is above Me'
     initial_state: 'on'
@@ -86,11 +96,11 @@ automation:
         data_template:
           tweet: >
             {{ [
-            "The ISS is above me right now!",
+            "The International Space Station is above me right now!",
             "The International Space Station flys by once a day & that time is NOW! (For me)",
-            "I can look up RIGHT NOW and see the ISS.",
+            "I can look up RIGHT NOW and see the International Space Station.",
             "The International Space Station Rocks! And it's above me RIGHT NOW!"
-            ] | random + "#Space"}}
+            ] | random + "#Space" + "#NASA"}}
 
   - alias: 'Tweet - Full Moon'
     initial_state: 'on'
@@ -123,7 +133,8 @@ automation:
             {% set url = trigger.event.data.url %}
             {% set phrases = [
             "AtomicPapa just wrote about me on his new blog - " ~ title ~ " - " ~ url ~ " ",
-            "I'm so cool, there's a blog post about me! " ~ title ~ " - " ~ url ~ " "
+            "I'm so cool, there's a blog post about me! " ~ title ~ " - " ~ url ~ " ",
+            "Blogs are awesome.  Especially when the post is about ME! " ~ title ~ " - " ~ url ~ " "
             ] %}
             {% set hashtags = [
               "#HomeAssistant",

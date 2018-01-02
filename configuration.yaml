@@ -108,13 +108,16 @@ logger:
 # Track the sun
 sun:
 
+upnp:
+  local_ip: 192.168.0.13
+
 map:
 
-influxdb:
-  host: 192.168.0.13
-  port: 8086
-  username: !secret infuser
-  password: !secret infpass
+# influxdb:
+#   host: 192.168.0.13
+#   port: 8086
+#   username: !secret infuser
+#   password: !secret infpass
 
 google_assistant:
   project_id: !secret google_project
@@ -162,6 +165,9 @@ mqtt:
   port: 1883
   username: !secret mqtt2user
   password: !secret mqtt2pass
+
+ffmpeg:
+  ffmpeg_bin: /usr/bin/ffmpeg
 
 python_script:
 script: !include_dir_merge_named script/

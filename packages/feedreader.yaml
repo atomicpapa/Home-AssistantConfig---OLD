@@ -22,8 +22,7 @@ automation:
         data_template:
           title: "New HA Podcast available"
           message: "New Podcast available - {{ as_timestamp(now()) | timestamp_custom('%I:%M:%S %p %d %b %Y', true) }}"
-          data:
-            url: "https://hasspodcast.io/"
+          url: "https://hasspodcast.io/"
 
       - service: persistent_notification.create
         data_template:

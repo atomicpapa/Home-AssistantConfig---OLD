@@ -1,3 +1,5 @@
+# --------------- Views ---------------
+
 main:
   view: true
   # icon: mdi:home
@@ -32,6 +34,8 @@ kids_rooms:
     - light.girls
     - light.boy
     - group.responsibilities
+
+# --------------- Non Views ---------------
 
 masterbedroom:
   name: Master Bedroom
@@ -84,7 +88,7 @@ interior_lights:
     - light.desk_lamp
     - light.boy
     - light.girls
-    - light.hallway
+    - light.hall
 
 exterior_lights:
   name: Exterior Lights
@@ -119,3 +123,11 @@ kids_lights:
   entities:
     - light.boy
     - light.girls
+
+motion:
+  name: Motion
+  view: false
+  entities:
+    - binary_sensor.boys_panel_motion
+    - binary_sensor.girls_panel_motion
+    - binary_sensor.entry_hall_motion

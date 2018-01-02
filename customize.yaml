@@ -97,3 +97,25 @@ light.front_porch:
     - Front Porch
     - Porch
   alexa_name: Front Porch
+
+script.responsibilities:
+  google_assistant: true
+  google_assistant_name: Responsibilities
+
+sensor.responsibilities:
+  hidden: true
+
+sensor.tomorrow:
+  hidden: true
+
+sensor.day_after_tomorrow:
+  hidden: true
+
+sensor.day_after_that:
+  hidden: true
+
+device_tracker.00bb3ac7dd93:
+  hidden: true
+
+device_tracker.fca6672b1243:
+  hidden: true

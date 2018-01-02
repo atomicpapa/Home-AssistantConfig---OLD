@@ -30,6 +30,14 @@ speech_engine:
     - service: script.speech_processing
       data_template:
         speech_message: >
+          {%- macro brush_your_teeth() -%}
+              {{ [
+              "Hey kids, it's time to brush your teeth!",
+              "You only have to brush the teeth you want to keep, so now would be a great time to do that",
+              "A drop of toothpaste and 2 minutes of your time is all it takes to brush your teeth",
+              "Let's make those pearly whites pearly white again. Brush your teeth."
+              ] | random }}
+          {%- endmacro -%}
           {%- macro dude_meds_school_day() -%}
               {{ [
               "You might not want to leave before the Dude has not had his morning meds.",
@@ -121,7 +129,7 @@ speech_engine:
               {%- endif -%}
           {%- endmacro -%}
           {%- macro pihole() -%}
-              {% if states.sensor.pihole_ads_blocked_today.state|int > 1000 -%}
+              {% if states.sensor.pihole_ads_blocked_today.state|int > 5000 -%}
                 Our internet blocking system has blocked {{states.sensor.pihole_ads_blocked_today.state}} ads today!
                 Happy Internet surfing!
               {% endif -%}
@@ -147,6 +155,9 @@ speech_engine:
             {{ personarriving }} {# Called from Annoucenments #}
             {%- if call_weather_tomorrow == 1 -%}
               {{weather_tomorrow()}}
+            {%- endif -%}
+            {%- if call_brush_your_teeth == 1 -%}
+              {{brush_your_teeth()}}
             {%- endif -%}
             {%- if call_inside_weather == 1 -%}
               {{inside_weather()}}

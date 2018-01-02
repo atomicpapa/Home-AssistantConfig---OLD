@@ -3,6 +3,8 @@ homeassistant:
     sensor.life360_sensor:
       friendly_name: Life 360
       hidden: true
+    sensor.william:
+      icon: /local/william.jpg
 
 device_tracker:
   - platform: owntracks
@@ -41,6 +43,7 @@ group:
     - device_tracker.eryin_eryin
     - device_tracker.eleanor_eleanor
     - device_tracker.lola_lola
+    - sensor.william
 
 automation:
   - alias: Notify Life360 Sensor State Change

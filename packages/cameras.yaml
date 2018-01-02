@@ -59,7 +59,7 @@ group:
     entities:
       - camera.backyard_right
 
-  motion:
+  cam_motion:
     name: Motion Events
     view: false
     entities:

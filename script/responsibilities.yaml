@@ -1,0 +1,7 @@
+responsibilities:
+  sequence:
+    - alias: Responsibilities
+      service: script.speech_engine
+      data:
+        call_responsibilities: 1
+        call_no_announcement: 1

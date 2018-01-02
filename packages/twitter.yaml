@@ -40,9 +40,9 @@ automation:
             {% set handle = trigger.event.data.value1 %}
             {% set location = trigger.event.data.vallue2 %}
             {% set phrases = [
-            "Hey " ~ handle ~ "! Thanks for the follow!",
-            "I have a new follower, " ~ handle ~ "! That makes me so happy, I have to CHIRP!",
-            "Wanna know who is super cool? " ~ handle ~ " IS!!! Thanks for making me CHIRP!"
+            "Hey " ~ handle ~ "! Thanks for the follow! ",
+            "I have a new follower, " ~ handle ~ "! That makes me so happy, I have to CHIRP! ",
+            "Wanna know who is super cool? " ~ handle ~ " IS!!! Thanks for making me CHIRP! "
             ] %}
             {% set hashtags = [
               "#FollowMe",
@@ -77,9 +77,9 @@ automation:
             {% set title = states.media_player.spotify.attributes["media_title"] %}
             {% set artist = states.media_player.spotify.attributes["media_artist"] %}
             {% set phrases = [
-            "My family is now listening to " ~ title ~ " by " ~ artist ~ " on Spotify!",
-            "This house is rockin out to " ~ title ~ " by " ~ artist ~ " on Spotify!",
-            "My family likes Spotify and so do I.  We are now listening to " ~ title ~ " by " ~ artist ~ "!"
+            "My family is now listening to " ~ title ~ " by " ~ artist ~ " on Spotify! ",
+            "This house is rockin out to " ~ title ~ " by " ~ artist ~ " on Spotify! ",
+            "My family likes Spotify and so do I.  We are now listening to " ~ title ~ " by " ~ artist ~ "! "
             ] %}
             {{phrases|random + "#Spotify" }}
 
@@ -96,11 +96,11 @@ automation:
         data_template:
           tweet: >
             {{ [
-            "The International Space Station is above me right now!",
-            "The International Space Station flys by once a day & that time is NOW! (For me)",
-            "I can look up RIGHT NOW and see the International Space Station.",
-            "The International Space Station Rocks! And it's above me RIGHT NOW!"
-            ] | random + "#Space" + "#NASA"}}
+            "The International Space Station is above me right now! ",
+            "The International Space Station flys by once a day & that time is NOW! (For me) ",
+            "I can look up RIGHT NOW and see the International Space Station. ",
+            "The International Space Station Rocks! And it's above me RIGHT NOW! "
+            ] | random + "#Space " + "#NASA"}}
 
   - alias: 'Tweet - Full Moon'
     initial_state: 'on'
@@ -114,9 +114,9 @@ automation:
         data_template:
           tweet: >
             {{ [
-              "It's a full moon tonight in Old San Antone! Riverwalk anyone?",
-              "Wolfbloods Unite!!  It's a Full Moon tonight!! Arrrooooooooooo! (http://www.imdb.com/title/tt2321596/)",
-              "There's a Full Moon Risin'! (Yeah, I know it's a bad pun, but HEY!  I'm just a house!)"
+              "It's a full moon tonight in Old San Antone! Riverwalk anyone? ",
+              "Wolfbloods Unite!!  It's a Full Moon tonight!! Arrrooooooooooo! (http://www.imdb.com/title/tt2321596/) ",
+              "There's a Full Moon Risin'! (Yeah, I know it's a bad pun, but HEY!  I'm just a house!) "
             ] | random + "#FullMoon" }}
             
   - alias: 'Tweet - Blog Post'
@@ -136,8 +136,4 @@ automation:
             "I'm so cool, there's a blog post about me! " ~ title ~ " - " ~ url ~ " ",
             "Blogs are awesome.  Especially when the post is about ME! " ~ title ~ " - " ~ url ~ " "
             ] %}
-            {% set hashtags = [
-              "#HomeAssistant",
-              "#BlogPost"
-            ] %}
-            {{ phrases|random ~ " " ~ hashtags|random }}
+            {{ phrases|random + "#HomeAssistant " + "#blogpost" }}

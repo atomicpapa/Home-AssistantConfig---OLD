@@ -37,6 +37,11 @@ sensor:
   #   name: Local Crime
   #   radius: 5000
 
+  - platform: wunderground
+    api_key: !secret wunderground
+    monitored_conditions:
+      - alerts
+
 group:
 
   weather:
@@ -80,3 +85,60 @@ group:
       - sensor.dark_sky_precip_intensity_3
       - sensor.dark_sky_wind_speed_3
       - sensor.dark_sky_cloud_coverage_3
+
+script:  
+  notifyonwxalert:
+    sequence:
+        ## Dismiss any current alert so the UI isn't filled 
+        ## up with these if there are more then one.
+        ## Only show the latest alert
+      - service: persistent_notification.dismiss
+        data:
+          notification_id: "wxalert"
+        ## Create a new persistant notification in the UI for a new alert
+      - service_template: >
+          {% if states.sensor.pws_alerts.attributes.Message %}
+          persistent_notification.create
+          {% endif %}
+        data_template:
+          notification_id: "wxalert"
+          message: '{{ states.sensor.pws_alerts.attributes.Message }}'
+          title: '{{ states.sensor.pws_alerts.attributes.Description }}'
+
+automation:  
+  - alias: 'Wx Alert Notification'
+    trigger:
+      platform: state
+      entity_id: sensor.pws_alerts
+    action:
+      service: script.notifyonwxalert  
+
+  - alias: TTS and Notify Weather Alert
+    trigger:
+      platform: state
+      entity_id: sensor.pws_alerts
+    condition:
+      condition: and
+      conditions:
+        - condition: template
+          value_template: '{{states.sensor.pws_alerts.state | int > 0}}'
+          ## Added a time condition because I don't want a non-emergency alert waking me up
+        - condition: time
+          after: '07:00:00'
+          before: '22:00:00'
+    action:
+      - service: input_boolean.turn_on
+        data:
+          entity_id: input_boolean.alert_mode
+      - service: tts.polly
+        data_template:
+          entity_id:
+            - media_player.whole_house
+          message: "Heads up. The National Weather Service has issued a 
+          {{ states.sensor.pws_alerts.attributes.Description }} for your area, 
+          it expires at {{ states.sensor.pws_alerts.attributes.Expires }}."
+      ## Do other things! Flash lights or if your TV is on, use Harmony to change 
+      ## channels to your preferred news station!
+      - service: input_boolean.turn_off
+        data:
+          entity_id: input_boolean.alert_mode

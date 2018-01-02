@@ -227,10 +227,10 @@ group:
       - group.sonarr
       - group.radarr
       - group.pihole
-      - group.speedtest
+      - group.router
       - group.network
       - group.netdata
-      - sensor.cpu_speed
+      - group.panels
 
   network:
     name: Device Status
@@ -287,17 +287,24 @@ group:
       - device_tracker.arwen_s_ipad
       - device_tracker.medusa
 
-  speedtest:
-    name: Speedtest
+  router:
+    name: Router
     view: false
     entities:
       - sensor.speedtest_download
       - sensor.speedtest_upload
+      - sensor.speedtest_ping
+      - sensor.igd_packets_received
+      - sensor.igd_packets_sent
+      - sensor.igd_received_bytes
+      - sensor.igd_sent_bytes
 
   netdata:
     name: Zeus
     view: false
     entities:
+      - sensor.cpu_speed
+      - sensor.external_ip
       - sensor.zeus_ram_free
       - sensor.zeus_ram_used
       - sensor.zeus_swap_free
@@ -308,7 +315,17 @@ group:
       - sensor.zeus_ipv4_in
       - sensor.zeus_ipv4_out
       - sensor.zeus_disk_free
-      - sensor.external_ip
+
+  panels:
+    name: Panels
+    view: false
+    entities:
+      - binary_sensor.boys_panel_motion
+      - binary_sensor.girls_panel_motion
+      - binary_sensor.boys_panel_plugged
+      - binary_sensor.girls_panel_plugged
+
+
 # --------------------------------
 
 automation:

@@ -162,7 +162,7 @@ automation:
             "So far, I have prevented {{states.sensor.pihole_ads_blocked_today.state}} ads from hitting the network via Pi-hole! http://www.pi-hole.net",
             "Pi-hole (http://www.pi-hole.net) has serviced {{states.sensor.pihole_dns_queries_today.state}} DNS requests today! #PiHole",
             "There are currently {{states.sensor.pihole_dns_unique_clients.state}} clients connected to #pihole! http://pi-hole.net",
-            "Zeus, the server for Home Assistant has been running for {{states.sensor.ha_uptime.state}}",
+            "Zeus, the server for Home Assistant has been running for {{states.sensor.nzbget_uptime.state}} minutes.",
             "Zeus, the server for Home Assistant is using {{states.sensor.glances_disk_used.state}}% of the hard drive currently.",
             "Today's pollen level here is expected to be {{states.sensor.pollen_level.state}} and the top allergen is {{states.sensor.top_allergen_1.state}} pollen.",
             "I am running Home Assistant version {{states.sensor.current_version.state}}. #homeassistant",
@@ -170,7 +170,7 @@ automation:
             "I know that it will be {{states.sensor.dark_sky_minutely_summary.state}} So I told my family to dress accordingly.",
             "Average internet stats are Download: {{states.sensor.speedtest_download.state}} Mbit/s & Upload {{states.sensor.speedtest_upload.state}} Mbit/s.",
             "The current UV index is {{states.sensor.dark_sky_uv_index.state}} and the Moon is {{states.sensor.moon.state}}.  #Space",
-            "Home Assistant has been running for {{states.sensor.uptime.state}} minutes.",
+            "Home Assistant has been running for {{states.sensor.ha_uptime.state}}.",
             "My @grandecom internet download speed is about {{states.sensor.speedtest_download.state}} Mbit/s and I am a #cordcutter. @plex",
             "Average Cloud Coverage: {{states.sensor.dark_sky_cloud_coverage.state}}%, Average Temp: {{states.sensor.dark_sky_temperature.state}}°F #Solar (http://www.vmwareinfo.com/2018/01/going-green-to-save-some-green-in-2018.html)"
             ] | random + " #RandomStat"}}

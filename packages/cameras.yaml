@@ -45,7 +45,7 @@ group:
     name: Front Yard
     view: false
     entities:
-      - camera.front_yard
+      - camera.frontyard
       
   bylcam:
     name: Backyard Left
@@ -64,7 +64,6 @@ group:
     view: false
     entities:
       - sensor.front_door_events
-      - sensor.front_yard_events
+      - sensor.frontyard_events
       - sensor.backyard_left_events
-      - sensor.backyard_right_events
       - sensor.driveway_events

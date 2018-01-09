@@ -44,6 +44,7 @@ group:
     - device_tracker.eleanor_eleanor
     - device_tracker.lola_lola
     - sensor.william
+    - device_tracker.maryglyn_maryglyn
 
 automation:
   - alias: Notify Life360 Sensor State Change

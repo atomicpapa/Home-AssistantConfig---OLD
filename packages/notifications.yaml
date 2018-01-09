@@ -18,3 +18,7 @@ notify:
 #     platform: pushbullet
 #     api_key: !secret pushbullet
 
+  - name: slack
+    platform: slack
+    api_key: xoxb-295135008322-adanineSRnXyYlLFufWmDqiK
+    default_channel: '#hassnotifications'

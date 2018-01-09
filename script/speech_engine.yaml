@@ -100,7 +100,7 @@ speech_engine:
               {%- else -%}
                 {{states('sensor.pollen_level')}}
               {%- endif -%}
-              {{" range. Upcoming,"}} {{states('sensor.pollen_outlook')}}.
+              {{" range. Upcoming,"}} {{states('sensor.pollen_outlook')}}
               {%- if is_state('sensor.pollen_level', 'Med/High') or is_state('sensor.pollen_level', 'High') -%}
                 {{"Lola, be sure to use your Flonase and it might not hurt to hit that inhaler right now."}}"
               {%- endif -%}

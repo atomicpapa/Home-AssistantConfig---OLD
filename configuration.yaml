@@ -179,3 +179,4 @@ group: !include groups.yaml
 automation: !include_dir_merge_list automations/
 panel_custom: !include panel_custom.yaml
 binary_sensor: !include binary_sensors.yaml
+

@@ -34,6 +34,8 @@ kids_rooms:
     - light.girls
     - light.boy
     - group.responsibilities
+    - media_player.toriel
+    - media_player.the_dude
 
 # --------------- Non Views ---------------
 

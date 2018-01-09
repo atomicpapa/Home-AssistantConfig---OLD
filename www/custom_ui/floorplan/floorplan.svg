@@ -459,7 +459,7 @@
        inkscape:transform-center-y="17.520888"
        inkscape:transform-center-x="-29.153997"
        class="st8"
-       points="345.3,1752.9 295.3,1753.5 295.2,1744 345.2,1743.4 "
+       points="295.2,1744 345.2,1743.4 345.3,1752.9 295.3,1753.5 "
        style="fill:#e6e6e6" />
     <rect
        id="rect4568-2-31"
@@ -734,7 +734,7 @@
        inkscape:connector-curvature="0"
        style="fill:#b3b3b3;stroke-width:0.26458332" />
     <path
-       id="input_boolean.responsibilities"
+       id="resp"
        inkscape:label="Responsibilities Button"
        class="st0"
        d="m 229.3111,209.56019 h 36.56541 c 1.03188,0 1.85209,0.84666 1.85209,1.85208 v 6.32354 c 0,1.03188 -0.84667,1.85209 -1.85209,1.85209 H 229.3111 c -1.03188,0 -1.85209,-0.84667 -1.85209,-1.85209 v -6.32354 c 0,-1.00542 0.84667,-1.85208 1.85209,-1.85208 z"
@@ -917,5 +917,13 @@
        inkscape:label="humidity"
        x="187.6208"
        y="166.79878">xx</text>
+    <rect
+       style="opacity:1;fill:none;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:0.26458332"
+       id="input_boolean.responsibilities"
+       width="41.150333"
+       height="10.199656"
+       x="226.8544"
+       y="209.54089"
+       inkscape:label="invis resp button" />
   </g>
 </svg>

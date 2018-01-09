@@ -32,6 +32,7 @@ sensor:
       - hourly_summary
       - temperature_max
       - temperature_min
+      - uv_index
 
   # - platform: crimereports
   #   name: Local Crime

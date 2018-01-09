@@ -1,4 +1,4 @@
-log_level: error
+#log_level: error
 date_format: DD-MMM-YYYY
 
 # 1. In Fully Kiosk Browser, add outward facing web address for HASS instance so tablet is usable anywhere in the world.  
@@ -7,12 +7,14 @@ date_format: DD-MMM-YYYY
 
 fully_kiosk:
 
-#   - name: Bedroom Tablet
-#     address: 84:d6:d0:0f:6c:87 # WiFi MAC address of device running Fully Kiosk browser
-#     motion_sensor: binary_sensor.entry_motion
-# #    plugged_sensor: binary_sensor.entry_plugged
-# #    screensaver_light: light.entry_screensaver
-#     media_player: media_player.bedroom_tablet
+  - name: Entry Hall
+    address: 74:75:48:39:a0:f8
+    motion_sensor: binary_sensor.entry_hall_motion
+    plugged_sensor: binary_sensor.entry_hall_plugged
+    screensaver_light: light.clock_screensaver
+    media_player: media_player.entry_hall
+    presence_detection:
+      location_name: Home
 
 pages:
   -  /local/custom_ui/floorplan/home.yaml

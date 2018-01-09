@@ -215,6 +215,66 @@ sensor:
     name: External IP
     value_template: '{{ value_json.ip }}'
 
+  - platform: glances
+    host: 192.168.0.13
+    resources:
+      - 'disk_use_percent'
+      - 'disk_use'
+      - 'disk_free'
+      - 'memory_use_percent'
+      - 'memory_use'
+      - 'memory_free'
+      - 'swap_use_percent'
+      - 'swap_use'
+      - 'swap_free'
+      - 'processor_load'
+      - 'process_running'
+      - 'process_total'
+      - 'process_thread'
+      - 'process_sleeping'
+      - 'cpu_temp'
+
+  # - platform: uptime
+  #   frindly_name: Time Online
+  #   unit_of_measurement: minutes
+
+  - platform: version
+    name: HASS Installed Version
+    scan_interval: 86400
+
+  - platform: command_line
+    name: "HA Uptime"
+    command: echo "$(($(date +%s) - $(date -d "$(head -n1 /config/home-assistant.log | cut -d' ' -f-2)" +%s)))"
+    scan_interval: 720
+    value_template: >-
+      {% set uptime = value | int %}
+      {% set seconds = uptime % 60 %}
+      {% set minutes = ((uptime % 3600) / 60) | int %}
+      {% set hours = ((uptime % 86400) / 3600) | int %}
+      {% set days = (uptime / 86400) | int %}
+      {%- if days > 0 -%}
+        {%- if days == 1 -%}
+          1 day
+        {%- else -%}
+          {{ days }} days
+        {%- endif -%}
+        {{ ', ' }}
+      {%- endif -%}
+      {%- if hours > 0 -%}
+        {%- if hours == 1 -%}
+          1 hour
+        {%- else -%}
+          {{ hours }} hours
+        {%- endif -%}
+        {{ ', ' }}
+      {%- endif -%}
+      {%- if minutes > 0 -%}
+        {%- if minutes == 1 -%}
+          1 minute
+        {%- else -%}
+          {{ minutes }} minutes
+        {%- endif -%}
+      {%- endif -%}
 # -------------------------------
     
 group:
@@ -231,6 +291,7 @@ group:
       - group.network
       - group.netdata
       - group.panels
+      - group.glances
 
   network:
     name: Device Status
@@ -315,6 +376,26 @@ group:
       - sensor.zeus_ipv4_in
       - sensor.zeus_ipv4_out
       - sensor.zeus_disk_free
+
+  glances:
+    name: Glances
+    view: false
+    entities:
+      - sensor.glances_cpu_load
+      - sensor.glances_cpu_temp
+      - sensor.glances_disk_free
+      - sensor.glances_disk_used
+      - sensor.glances_disk_used_2
+      - sensor.glances_ram_free
+      - sensor.glances_ram_used
+      - sensor.glances_ram_used_2
+      - sensor.glances_running
+      - sensor.glances_sleeping
+      - sensor.glances_swap_free
+      - sensor.glances_swap_used
+      - sensor.glances_swap_used_2
+      - sensor.glances_thread
+      - sensor.glances_total
 
   panels:
     name: Panels

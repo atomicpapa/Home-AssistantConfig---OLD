@@ -1,0 +1,10 @@
+image_processing:
+  - platform: openalpr_local
+    region: us
+    source:
+      - entity_id: camera.driveway
+
+  - platform: opencv
+    name: Front Door Faces
+    source:
+      - entity_id: camera.front_door

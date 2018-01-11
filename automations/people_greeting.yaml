@@ -9,8 +9,9 @@
       entity_id:
         - device_tracker.glenn_glenn
         - device_tracker.eryin_eryin
+        - device_tracker.maryglyn_maryglyn
       to: 'home'
-      for: '00:03:00'
+      for: '00:01:00'
 
   action:
     - service: script.speech_engine
@@ -68,7 +69,7 @@
       entity_id:
         - device_tracker.lola_lola
       to: 'home'
-      for: '00:03:00'
+      for: '00:01:00'
 
   action:
     - service: script.speech_engine

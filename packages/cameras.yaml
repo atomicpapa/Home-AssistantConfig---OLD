@@ -16,6 +16,9 @@ camera:
   #   name: worldtime
   #   still_image_url: https://imgs.xkcd.com/comics/now.png
 
+sensor:
+  - platform: zoneminder
+
 group:
 
   cameras:

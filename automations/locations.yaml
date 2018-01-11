@@ -72,6 +72,7 @@
     entity_id: 
       - device_tracker.lola_lola
       - device_tracker.eleanor_eleanor
+      - device_tracker.maryglyn_maryglyn
     from: 'ggs'
   action:
     - service: script.speech_engine

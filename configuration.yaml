@@ -7,6 +7,15 @@ homeassistant:
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: America/Chicago
   customize: !include customize.yaml
+  # customize_glob:
+  #   light.*:
+  #     custom_ui_state_card: state-card-custom-ui
+  #     state_card_mode: break-slider
+  #     stretch_slider: true
+  #     hide_control: false
+  #     show_last_changed: false
+  #   cover.*:
+  #     custom_ui_state_card: state-card-custom-ui
   packages: !include_dir_named packages
 
 # introduction:
@@ -14,25 +23,28 @@ homeassistant:
 # Enables the frontend
 frontend:
   themes: !include themes.yaml
-#  javascript_version: latest
+  javascript_version: latest
 ## https://home-assistant.io/components/frontend/
 ## https://home-assistant.io/developers/frontend_creating_custom_ui/
 
-  javascript_version: es5
+  # javascript_version: es5
 
-  extra_html_url:
-    - /local/custom_ui/state-card-value_only.html
-    - /local/custom_ui/state-card-custom-ui.html
-    - /local/custom_ui/state-card-tiles.html
-    - /local/custom_ui/state-card-table.html
+  # extra_html_url:
+  #   - /local/custom_ui/state-card-value_only.html
+  #   - /local/custom_ui/state-card-custom-ui.html
+  #   - /local/custom_ui/state-card-tiles.html
+  #   - /local/custom_ui/state-card-table.html
  
-  extra_html_url_es5:
-    - /local/custom_ui/state-card-custom-ui-es5.html
-    - /local/custom_ui/state-card-tiles.html
-    - /local/custom_ui/state-card-value_only.html
+  # extra_html_url_es5:
+  #   - /local/custom_ui/state-card-custom-ui-es5.html
+  #   - /local/custom_ui/state-card-tiles.html
+  #   - /local/custom_ui/state-card-value_only.html
 
 # Enables configuration UI
 config:
+
+# customizer:
+#   custom_ui: local
 
 http:
   api_password: !secret apipass

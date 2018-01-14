@@ -34,6 +34,10 @@ sensor:
       - ads_blocked_today
       - ads_percentage_today
       - unique_clients
+      - domains_being_blocked
+      - queries_cached
+      - queries_forwarded
+      - unique_domains
 
 # Pi-Hole switch
 switch:

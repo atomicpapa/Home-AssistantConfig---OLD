@@ -4,7 +4,7 @@
 ###################################
 
 - alias: Cuckoo Clock
-  hide_entity: true
+  # hide_entity: true
   initial_state: 'on'
   trigger:
     - platform: time
@@ -15,19 +15,21 @@
       seconds: 00
 
   condition:
-    - condition: time
-      after: '09:30:00'
-      before: '21:30:00'
-    - condition: state
-      entity_id: group.weasley_clock
-      state: 'home'
-    - condition: template
-      value_template: >
-        {% if is_state('media_player.muse', 'playing') %}
-          false
-        {% else %}
-          true
-        {% endif %}
+    condition: and
+    conditions:
+      - condition: time
+        after: '09:30:00'
+        before: '21:30:00'
+      - condition: state
+        entity_id: group.weasley_clock
+        state: 'home'
+      - condition: template
+        value_template: >
+          {% if is_state('media_player.muse', 'playing') %}
+            false
+          {% else %}
+            true
+          {% endif %}
 
   action:
     - service: media_player.turn_on

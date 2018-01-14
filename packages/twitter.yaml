@@ -61,7 +61,8 @@ automation:
           tweet: >
             {{ [
             "Today, I prevented {{states.sensor.pihole_ads_blocked_today.state}} ads from reaching my family via Pi-hole!",
-            "Today was a good day!  Why, you ask? Because I blocked {{states.sensor.pihole_ads_blocked_today.state}} ads via Pi-Hole!"
+            "Today was a good day!  Why, you ask? Because I blocked {{states.sensor.pihole_ads_blocked_today.state}} ads via Pi-Hole!",
+            "Today, I blocked {{states.sensor.pihole_ads_blocked_today.state}} ads. That was {{states.sensor.pihole_ads_percentage_blocked_today}} percent of today's traffic!"
             ] | random + " http://www.pi-hole.net"}}
 
   - alias: 'Tweet - Spotify'

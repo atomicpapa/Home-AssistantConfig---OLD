@@ -13,31 +13,42 @@
 #   device_class: motion
 #   retain: true
 
+# - platform: mqtt
+#   state_topic: floorplan/girls_panel_motion
+#   name: Girls Panel Motion
+#   device_class: motion
+#   retain: true
+
+# - platform: mqtt
+#   state_topic: floorplan/girls_panel_plugged
+#   name: Girls Panel Plugged
+#   retain: true
+
+# - platform: mqtt
+#   state_topic: floorplan/boys_panel_motion
+#   name: Boys Panel Motion
+#   device_class: motion
+#   retain: true
+
+# - platform: mqtt
+#   state_topic: floorplan/boys_panel_plugged
+#   name: Boys Panel Plugged
+#   retain: true
+
+# - platform: mqtt
+#   state_topic: "/Entry_Hall/Motion/Motion"
+#   name: "Entry_Hall_Motion"
+#   payload_on: 1
+#   payload_off: 0
+#   device_class: motion
+  
 - platform: mqtt
-  state_topic: floorplan/girls_panel_motion
-  name: Girls Panel Motion
+  state_topic: floorplan/entryhall_motion
+  name: Entryhall Motion
   device_class: motion
   retain: true
 
 - platform: mqtt
-  state_topic: floorplan/girls_panel_plugged
-  name: Girls Panel Plugged
+  state_topic: floorplan/entryhall_plugged
+  name: Entryhall Plugged
   retain: true
-
-- platform: mqtt
-  state_topic: floorplan/boys_panel_motion
-  name: Boys Panel Motion
-  device_class: motion
-  retain: true
-
-- platform: mqtt
-  state_topic: floorplan/boys_panel_plugged
-  name: Boys Panel Plugged
-  retain: true
-
-- platform: mqtt
-  state_topic: "/Entry_Hall/Motion/Motion"
-  name: "Entry_Hall_Motion"
-  payload_on: 1
-  payload_off: 0
-  device_class: motion

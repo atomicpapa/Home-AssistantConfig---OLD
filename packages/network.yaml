@@ -405,6 +405,8 @@ group:
       - binary_sensor.girls_panel_motion
       - binary_sensor.boys_panel_plugged
       - binary_sensor.girls_panel_plugged
+      - binary_sensor.entryhall_motion
+      - binary_sensor.entryhall_plugged
 
 
 # --------------------------------

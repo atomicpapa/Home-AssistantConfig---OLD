@@ -51,8 +51,8 @@ http:
   ssl_certificate: !secret sslcert
   ssl_key: !secret sslkey
   base_url: !secret baseurl
-  ip_ban_enabled: True
-  login_attempts_threshold: 3
+  # ip_ban_enabled: True
+  # login_attempts_threshold: 3
   trusted_networks:
     - 192.168.0.0/24
     - 127.0.0.1
@@ -114,7 +114,7 @@ logger:
     homeassistant.helpers.entity: critical
     homeassistant.components.sensor.nzbget: critical
     homeassistant.components.light.hue: critical
-    custom_components.sensor.http_room: info
+    # custom_components.sensor.http_room: error
     script: info
 
 # Track the sun
@@ -125,19 +125,7 @@ upnp:
 
 map:
 
-# influxdb:
-#   host: 192.168.0.13
-#   port: 8086
-#   username: !secret infuser
-#   password: !secret infpass
-
-google_assistant:
-  project_id: !secret google_project
-  client_id: !secret google_client
-  access_token: !secret google_token
-  expose_by_default: false
-  agent_user_id: !secret google_agent_user_id
-  api_key: !secret google_api_key
+dialogflow:
 
 cloud:
   alexa:
@@ -159,7 +147,7 @@ cloud:
         - cover
         - switch
         - fan
-        - media_player
+        # - media_player
         - script
 
 #Google Calendar
@@ -191,4 +179,4 @@ group: !include groups.yaml
 automation: !include_dir_merge_list automations/
 panel_custom: !include panel_custom.yaml
 binary_sensor: !include binary_sensors.yaml
-
+intent_script: !include_dir_named intents/

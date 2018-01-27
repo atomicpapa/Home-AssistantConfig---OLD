@@ -60,6 +60,8 @@ media_player:
     name: Boys Panel
   - platform: floorplan_speaker
     name: Girls Panel
+  - platform: floorplan_speaker
+    name: Entryhall
   # - platform: snapcast
   #   host: 192.168.0.13
   # - platform: mpd
@@ -145,4 +147,17 @@ group:
       - sensor.radarr_movies
       - sensor.radarr_status
       - sensor.radarr_upcoming
+
+  mediaplayers: # will be entity_id
+    name: Media Players
+    view: yes
+    entities:
+      - media_player.apollo
+      - media_player.muse
+      - media_player.boys_panel
+      - media_player.girls_panel
+      - media_player.toriel
+      - media_player.the_dude
+      - media_player.whole_house
+      - media_player.spotify
 

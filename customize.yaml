@@ -40,67 +40,67 @@ sensor.charge_2_battery_2:
 sensor.sleep_minutes_asleep_2:
   hidden: true
 
-light.desk_lamp:
-  google_assistant: true
-  google_assistant_name: Desk Lamp
-  aliases:
-    - Desk Lamp
-    - Glenns Lamp
-  alexa_name: Desk Lamp
+# light.desk_lamp:
+#   google_assistant: true
+#   google_assistant_name: Desk Lamp
+#   aliases:
+#     - Desk Lamp
+#     - Glenns Lamp
+#   alexa_name: Desk Lamp
 
-group.kids_lights:
-  google_assistant: true
-  google_assisteant_name: Kids Lights
-  google_assistant_type: light
-  aliases:
-    - Kids Lights
-    - Brats Lights
-    - The Kids
-  alexa_name: Kids Lights
+# group.kids_lights:
+#   google_assistant: true
+#   google_assisteant_name: Kids Lights
+#   google_assistant_type: light
+#   aliases:
+#     - Kids Lights
+#     - Brats Lights
+#     - The Kids
+#   alexa_name: Kids Lights
 
-light.lego_lamp:
-  google_assistant: true
-  google_assisteant_name: Hanging Lamp 
-  aliases:
-    - Hanging Lamp
-    - Pendant Lamp
-    - Living Room Lamp
-  alexa_name: Hanging Lamp
+# light.lego_lamp:
+#   google_assistant: true
+#   google_assisteant_name: Hanging Lamp 
+#   aliases:
+#     - Hanging Lamp
+#     - Pendant Lamp
+#     - Living Room Lamp
+#   alexa_name: Hanging Lamp
 
-light.hall:
-  google_assistant: true
-  google_assisteant_name: Hall
-  aliases:
-    - Hall
-    - Hallway
-  alexa_name: Hall
+# light.hall:
+#   google_assistant: true
+#   google_assisteant_name: Hall
+#   aliases:
+#     - Hall
+#     - Hallway
+#   alexa_name: Hall
 
-light.girls:
-  google_assistant: true
-  google_assisteant_name: Girls Light
-  aliases:
-    - Girls Light
-  alexa_name: Girls Light
+# light.girls:
+#   google_assistant: true
+#   google_assisteant_name: Girls Light
+#   aliases:
+#     - Girls Light
+#   alexa_name: Girls Light
 
-light.boy:
-  google_assistant: true
-  google_assisteant_name: Boys Light
-  aliases:
-    - Boys Light
-    - Dudes Light
-  alexa_name: Boys Light
+# light.boy:
+#   google_assistant: true
+#   google_assisteant_name: Boys Light
+#   aliases:
+#     - Boys Light
+#     - Dudes Light
+#   alexa_name: Boys Light
 
-light.front_porch:
-  google_assistant: true
-  google_assisteant_name: Front Porch
-  aliases:
-    - Front Porch
-    - Porch
-  alexa_name: Front Porch
+# light.front_porch:
+#   google_assistant: true
+#   google_assisteant_name: Front Porch
+#   aliases:
+#     - Front Porch
+#     - Porch
+#   alexa_name: Front Porch
 
-script.responsibilities:
-  google_assistant: true
-  google_assistant_name: Responsibilities
+# script.responsibilities:
+#   google_assistant: true
+#   google_assistant_name: Responsibilities
 
 sensor.responsibilities:
   hidden: true

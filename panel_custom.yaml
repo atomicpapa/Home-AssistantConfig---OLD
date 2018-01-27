@@ -6,18 +6,26 @@
         hide_app_toolbar:
         config: /local/custom_ui/floorplan/floorplan.yaml
 
-    - name: floorplan
-      sidebar_title: Girls Room
-      sidebar_icon: mdi:home
-      url_path: girls
-      config:
-        hide_app_toolbar:
-        config: /local/custom_ui/floorplan/floorgirls.yaml
+    # - name: floorplan
+    #   sidebar_title: Girls Room
+    #   sidebar_icon: mdi:home
+    #   url_path: girls
+    #   config:
+    #     hide_app_toolbar:
+    #     config: /local/custom_ui/floorplan/floorgirls.yaml
+
+    # - name: floorplan
+    #   sidebar_title: Boys Room
+    #   sidebar_icon: mdi:home
+    #   url_path: boy
+    #   config:
+    #     hide_app_toolbar:
+    #     config: /local/custom_ui/floorplan/floorboy.yaml
 
     - name: floorplan
-      sidebar_title: Boys Room
+      sidebar_title: Entry Hall
       sidebar_icon: mdi:home
-      url_path: boy
+      url_path: entryhall
       config:
         hide_app_toolbar:
-        config: /local/custom_ui/floorplan/floorboy.yaml
+        config: /local/custom_ui/floorplan/entryhall.yaml

@@ -10,7 +10,7 @@ main:
   - group.interior_lights
   - group.exterior_lights
   - group.weather_summary
-  - group.weather_forecast
+  - group.weather_card_forecast
   - media_player.minotaur
   - media_player.muse
   - media_player.whole_house
@@ -132,4 +132,4 @@ motion:
   entities:
     - binary_sensor.boys_panel_motion
     - binary_sensor.girls_panel_motion
-    - binary_sensor.entry_hall_motion
+    - binary_sensor.entryhall_motion

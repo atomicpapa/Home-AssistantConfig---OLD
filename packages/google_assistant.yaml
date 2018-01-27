@@ -1,0 +1,52 @@
+google_assistant:
+  project_id: !secret google_project
+  client_id: !secret google_client
+  access_token: !secret google_token
+  expose_by_default: false
+  agent_user_id: !secret google_agent_user_id
+  api_key: !secret google_api_key
+
+  entity_config:
+    light.desk_lamp:
+      name: desk lamp
+      aliases:
+        - glenns lamp
+      type: light
+    group.kids_lights:
+      name: kids llights
+      aliases:
+        - the kids
+      type: light
+    light.lego_lamp:
+      name: hanging lamp
+      aliases:
+        - lego lamp
+      type: light
+    light.hall:
+      name: hall light
+      aliases:
+        - hall
+        - hallway
+      type: light
+    light.girls:
+      name: girls light
+      aliases:
+        - emmy and lolas light
+      type: light
+    light.boy:
+      name: boys light
+      aliases:
+        - dudes light
+        - williams light
+        - liams light
+      type: light
+    light.front_porch:
+      name: front porch
+      aliases:
+        - porch
+      type: light
+    script.respponsibilities:
+      name: responibilities
+      aliases:
+        - chores
+      type: scene

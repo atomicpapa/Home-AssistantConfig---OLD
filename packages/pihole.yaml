@@ -55,8 +55,12 @@ group:
     name: Pi-Hole
     entities:
       - sensor.pihole_dns_unique_clients
+      - sensor.pihole_dns_unique_domains
       - sensor.pihole_dns_queries_today
+      - sensor.pihole_dns_queries_cached
+      - sensor.pihole_dns_queries_forwarded
       - sensor.pihole_ads_blocked_today
       - sensor.pihole_ads_percentage_blocked_today
+      - sensor.pihole_domains_blocked
       - switch.pihole_temp_disable
 #-------------------------------------------

@@ -83,7 +83,7 @@ history:
       - zone
       
 recorder:
-  db_url: !secret dburl
+  # db_url: !secret dburl
   purge_interval: 2
   purge_keep_days: 14
   exclude:

@@ -45,8 +45,14 @@ google_assistant:
       aliases:
         - porch
       type: light
-    script.respponsibilities:
+    script.responsibilities:
       name: responibilities
       aliases:
         - chores
       type: scene
+    switch.master_bedroom_tv:
+      name: master bedroom tv
+      aliases:
+        - master tv
+        - our tv
+      type: switch

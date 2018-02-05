@@ -127,6 +127,9 @@ map:
 
 dialogflow:
 
+alarm_control_panel:
+  - platform: manual
+
 cloud:
   alexa:
     filter:

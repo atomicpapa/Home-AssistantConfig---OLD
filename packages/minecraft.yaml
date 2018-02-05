@@ -1,0 +1,48 @@
+#-------------------------------------------
+# @CCOSTAN
+# Original Repo : https://github.com/CCOSTAN/Home-AssistantConfig
+# Neato Support for D7 Connected Botvac - control my [Neato Vacuum](http://amzn.to/2kqnnqu) with Home Assistant.
+#-------------------------------------------
+# homeassistant:
+#   customize_glob:
+#     "*.*_sleep_hours":
+#       unit_of_measurement: hours
+#       icon: mdi:sleep
+#
+#       hidden: False
+#-------------------------------------------
+sensor:
+  platform: minecraft
+  name: AtomicCraft
+  server: !secret minecraft
+#-------------------------------------------
+group:
+  Minecraft:
+    entities:
+      - sensor.atomiccraft
+
+##############################################################################
+###  Automations - Detect when things are not right. Like any Good Watchdog.
+##############################################################################
+#automation:
+#Tweets pushed out to twitter.
+# automation:
+#   - alias: Someone on the MC server!
+#     trigger:
+#       - platform: state
+#         entity_id: sensor.atomiccraft
+
+#     condition:
+#       - condition: template
+#         value_template: >
+#           {% if states.sensor.atomiccraft.state|int == 0 %}
+#             false
+#           {% else %}
+#             true
+#           {% endif %}
+
+#     action:
+#       - service: script.notify_engine
+#         data_template:
+#           value1: "There are {{states.sensor.atomiccraft.state}} Minecraft users online: {{ states.sensor.atomiccraft.attributes.users_online }}"
+#           who: 'carlo'

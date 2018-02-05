@@ -54,6 +54,7 @@ automation:
       platform: state
       entity_id: sensor.life360_sensor
     action:
-      - service: notify.join
+      - service: notify.discord
         data_template:
-          value1: "Life360 Sensor state changed to: {{ trigger.to_state.state| upper }}."
+          target: 355533149670998018
+          message: "Life360 Sensor state changed to: {{ trigger.to_state.state| upper }}."

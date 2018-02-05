@@ -425,9 +425,9 @@ automation:
           - sensor.byrcam
           - sensor.phue
           - sensor.zeus
-          - sensor.printer
-          - sensor.apollo
-          - sensor.muse
+          # - sensor.printer
+          # - sensor.apollo
+          # - sensor.muse
         to: 'Offline'
         for:
           minutes: 5
@@ -436,11 +436,10 @@ automation:
       after: '08:00:00'
       before: '22:00:00'
     action:
-      - service: notify.join
+      - service: notify.discord
         data_template:
-          value1: 'Device Status:'
-          value2: "{{ trigger.to_state.attributes.friendly_name }} is "
-          value3: "{{ trigger.to_state.state }}"
+          target: 355533149670998018
+          message: "Device Status: {{ trigger.to_state.attributes.friendly_name }} is {{ trigger.to_state.state }}"
 
       - service: media_player.volume_set
         data_template:

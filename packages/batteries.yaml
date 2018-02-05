@@ -382,9 +382,10 @@ automation:
       before: '19:00:00'
 
     action:
-      # - service: script.notify_me
-      #   data_template:
-      #     message: "{{ trigger.to_state.attributes.friendly_name }}'s phone battery is less than: {{ trigger.to_state.attributes.battery }}%."
+      - service: notify.discord
+        data_template:
+          target: 355533149670998018
+          message: "{{ trigger.to_state.attributes.friendly_name }}'s phone battery is less than: {{ trigger.to_state.attributes.battery }}%."
       - service: media_player.volume_set
         data_template:
           entity_id: media_player.whole_house

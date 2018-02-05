@@ -75,6 +75,33 @@ sensor:
         entity_picture_template: >-
           {{ '/local/dark_sky/' ~ states.sensor.dark_sky_icon_7.state ~ '.png'}}
 
+      friendly_0:
+        value_template: >
+            {{states.sensor.forecast_0.attributes.friendly_name}}
+      friendly_1:
+        value_template: >
+            {{ (as_timestamp(now())+(60*60*24))|timestamp_custom('%A') }}
+      friendly_2:
+        value_template: >
+            {{ (as_timestamp(now())+(60*60*48))|timestamp_custom('%A') }}
+      friendly_3:
+        value_template: >
+            {{ (as_timestamp(now())+(60*60*72))|timestamp_custom('%A') }}
+      friendly_4:
+        value_template: >
+            {{ (as_timestamp(now())+(60*60*96))|timestamp_custom('%A') }}
+      friendly_5:
+        value_template: >
+            {{ (as_timestamp(now())+(60*60*120))|timestamp_custom('%A') }}
+      friendly_6:
+        value_template: >
+            {{ (as_timestamp(now())+(60*60*144))|timestamp_custom('%A') }}
+      friendly_7:
+        value_template: >
+            {{ (as_timestamp(now())+(60*60*168))|timestamp_custom('%A') }}
+
+
+
 automation:
   - id: update_friendly_names
     alias: "Update friendly names"

@@ -37,15 +37,6 @@
     {% set chores =  value_json.eleanor[ today ] + value_json.lola[ today ] + value_json.william[ today ] %}
     {{ chores }}
 
-#Glenn's Fitbit  
-- platform: fitbit
-  monitored_resources:
-    - "devices/battery"
-    - "activities/steps"
-    - "sleep/minutesAsleep"
-    - "sleep/efficiency"
-    - "sleep/awakeningsCount"
-
 - platform: http_room
   device_id: fda50693-a4e2-4fb1-afcf-c6eb07647825
   name: 'William'

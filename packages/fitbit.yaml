@@ -1,0 +1,28 @@
+sensor:
+
+  #Glenn's Fitbit  
+  - platform: fitbit
+    monitored_resources:
+      - "devices/battery"
+      - "activities/steps"
+      - "sleep/minutesAsleep"
+      - "sleep/efficiency"
+      - "sleep/awakeningsCount"
+
+automation:
+
+  - alias: Fitbit Battery Low
+    initial_state: 'on'
+    hide_entity: false
+    trigger:
+      platform: state
+      entity_id: sensor.charge_2_battery
+      to: "Low"
+    action:
+      - service: notify.discord
+        data_template:
+          target: 355533149670998018
+          message: "Glenn's Fitbit battery is low"
+      - service: script.speech_engine
+        data:
+          call_fitbit_battery: 1

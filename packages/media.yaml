@@ -113,6 +113,65 @@ sensor:
       - download_size
       - article_cache
 
+  - platform: template
+    sensors:
+      gorgon_media:
+        friendly_name: "Gorgon Media"
+        value_template: >-
+          {% if is_state('media_player.gorgon', 'playing') %}
+            {{states.media_player.gorgon.attributes.app_name}}
+          {% else %}
+            Stopped
+          {% endif %}
+      hydra_media:
+        friendly_name: "Hydra Media"
+        value_template: >-
+          {% if is_state('media_player.hydra', 'playing') %}
+            {{states.media_player.hydra.attributes.app_name}}
+          {% else %}
+            Stopped
+          {% endif %}
+      minotaur_media:
+        friendly_name: "Minotaur Media"
+        value_template: >-
+          {% if is_state('media_player.minotaur', 'playing') %}
+            {{states.media_player.minotaur.attributes.app_name}}
+          {% else %}
+            Stopped
+          {% endif %}
+      apollo_media:
+        friendly_name: "Apollo Media"
+        value_template: >-
+          {% if is_state('media_player.apollo', 'playing') %}
+            {{states.media_player.apollo.attributes.media_title}}
+          {% else %}
+            Stopped
+          {% endif %}
+      muse_media:
+        friendly_name: "Muse Media"
+        value_template: >-
+          {% if is_state('media_player.muse', 'playing') %}
+            {{states.media_player.muse.attributes.media_title}}
+          {% else %}
+            Stopped
+          {% endif %}
+      the_dude_media:
+        friendly_name: "The Dude Media"
+        value_template: >-
+          {% if is_state('media_player.the_dude', 'playing') %}
+            {{states.media_player.the_dude.attributes.media_title}}
+          {% else %}
+            Stopped
+          {% endif %}
+      emmys__lolas_mini_media:
+        friendly_name: "Emmy and Lolas Mini Media"
+        value_template: >-
+          {% if is_state('media_player.emmys__lolas_mini', 'playing') %}
+            {{states.media_player.emmys__lolas_mini.attributes.media_title}}
+          {% else %}
+            Stopped
+          {% endif %}
+        
   # - platform: pocketcasts
   #   username: wm.g.morrison@gmail.com
   #   password: stinky1303
@@ -156,7 +215,7 @@ group:
       - media_player.muse
       - media_player.boys_panel
       - media_player.girls_panel
-      - media_player.toriel
+      - media_player.emmys__lolas_mini
       - media_player.the_dude
       - media_player.whole_house
       - media_player.spotify

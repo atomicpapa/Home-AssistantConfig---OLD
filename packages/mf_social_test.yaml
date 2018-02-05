@@ -202,8 +202,9 @@ automation:
       entity_id: sensor.test_bad_weather
       state: 'clear'
     action:
-      - service: notify.joaoapps_join
-        data:
+      - service: notify.discord
+        data_template:
+          target: 355533149670998018
           message: 'The bad weather sensor is registering clear.'
 
   - alias: 'Bad weather notification - frost'
@@ -216,8 +217,9 @@ automation:
       entity_id: sensor.test_bad_weather
       state: 'frost'
     action:
-      - service: notify.joaoapps_join
-        data:
+      - service: notify.discord
+        data_template:
+          target: 355533149670998018
           message: 'The bad weather sensor is registering frost.'
 
   - alias: 'Bad weather notification - heavy_rain'
@@ -230,8 +232,9 @@ automation:
       entity_id: sensor.test_bad_weather
       state: 'heavy_rain'
     action:
-      - service: notify.joaoapps_join
-        data:
+      - service: notify.discord
+        data_template:
+          target: 355533149670998018
           message: 'The bad weather sensor is registering heavy rain.'
           
   - alias: 'Bad weather notification - snow'
@@ -244,8 +247,9 @@ automation:
       entity_id: sensor.test_bad_weather
       state: 'snow'
     action:
-      - service: notify.joaoapps_join
-        data:
+      - service: notify.discord
+        data_template:
+          target: 355533149670998018
           message: 'The bad weather sensor is registering snow.'
 
   - alias: 'Light notification - dark'
@@ -255,8 +259,9 @@ automation:
       entity_id: sensor.test_dark_outside
       to: 'true'
     action:
-      - service: notify.joaoapps_join
-        data:
+      - service: notify.dsicord
+        data_template:
+          target: 355533149670998018
           message: 'The dark sensor has changed to true, I would have switched the lights on now if using this sensor.'
 
   - alias: 'Light notification - light'
@@ -266,6 +271,7 @@ automation:
       entity_id: sensor.test_dark_outside
       to: 'false'
     action:
-      - service: notify.joaoapps_join
-        data:
+      - service: notify.discord
+        data_template:
+          target: 355533149670998018
           message: 'The dark sensor has changed to false, I would have switched the lights off now if using this sensor.'

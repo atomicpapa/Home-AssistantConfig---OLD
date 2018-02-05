@@ -70,6 +70,11 @@ speech_engine:
           {%- macro meds() -%}
               {{"Everyone, do not forget your meds, especially Lola and William!" }}
           {%- endmacro -%}
+          {%- macro fitbit_battery() -%}
+              {%- if is_state('device_tracker.glenn_glenn', 'Home') -%}
+              {{"Glenn, charge your fitbit.  The battery is low" }}
+              {%- endif -%}
+          {%- endmacro -%}
           {%- macro responsibilities_lola() -%}
               {{states('sensor.chores_lola')}}
           {%- endmacro -%}

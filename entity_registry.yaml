@@ -1,0 +1,36 @@
+light.lego_lamp:
+  platform: hue
+  unique_id: e2:0d:b9:ff:fe:02:5e:63-0a
+light.hall_2:
+  platform: hue
+  unique_id: e2:0d:b9:ff:fe:02:af:36-0a
+light.girls_1:
+  platform: hue
+  unique_id: e2:0d:b9:ff:fe:02:be:06-0a
+light.front_porch:
+  platform: hue
+  unique_id: e2:0d:b9:ff:fe:02:aa:ff-0a
+light.desk_lamp:
+  platform: hue
+  unique_id: e2:0d:b9:ff:fe:02:39:5b-0a
+light.girls_2:
+  platform: hue
+  unique_id: e2:0d:b9:ff:fe:02:e2:65-0a
+light.hall_1:
+  platform: hue
+  unique_id: e2:0d:b9:ff:fe:02:6b:9e-0a
+light.liams_1:
+  platform: hue
+  unique_id: e2:0d:b9:ff:fe:02:bf:9d-0a
+light.liams_2:
+  platform: hue
+  unique_id: e2:0d:b9:ff:fe:02:d2:38-0a
+media_player.fire:
+  platform: plex
+  unique_id: 11190e8e1d93eceb-com-plexapp-android
+media_player.plex_web_chrome:
+  platform: plex
+  unique_id: iyiczqqwhu8b4aiasegb9orq
+media_player.plex_1caba8fa_67f5_48a1_a514_47cfaaf1e08d:
+  platform: plex
+  unique_id: 1CABA8FA-67F5-48A1-A514-47CFAAF1E08D

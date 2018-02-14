@@ -12,16 +12,16 @@ sensor:
     monitored_conditions:
       - summary
       - precip_probability
-      - wind_speed
-      - cloud_cover
+      # - wind_speed
+      # - cloud_cover
       - icon
       - temperature_min
       - temperature_max
       - daily_summary
-      - hourly_summary
+      # - hourly_summary
       - temperature
-      - humidity
-      - minutely_summary
+      # - humidity
+      # - minutely_summary
 
   - platform: season
   - platform: template

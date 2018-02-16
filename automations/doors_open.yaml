@@ -1,6 +1,7 @@
 # Voice notification of any doors left open more than 5 minutes
 
 - alias: 'Notify if any doors left open for 5 minutes'
+  initial_state: 'on'
   trigger:
     platform: state
     entity_id:

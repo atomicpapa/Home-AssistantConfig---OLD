@@ -11,15 +11,15 @@
 #
 #       hidden: False
 #-------------------------------------------
-sensor:
-  platform: minecraft
-  name: AtomicCraft
-  server: !secret minecraft
-#-------------------------------------------
-group:
-  Minecraft:
-    entities:
-      - sensor.atomiccraft
+# sensor:
+#   platform: minecraft
+#   name: AtomicCraft
+#   server: !secret minecraft
+# #-------------------------------------------
+# group:
+#   Minecraft:
+#     entities:
+#       - sensor.atomiccraft
 
 ##############################################################################
 ###  Automations - Detect when things are not right. Like any Good Watchdog.

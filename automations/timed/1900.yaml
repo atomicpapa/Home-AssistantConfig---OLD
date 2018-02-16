@@ -1,6 +1,7 @@
 #Weather forecast for the next 24 hours daily at 7pm
 
 - alias: 'Timed 1900'
+  initial_state: 'on'
   trigger:
     platform: time
     at: '19:00:00'

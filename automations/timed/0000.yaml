@@ -1,7 +1,7 @@
 # Automations that run at midnight every day
 
 - alias: 'Timed 0000'
-
+  initial_state: 'on'
   trigger:
     platform: time
     at: '00:00:00'

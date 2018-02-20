@@ -66,12 +66,12 @@ media_player:
   #   host: 192.168.0.13
   # - platform: mpd
   #   host: 192.168.0.13
-    - platform: broadlink
-      name: Master Bedroom TV
-      host: 192.168.0.14
-      mac: '34:EA:34:58:BC:3A'
-      ircodes_ini: 'broadlink_media_codes/element.ini'
-      ping_host: 192.168.0.18
+  - platform: broadlink
+    name: Master Bedroom TV
+    host: 192.168.0.14
+    mac: '34:EA:34:58:BC:3A'
+    ircodes_ini: 'broadlink_media_codes/element.ini'
+    ping_host: 192.168.0.18
 
 # Sensors -----------------------------------------------------------------------------
 

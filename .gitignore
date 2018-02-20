@@ -19,4 +19,5 @@ zones.yaml
 ip_bans.yaml
 !www/custom_ui/floorplan/*
 !python_scripts
+!*.md
 

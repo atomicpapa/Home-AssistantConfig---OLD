@@ -1,10 +1,10 @@
-    - name: floorplan
-      sidebar_title: Floorplan
-      sidebar_icon: mdi:home
-      url_path: floorplan
-      config:
-        hide_app_toolbar:
-        config: /local/custom_ui/floorplan/floorplan.yaml
+    # - name: floorplan
+    #   sidebar_title: Floorplan
+    #   sidebar_icon: mdi:home
+    #   url_path: floorplan
+    #   config:
+    #     hide_app_toolbar:
+    #     config: /local/custom_ui/floorplan/floorplan.yaml
 
     # - name: floorplan
     #   sidebar_title: Girls Room

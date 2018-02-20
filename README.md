@@ -44,7 +44,7 @@ Additions coming quickly will include:
 
 <h3>Custom User Interface</h3>
 
-I am using <a href="http://www.github.com/pkozul/ha-floorplan">Floorplan</a> to provide a custom interface for Home Assistant.  This allows me to design relevant screens for each room where I place one of the Kindle Fire's.  For example, in my son's room, by his light switch, I have mounted on the wall a 7" Kindle Fire that is running <a href="http://www.ozerov.de/fully-kiosk-browser/">Fully Kiosk Browser (FKB)</a>.  FKB not only allows interaction with Home Assistant, but also opens up the tablet's camera as a motion sensor and detects iBeacons for presence detection.
+I am using the Kiosk version of <a href="http://www.github.com/pkozul/ha-floorplan-kiosk">Floorplan</a> to provide a custom interface for Home Assistant.  This allows me to design relevant screens for each room where I place one of the Kindle Fire's.  For example, in the entry hall, by the light switch, I have mounted on the wall a 7" Kindle Fire that is running <a href="http://www.ozerov.de/fully-kiosk-browser/">Fully Kiosk Browser (FKB)</a>.  FKB not only allows interaction with Home Assistant, but also adds the tablet's camera as a motion sensor, adds the speaker as a media player, and detects iBeacons for presence detection.
 
 
 <img src="https://community-home-assistant-assets.s3-us-west-2.amazonaws.com/optimized/3X/0/d/0de34d4040f0da55647f852de41e0bc1786f4647_1_690x402.jpg">

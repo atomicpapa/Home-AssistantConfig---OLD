@@ -1,5 +1,8 @@
 # Sensors..  duh
-    
+- platform: spotcrime
+  name: Crime Reports
+  radius: .01
+  days: 7
 
 - platform: rest
   resource: http://192.168.0.13/hass/chores.json
